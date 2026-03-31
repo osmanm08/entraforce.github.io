@@ -290,7 +290,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support@entraforce.com" style="color:var(--white)">support@entraforce.com</a></div></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="/cdn-cgi/l/email-protection#01727471716e737541646f757360676e7362642f626e6c" style="color:var(--white)"><span class="__cf_email__" data-cfemail="23505653534c515763464d575142454c5140460d404c4e">[email&#160;protected]</span></a></div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -340,7 +340,7 @@ footer span{color:var(--gold)}
   <div id="medic-content"></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function showPage(id, e) {
   if(e) e.preventDefault();
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -372,13 +372,15 @@ window.addEventListener('popstate', function(e) {
 });
 // Handle direct URL on load
 (function(){
-  const path = window.location.pathname;
-  if(path.startsWith('/services/it')) showService('it-consulting',null);
-  else if(path.startsWith('/services/ef')) showService('ef-tech-medic',null);
-  else if(path.startsWith('/services/web')) showService('web-creation',null);
-  else if(path.startsWith('/services')) showPage('services',null);
-  else if(path.startsWith('/about')) showPage('about',null);
-  else if(path.startsWith('/contact')) showPage('contact',null);
+  const params = new URLSearchParams(window.location.search);
+  const redirect = params.get('redirect');
+  const path = redirect || window.location.pathname;
+  if(path.startsWith('/services/it')) { history.replaceState({}, '', '/services/it-consulting'); showService('it-consulting',null); }
+  else if(path.startsWith('/services/ef')) { history.replaceState({}, '', '/services/ef-tech-medic'); showService('ef-tech-medic',null); }
+  else if(path.startsWith('/services/web')) { history.replaceState({}, '', '/services/web-creation'); showService('web-creation',null); }
+  else if(path.startsWith('/services')) { history.replaceState({}, '', '/services'); showPage('services',null); }
+  else if(path.startsWith('/about')) { history.replaceState({}, '', '/about'); showPage('about',null); }
+  else if(path.startsWith('/contact')) { history.replaceState({}, '', '/contact'); showPage('contact',null); }
 })();
 function gotoCard(id) {
   setTimeout(() => {
@@ -660,11 +662,4 @@ function getMedicHTML() { return `
 <div class="m-footer">
   <div class="m-ft-wrap">
     <div class="m-ft-logo"><span>EF</span> Techmedic</div>
-    <div class="m-ft-about">EF Techmedic is Entraforce device repair service — fast, honest, professional. Drop off at Shaahi Biryani, Plano TX.</div>
-    <div class="m-ft-bottom"><div>© 2026 EF Techmedic (Entraforce). All rights reserved.</div></div>
-  </div>
-</div>
-`; }
-</script>
-</body>
-</html>
+    <div class="m-ft-about">EF Techmedic is Entraforc
