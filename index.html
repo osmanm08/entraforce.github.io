@@ -43,7 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,#1a3a6b55 0%,transparent 70%);pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:580px}
 .hero-eyebrow{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);padding:.3rem .9rem;border-radius:2px;margin-bottom:1.5rem}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-tagline{font-size:.92rem;font-weight:300;font-style:italic;color:var(--muted);max-width:480px;margin:0 auto 2rem;line-height:1.85;border-left:2px solid var(--gold-dim);padding-left:1rem;text-align:left}
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
@@ -142,9 +142,9 @@ footer span{color:var(--gold)}
       <li class="has-dropdown" id="nav-services">
         <a href="#" onclick="showPage('services',event)">Services ▾</a>
         <div class="dropdown">
-          <a href="#" onclick="showPage('services',event);gotoCard('it-consulting')">IT Consulting Projects</a>
-          <a href="#" onclick="showPage('services',event);gotoCard('repair')">EF Tech Medic</a>
-          <a href="#" onclick="showPage('services',event);gotoCard('web')">Website / Content Creation</a>
+          <a href="/services/it-consulting" onclick="showService('it-consulting',event)">IT Consulting Projects</a>
+          <a href="/services/ef-tech-medic" onclick="showService('ef-tech-medic',event)">EF Tech Medic</a>
+          <a href="/services/web-creation" onclick="showService('web-creation',event)">Website / Content Creation</a>
         </div>
       </li>
       <li id="nav-contact"><a href="#" onclick="showPage('contact',event)">Contact Us</a></li>
@@ -290,7 +290,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0960676f66496c677d7b686f667b6a6c276a6664">[email&#160;protected]</a></div></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support@entraforce.com" style="color:var(--white)">support@entraforce.com</a></div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -348,7 +348,38 @@ function showPage(id, e) {
   document.getElementById('page-'+id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
   window.scrollTo(0,0);
+  const urlMap = {home:'/',about:'/about',services:'/services',contact:'/contact'};
+  history.pushState({page:id}, '', urlMap[id] || '/');
 }
+function showService(slug, e) {
+  if(e) e.preventDefault();
+  showPage('services', null);
+  const slugMap = {'it-consulting':'it-consulting','ef-tech-medic':'repair','web-creation':'web'};
+  const cardId = slugMap[slug] || slug;
+  history.pushState({page:'services',service:slug}, '', '/services/'+slug);
+  setTimeout(() => {
+    const el = document.getElementById(cardId);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }, 100);
+}
+window.addEventListener('popstate', function(e) {
+  if(e.state && e.state.page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links li').forEach(l => l.classList.remove('active'));
+    document.getElementById('page-'+e.state.page).classList.add('active');
+    document.getElementById('nav-'+(e.state.page==='services'?'services':e.state.page)).classList.add('active');
+  }
+});
+// Handle direct URL on load
+(function(){
+  const path = window.location.pathname;
+  if(path.startsWith('/services/it')) showService('it-consulting',null);
+  else if(path.startsWith('/services/ef')) showService('ef-tech-medic',null);
+  else if(path.startsWith('/services/web')) showService('web-creation',null);
+  else if(path.startsWith('/services')) showPage('services',null);
+  else if(path.startsWith('/about')) showPage('about',null);
+  else if(path.startsWith('/contact')) showPage('contact',null);
+})();
 function gotoCard(id) {
   setTimeout(() => {
     const el = document.getElementById(id);
