@@ -1,1007 +1,3 @@
-
-Entraforce
-/
-Build me the website the following categories:
-
-once you land on the url you should three to five categories
-
-Home, Aboutus, Services, Contactus
-
-Under Services it should the following: 
-
-IT Consulting Projects 
-Under this Upcoming Future project is build, maintain, manage infrastructure for other tech businesses from small to large. 
-EF Tech Fix N Repair 
-(Pull the content from cell phone and gadgets)
-
-Website/Content Creation. 
-For businesses like  restaurants, IT work, Malls, clothing shops, cafes, and local businesses etc.
-
-Show more
-1:36 PM
-
-Reading frontend design skill
-Reading frontend design skill
-A few quick questions before I build this out!
-
-I'll build this out now with a bold, professional aesthetic — dark theme, sharp accents, full navigation with dropdown.
-
-V
-
-Connecting to visualize...
-Here's your full website! Here's what's built in:
-
-Navigation — Home, About Us, Services (with a dropdown showing all 3 sub-services), Contact Us, and a "Get a Quote" call-to-action button.
-
-Home — Bold hero section with a tagline, two CTA buttons, and a stats row.
-
-About Us — Mission, vision, approach, and values laid out cleanly.
-
-Services — Three distinct cards:
-
-IT Consulting Projects — with the upcoming infrastructure program noted and a "Launching Soon" badge
-EF Tech Fix N Repair — cell phones, tablets, laptops, data recovery, same-day turnaround
-Website & Content Creation — lists all your target industries (restaurants, malls, cafes, clothing, etc.)
-Contact Us — Form with name, email, service selector, and message field, plus your location info panel.
-
-A few things to update with your real info: phone number, email address, and business hours. Want me to turn this into a downloadable HTML file, add a logo, or adjust colors/copy?
-
-Q: What's the business name?
-A: EntraForce
-
-Q: What vibe/color scheme fits your brand?
-A: Dark & professional (navy, black, gold)
-
-Q: Any tagline or short description of your business?
-A: End-to-End Tech Solutions—from Personal Support to Professional Consultation, from Device Repair to Digital Growth.”
-
-1:45 PM
-V
-
-Connecting to visualize...
-Your EntraForce website is fully updated! Here's what changed:
-
-Branding — "EF Tech Solutions" is now EntraForce everywhere, including the nav logo mark (the "EF" badge), page headers, footer, and contact details.
-
-Tagline — Your full tagline is featured prominently as a pull-quote on the hero, referenced in the About panel, and displayed again on the Contact page.
-
-Design refinements — I sharpened the overall look to match the dark & professional navy/black/gold brief: a vertical gold line dropping from the top of the hero, a grid background with a gold glow, gold accent bars on section headings, and corner bracket frames on the About visual.
-
-To make this live-ready, just update:
-
-Email → info@entraforce.com (or your real address)
-Phone → your actual number
-Business hours → adjust as needed
-Would you like this exported as a downloadable HTML file you can hand off to a developer or host directly?
-
-please get rid of the blank spots
-
-2:12 PM
-
-Created a file, read a file
-Created a file, read a file
-S
-
-Show widget
-All blank spaces are gone. Here's what was fixed:
-
-Home — hero fills the full viewport height with no trailing gap; footer sits flush right below the pillars
-Services — cards now use display: flex; flex-direction: column so they fill their space evenly with no empty rows between them
-About & Contact — tightened padding throughout so nothing floats loose
-Footer — attached directly to each page's content, no gap before it
-You can download the file above and open it directly in a browser — no server needed. Want any further tweaks like adding a phone number, logo image, or a social media section?
-
-Entraforce
-Code · HTML 
-the first website was much better. this looks a bit choppy. send the first code but just without so many blank spots in between
-
-2:17 PM
-
-Created 2 files, ran a command, read a file
-Created 2 files, ran a command, read a file
-Here you go — the original design fully restored with the spacing tightened up. The look, fonts, colors, and layout are all exactly as they were in the first version. I just reduced the padding on sections, headers, and card internals so everything sits closer together with no excess gaps.
-
-Download it above and open directly in any browser. Want any other tweaks?
-
-Entraforce
-Code · HTML 
-the text on the first page seems too stretched out. make that better
-
-3:17 PM
-
-Check current hero section
-Check current hero section
-The issue is max-width:800px on .hero-content and clamp(2.4rem,6vw,4.2rem) on the h1 — on wide screens the heading hits 4.2rem and spreads across all 800px, making the three-line title feel very wide. I'll tighten the content width and rein in the heading size.
-
-
-Edited a file, read a file
-Edited a file, read a file
-Fixed! Three changes to the hero text:
-
-Narrower content column — reduced from 800px to 580px max-width so the text block stays compact and centered
-Smaller heading — scaled down from clamp(2.4rem → 4.2rem) to clamp(2rem → 3.2rem) so it doesn't sprawl at full width
-Tighter tagline — max-width trimmed to match, so it doesn't feel disconnected from the heading above it
-Everything else stays identical to the version you liked. Want any other adjustments?
-
-Entraforce
-Code · HTML 
-can you fix the glitch within the services bar
-
-3:21 PM
-Can you describe the glitch you're seeing? For example:
-
-The dropdown menu not showing or misaligned?
-The "Services ▾" text or highlight looking off?
-Something inside the Services page itself (the cards, badges, layout)?
-A quick description will help me pinpoint exactly what to fix!
-
-the glitch says error
-
-3:21 PM
-Let me check the services section code closely to find what's causing the error.
-
-
-Viewed 2 files
-Viewed 2 files
-Found it — the dropdown links call scrollTo('it-consulting') but scrollTo is a reserved browser function name. It needs to be gotoCard instead, which is what the JS function is actually named. That conflict throws the error.
-
-
-Viewed 2 files
-Viewed 2 files
-The file is getting truncated — the gotoCard function and submitForm are cut off at line 345. That's the bug: the JavaScript is incomplete, so the browser throws an error when any of those functions are called. I'll rewrite the script block cleanly.
-
-
-Edited a file, read a file
-Edited a file, read a file
-Got it — the JavaScript at the bottom of the file was getting cut off mid-function, which caused the error whenever you clicked anything in the Services dropdown. The script is now complete and all three functions (showPage, gotoCard, submitForm) are intact. Download the updated file above and it should work cleanly!
-
-Entraforce
-Code · HTML 
-its ET tech medic not ET tech fix n repair
-
-3:23 PM
-
-Edited 4 files, read a file
-Edited 4 files, read a file
-Updated everywhere — the nav dropdown, the service card heading, the description text, and the contact form selector all now say ET Tech Medic. Download the file above!
-
-Entraforce
-Code · HTML 
-you made the same mistake. it ET tech medic in the services provided bar
-
-3:24 PM
-Let me look at exactly what's in the services dropdown.
-
-
-Check the nav dropdown and contact form select options
-Check the nav dropdown and contact form select options
-The nav dropdown already shows ET Tech Medic correctly. Could you clarify — are you seeing "EF Tech Fix N Repair" still showing somewhere specific, like inside the Services page cards, or in the contact form dropdown? A screenshot or description of exactly where you see it would help me pinpoint the right spot to fix!
-
-its EF tech medic not ET
-
-3:25 PM
-Quick fix!
-
-
-Ran 2 commands, read a file
-Ran 2 commands, read a file
-My apologies for the repeated typo! All four instances are now corrected to EF Tech Medic — the nav dropdown, the service card, the description, and the contact form. Download above!
-
-Entraforce
-Code · HTML 
-i need the EF tech medic website from the other chat to be linked to the entraforce website, under services to where EF tech medic is introduced
-
-3:27 PM
-I don't have access to other conversations — each chat is separate and I can't see what was built in a different session.
-
-Could you either:
-
-Paste the EF Tech Medic website code directly into this chat, or
-Download it from the other chat and share it here as a file
-Once I have the code, I'll link it directly from the EntraForce Services page so clicking on EF Tech Medic takes visitors right to that site!
-
-
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>EF Techmedic — Phone, iPad & Watch Repair · Plano, TX</title> <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;6
-
-pasted
-
-3:28 PM
-Got it! I'll save the EF Tech Medic site as its own file, then link it from the EntraForce services card.
-
-
-Ran a command, created a file
-Ran a command, created a file
-Now update the EntraForce services card to link to it:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Done! Here's what was set up:
-
-EntraForce — the EF Tech Medic service card now has a gold "Visit EF Tech Medic →" button right below the badge
-EF Tech Medic — saved as its own separate file with all the content cleaned up and the JS fixed
-Important: To make the link work, both files need to be in the same folder on your computer or server. Download both files above and keep them together — clicking the button on EntraForce will open the EF Tech Medic site.
-
-Entraforce
-Code · HTML 
-Eftechmedic
-Code · HTML 
-says 404 not found
-
-5:16 PM
-That's because the two files aren't hosted together — when you open a file directly from your computer, links to other local files don't work that way in a browser.
-
-The fix is to embed the EF Tech Medic site directly inside EntraForce using an iframe, so everything is self-contained in one file. Let me do that now.
-
-
-Viewed 2 files
-Viewed 2 files
-I'll embed the EF Tech Medic site as a full-page overlay inside EntraForce, launched by the button — no separate file needed.
-
-
-Edited 2 files
-Edited 2 files
-Now add the overlay modal + embedded EF Tech Medic content + JS before </body>:
-
-
-Edited a file, ran a command
-Edited a file, ran a command
-The file is intact. The str_replace tool requires the path parameter — it was a tool call formatting issue on my end. Let me rebuild the final file cleanly in one shot:
-
-
-Ran 2 commands, read a file
-Ran 2 commands, read a file
-Fixed! Everything is now inside one single file — no second file needed, no 404 ever again.
-
-Here's how it works: clicking "Visit EF Tech Medic →" on the Services page opens the full EF Tech Medic website as a full-screen overlay right inside EntraForce, with a gold "✕ Close" button in the top right to return back to EntraForce. Download the one file above and it all works completely on its own.
-
-Entraforce
-Code · HTML 
-now how do I get domain from godaddy to google workspace?
-
-10:22 PM
-This is a common setup — here's how to connect your GoDaddy domain to Google Workspace:
-
-Step 1 — Sign up for Google Workspace Go to workspace.google.com and create an account. During setup, enter your GoDaddy domain name when it asks "what domain do you want to use."
-
-Step 2 — Verify your domain Google will give you a TXT record (a string of text like google-site-verification=xxxxxxx). You need to add this to GoDaddy:
-
-Log into GoDaddy → go to your domain → DNS settings
-Add a new TXT record, paste the verification code, save it
-Go back to Google and click Verify — it can take a few minutes to confirm
-Step 3 — Add Google's MX records This is what routes your email through Google. In GoDaddy DNS settings, delete any existing MX records, then add these five from Google:
-
-Priority	Mail server
-1	ASPMX.L.GOOGLE.COM
-5	ALT1.ASPMX.L.GOOGLE.COM
-5	ALT2.ASPMX.L.GOOGLE.COM
-10	ALT3.ASPMX.L.GOOGLE.COM
-10	ALT4.ASPMX.L.GOOGLE.COM
-Step 4 — Wait for propagation DNS changes can take anywhere from 15 minutes to 48 hours to fully kick in, though it's usually much faster.
-
-Step 5 — Test it Once propagated, send a test email to your new Google Workspace address (like you@entraforce.com) to confirm it's working.
-
-Pro tip — GoDaddy shortcut: GoDaddy actually has a built-in Google Workspace integration. In your GoDaddy account under "My Products," you may see an option to set up Google Workspace directly, which auto-configures the DNS for you and skips the manual steps above.
-
-Want help with anything else for the websites or the domain setup?
-
-1774927837161_image.png
-where do I insert the google code?
-
-10:30 PM
-You're in the right place! Here's exactly what to do:
-
-Click "Add New Record" and fill it out like this:
-
-Type → select TXT
-Name → put @ (this means your root domain, entraforce.com)
-Value → paste the full Google verification code (looks like google-site-verification=xxxxxxxxxxxxxxxxx)
-TTL → leave it at default (600 or 1 hour is fine)
-Then click Save.
-
-Once saved, go back to Google Workspace and click the Verify button — Google will check for that TXT record and confirm your domain. It usually verifies within a few minutes, but can take up to an hour.
-
-After verification is done, the next step will be adding those MX records the same way so your @entraforce.com email starts working through Gmail. Want a walkthrough for that part too?
-
-1774927906615_image.png
-?
-
-10:31 PM
-You're on the Forwarding tab — that's not where you need to be. Click back on DNS Records (the first tab on the left).
-
-Once you're on DNS Records, click Add New Record and then:
-
-Type → TXT
-Name → @
-Value → paste your Google verification code
-Click Save
-The Forwarding tab is only used if you want to redirect your domain to another website. You don't need that right now — DNS Records is where all the Google setup happens.
-
-when I go on the dns record, the add new record is grayed out
-
-10:32 PM
-That's because your Domain Status says "IDLE" — GoDaddy has the domain inactive/locked, which is blocking you from editing DNS records.
-
-Here's how to fix it:
-
-Option 1 — Activate the domain
-
-Click the "Connect Domain" button in the top right corner of that page
-Follow the prompts to activate it — GoDaddy may want you to connect it to a hosting plan
-Option 2 — Unlock it through Registration Settings
-
-Click the Registration Settings tab
-Look for Domain Lock and toggle it OFF
-Then go back to DNS Records and try again
-Option 3 — Check if it needs to be renewed
-
-Click the Overview tab and check if the domain is expired or pending renewal
-If so, renew it first and the DNS editing should unlock
-The most likely fix is clicking "Connect Domain" since that button is front and center and the status clearly shows IDLE. Try that first and let me know what options it gives you!
-
-This feature is unavailable for this domain because of its status.
-
-10:32 PM
-That message usually means the domain is either expired, pending transfer, or locked by GoDaddy. Here's what to check:
-
-Step 1 — Check the Overview tab Click Overview and look for:
-
-An expiration date that has passed → you need to renew it
-A notice about a pending transfer
-Any alerts or warnings in red/yellow
-Step 2 — Call GoDaddy directly This is honestly the fastest fix. GoDaddy support can unlock a domain in minutes.
-
-Phone: 1-480-505-8877 (24/7)
-Tell them: "My domain entraforce.com has an IDLE status and I can't edit DNS records or add new records. I need it activated."
-Step 3 — Check your GoDaddy email GoDaddy sometimes sends emails about domain status issues — check the email tied to your GoDaddy account for any notices about entraforce.com that might explain why it's idle.
-
-The IDLE status combined with "feature unavailable" almost always requires GoDaddy to manually fix it on their end — so calling them is your quickest path forward. They're pretty responsive and this is a common issue they deal with daily.
-
-1774929493347_image.png
-1774929513554_image.png
-1774929543342_image.png
-which record do I need delete for me to get this google activated?
-
-10:59 PM
-Looking at your DNS records, I can see two problems:
-
-Problem 1 — Wrong MX record Your MX record has:
-
-Name: mail ← should be @
-Value: smtp.google.com ← should be ASPMX.L.GOOGLE.COM
-Delete that MX record and add a new one with the correct values.
-
-Problem 2 — The A record is "Parked" The A record pointing to "Parked" is also blocking things. Delete that too.
-
-Here's exactly what to do:
-
-Delete the MX record (the one with "mail" and smtp.google.com)
-Delete the A record (the one that says "Parked")
-Add new MX records with these correct values:
-Type	Name	Value	Priority
-MX	@	ASPMX.L.GOOGLE.COM	1
-MX	@	ALT1.ASPMX.L.GOOGLE.COM	5
-MX	@	ALT2.ASPMX.L.GOOGLE.COM	5
-MX	@	ALT3.ASPMX.L.GOOGLE.COM	10
-MX	@	ALT4.ASPMX.L.GOOGLE.COM	10
-Then go back to Google Workspace and hit Retry
-Your TXT verification record is already there and looks correct, so that part is done!
-
-1774930193590_image.png
-1774930247482_image.png
-why was this 'could not be completed'?
-
-11:11 PM
-Your DNS records actually look perfect now! All 5 Google MX records are there correctly with the right names (@) and priorities. The TXT verification record is also there.
-
-The reason it's still failing is simply timing — DNS changes take time to spread across the internet. This is completely normal.
-
-What to do:
-
-Just wait and keep hitting Retry every 15–30 minutes. Given that you just made these changes, it could take anywhere from:
-
-15 minutes — best case
-1–4 hours — most common
-Up to 48 hours — worst case (rare)
-Don't make any more changes — your DNS is set up correctly. Any further edits will just reset the clock.
-
-Come back in an hour, hit Retry, and it should go through. You're all set on the technical side! ✓
-
-photo.jpeg
-thats what it shows still after multiple times of retryinh
-
-1:13 AM
-This is still a timing issue — but since you've retried multiple times, let's try the manual verification route which bypasses the waiting.
-
-Click "Switch to manual verification" on that screen.
-
-It will give you a different method — either a HTML file to upload or a meta tag to add to your website. Since your domain is currently parked and not pointing to a live website yet, the TXT record method is the most reliable.
-
-Here's what I'd actually recommend right now:
-
-Try this instead:
-
-Go back to Google Workspace setup
-Click "Switch to manual verification"
-See what options it gives you and send me a screenshot
-OR — just wait it out. Your DNS records are 100% correct. The domain was previously in IDLE/parked status, which means GoDaddy's servers may just be slower to propagate than normal. Give it 2–3 more hours and try again.
-
-The good news is your setup is correct — this is purely a propagation delay, not a configuration error. You haven't done anything wrong.
-
-photo.jpeg
-thats what it says after i switch to manual verification
-
-1:14 AM
-This screen is actually showing you the Gmail activation step — this is different from domain verification. Google wants you to confirm you've added the MX records (which you already did!).
-
-Here's what to do right now:
-
-1. Check the checkbox at the bottom that says "Come back here and confirm once you have updated the code on your domain host"
-
-2. Click "Confirm"
-
-That's it — since you already added all 5 MX records in GoDaddy correctly, just check that box and hit Confirm. Google should accept it and move you to the next step.
-
-The SMTP.GOOGLE.COM it's showing is just a reference example — your records are already in GoDaddy so you don't need to do anything else in GoDaddy right now. Just confirm on this screen and move forward!
-
-1774959728477_image.png
-it's still the same thing...
-
-7:22 AM
-I completely understand the frustration. Here's the honest situation:
-
-Your DNS records are correct — this is purely a propagation delay.
-
-The domain was sitting as "IDLE/Parked" for a while, which means GoDaddy's servers are slower to push the changes out to the rest of the internet.
-
-My recommendation — stop retrying for now and just wait.
-
-Set a reminder to come back and try at these times:
-
-In 2 hours
-Tomorrow morning
-Every time you hit Retry too soon it won't help — Google just checks and finds the records haven't fully propagated yet.
-
-One thing to check in the meantime:
-
-Go to mxtoolbox.com in your browser, type in entraforce.com and click MX Lookup. If it shows your Google MX records there, it means propagation is done and Google should verify next time you retry. If it still shows nothing or old records, you just need to wait longer.
-
-You've done everything right — this is just the frustrating waiting game that comes with DNS. It will work, just needs more time. 🙏
-
-1774959845553_image.png
-7:24 AM
-This is great news! 🎉
-
-MXToolbox shows your records are fully propagated — all 5 Google MX records are live, DNS is published, and it even confirms "Your email service provider is Google Apps."
-
-This means the issue is on Google's side being slow to check. Here's what to do right now:
-
-Go back to Google Workspace and hit Retry one more time. It should verify successfully now since the records are confirmed live worldwide.
-
-If it still fails after one more retry, try this:
-
-Close the browser completely
-Open a fresh window
-Go to admin.google.com
-Log back in and find the setup/verification step and retry from there
-Your DNS is perfect — Google just needs to do one successful check and you'll be fully activated. You're right at the finish line!
-
-I cannot find the setup/verification, how do I verify if it's good to go?
-
-8:08 AM
-Since MXToolbox already confirmed everything is working, here's how to get back to the verification screen:
-
-Option 1 — Direct link Go to this URL directly: admin.google.com/u/0/ac/signup/setup/v2/verify
-
-Option 2 — Through Admin Console
-
-Go to admin.google.com
-Log in with your Google Workspace account
-Look for a banner or alert at the top of the dashboard that says something like "Finish setting up" or "Action required"
-Click that banner
-Option 3 — Through Domains
-
-Go to admin.google.com
-Click Account on the left sidebar
-Click Domains
-Click Manage Domains
-You should see entraforce.com with a Verify button next to it
-Try Option 3 first as it's the most direct path. Once you find the verify button and click it, it should go through immediately since your MX records are fully live and confirmed. Let me know what you see!
-
-1774962735089_image.png
-I dont see it
-
-8:12 AM
-You're already verified and fully set up! 🎉
-
-The fact that you're seeing the Admin dashboard with onboarding steps means Google Workspace is activated and working for entraforce.com. The verification happened automatically!
-
-You're now on step 4/9 of onboarding. Here's what I'd recommend doing from this screen in order:
-
-Set up emails — create addresses like support@entraforce.com or info@entraforce.com
-Upload your logo — adds your branding to Gmail and all Workspace apps
-Turn on 2-Step Verification — protects your account, highly recommended
-Create email footers — adds professional branding to all outgoing emails
-The most important one right now is "Set up emails" — click that button so you can start sending and receiving email at your entraforce.com domain. Want me to walk you through that step?
-
-done whats next?
-
-8:18 AM
-Great! Now let's get your website actually live on your domain so that when people go to entraforce.com they see your website instead of a blank/parked page.
-
-You have two options:
-
-Option 1 — Easiest: Use GitHub Pages (Free)
-
-Go to github.com and create a free account
-Create a new repository named entraforce
-Upload your entraforce.html file
-Enable GitHub Pages in settings
-Point your GoDaddy domain to it
-Option 2 — Simplest for beginners: Use Netlify (Free)
-
-Go to netlify.com and sign up free
-Drag and drop your entraforce.html file onto their dashboard
-It instantly gives you a live link
-Then connect your GoDaddy domain to it
-I'd recommend Netlify — it's the fastest way to get your site live with zero technical knowledge needed. You can literally have entraforce.com live within 30 minutes.
-
-Want me to walk you through the Netlify route step by step? All you need is:
-
-Your entraforce.html file downloaded
-A free Netlify account
-1774963604147_image.png
-add entraforce.com here?
-
-8:26 AM
-Not quite — this is the GitHub account-level Pages settings, which is just for domain security/verification. This is not where you host your site.
-
-Skip this page entirely. Here's the correct flow for GitHub Pages:
-
-Step 1 — Create a new repository
-
-Click the + icon in the top right corner of GitHub
-Click New repository
-Name it exactly: entraforce.github.io
-Set it to Public
-Click Create repository
-Step 2 — Upload your file
-
-Inside the new repository click Add file → Upload files
-Upload your entraforce.html file
-Rename it to index.html before uploading (just rename the file on your computer first)
-Click Commit changes
-Step 3 — Enable Pages
-
-Go to Settings → Pages
-Under Source select main branch
-Click Save
-GitHub will give you a live link like entraforce.github.io
-Step 4 — Connect GoDaddy domain Once the site is live on GitHub we'll point entraforce.com to it in GoDaddy DNS.
-
-Are you able to find the New Repository button? That's the first step!
-
-1774963924842_image.png
-??
-
-8:32 AM
-You're still in Settings. Let's get out of here.
-
-Click the + icon in the very top right corner of the screen (next to your profile icon) and then click New repository.
-
-Or go directly to: github.com/new
-
-I completed step 2, I need to complete step 3
-
-8:32 AM
-Go to your repository and follow these steps:
-
-Step 3 — Enable Pages
-
-Click Settings (inside your repository, not the account settings)
-Scroll down on the left sidebar and click Pages
-Under Branch click the dropdown that says "None"
-Select main
-Click Save
-After a minute or two GitHub will show you a green box that says "Your site is live at https://osmanm08.github.io/entraforce"
-
-Take a screenshot and show me when you see that — then we'll do the final step of pointing your entraforce.com domain to it!
-
-1774964039416_image.png
-guide me here for step 3
-
-8:34 AM
-Perfect, your index.html is uploaded! Now:
-
-Click Settings (top right of this page)
-Scroll down the left sidebar until you see Pages
-Click Pages
-Under Branch click the dropdown that says None
-Select main
-Click Save
-That's it! Show me a screenshot once you hit Save.
-
-1774964092647_image.png
-this?
-
-8:34 AM
-No, click Cancel on that popup. That's just the repository description editor.
-
-You need the Settings tab in the top menu bar. Look at the very top of the page and click the Settings tab that has a gear icon ⚙ next to it — it's in the row that says Code, Issues, Pull requests, Actions, Projects, Wiki, Security, Insights, Settings.
-
-1774964189709_image.png
-here?
-
-8:36 AM
-No, you're in your account settings again. You need to go back to your repository first.
-
-Go to this URL directly:
-
-github.com/osmanm08/entraforce.github.io/settings/pages
-
-That will take you straight to the Pages settings for your repository. Show me what you see there!
-
-1774964238803_image.png
-8:37 AM
-You're in the right place! Now:
-
-Click the None dropdown
-Select main
-Click Save
-That's it — do those 3 things and show me the screenshot after you hit Save!
-
-done
-
-8:38 AM
-Great! Now give it 1-2 minutes and then go to:
-
-osmanm08.github.io/entraforce.github.io
-
-Does it show your EntraForce website? Let me know what you see and we'll move on to the final step of pointing your entraforce.com domain to it!
-
-1774964306096_image.png
-8:38 AM
-Perfect! Your site is being built. I can also see the Custom domain box right there — let's connect entraforce.com right now!
-
-Type entraforce.com in the Custom domain box
-Click Save
-Then we'll go add a couple of records in GoDaddy DNS and your site will be live at entraforce.com! Go ahead and type it in now.
-
-1774964393785_image.png
-8:39 AM
-Expected! We just need to add GitHub's IP addresses to your GoDaddy DNS. Go back to GoDaddy DNS Records and add these:
-
-Delete the existing A record (the one that said "Parked") if it's still there, then add 4 new A records:
-
-Type	Name	Value
-A	@	185.199.108.153
-A	@	185.199.109.153
-A	@	185.199.110.153
-A	@	185.199.111.153
-Add all 4 — each one is a separate record, same Name (@) just different values.
-
-Then also edit your CNAME record (the www one):
-
-Type	Name	Value
-CNAME	www	osmanm08.github.io
-Once you've added those, come back to GitHub and click Check again. It may take a few minutes to propagate. Show me a screenshot when done!
-
-who do those Ips belong to?
-
-8:47 AM
-Those 4 IP addresses belong to GitHub — they are GitHub Pages' official servers.
-
-When someone types entraforce.com in their browser, those A records tell the internet "send this visitor to GitHub's servers", and GitHub then serves your index.html file.
-
-It's completely safe — this is the standard way everyone connects a custom domain to GitHub Pages. You can verify them yourself at docs.github.com/pages if you want to double check.
-
-Go ahead and add them in GoDaddy and we'll have your site live shortly!
-
-what should be the ttyl?
-
-8:48 AM
-Set it to 1 Hour (3600 seconds) — that's the default and works perfectly fine.
-
-Some people set it lower like 600 seconds (10 minutes) during setup so changes propagate faster, but honestly either one works. Just go with 1 Hour to keep it consistent with your other records.
-
-done
-
-8:50 AM
-Great! Now go back to GitHub Pages settings and click "Check again".
-
-If it's still showing the error just wait 5-10 minutes and click Check again — DNS needs a moment to propagate.
-
-While you wait, go to your browser and try opening: osmanm08.github.io/entraforce.github.io
-
-Does your EntraForce website load there? That will confirm everything is working on GitHub's end while we wait for the domain to kick in.
-
-DNS check successful
-
-8:51 AM
-Let's go! 🎉
-
-Now check the Enforce HTTPS checkbox right below the custom domain box and click Save. This gives your site a free SSL certificate (the padlock icon) so visitors see https://entraforce.com instead of an unsecure warning.
-
-After that wait about 10-15 minutes and then open a new browser tab and go to:
-
-entraforce.com
-
-Your website should be fully live! Let me know what you see!
-
-1774965132564_image.png
-8:52 AM
-The X means HTTPS isn't ready yet — that's totally normal, it takes a few minutes for GitHub to generate the SSL certificate after the DNS check passes.
-
-Just wait 10-15 minutes and then refresh this page. The X will turn into a checkmark and you'll be able to check the Enforce HTTPS box.
-
-In the meantime go try visiting entraforce.com in your browser — your site may already be loading even without HTTPS fully active yet. Let me know what you see!
-
-1774965760379_image.png
-9:02 AM
-That's a green checkmark! 🎉
-
-Your site is fully live and secure! Go open a new browser tab and go to:
-
-https://entraforce.com
-
-You should see your full EntraForce website live on your own domain with a padlock 🔒 in the address bar!
-
-You've accomplished a lot today:
-
-✅ Google Workspace set up with entraforce.com email
-✅ Website live at entraforce.com
-✅ SSL certificate active (HTTPS)
-✅ EF Tech Medic linked inside the site
-Congratulations! 🎉
-
-thanks! now let's do some fixes. 
-
-The font seems to be still stretched.
-When I click the pages under services, I want to see the url as entraforce.com/services/IT or EF Tech or Web...etc
-I also want to update the email to support@entraforce.com and remove the personal gmail.
-9:05 AM
-Let's tackle all three! Starting with seeing the current file:
-
-
-Viewed 2 files
-Viewed 2 files
-Good, I have what I need. All three fixes in one clean update:
-
-
-Apply font and email fixes
-Apply font and email fixes
-Now fix the URLs and the showPage JS to update the browser URL when navigating:
-
-
-Update showPage to change browser URL, and nav links to use proper URLs
-Update showPage to change browser URL, and nav links to use proper URLs
-Now update the dropdown links to use showService():
-
-
-Edited a file, read a file
-Edited a file, read a file
-All three fixes are in! Here's what changed:
-
-Font — hero heading scaled down further so it no longer stretches wide
-URLs — clicking services now updates the address bar to entraforce.com/services/it-consulting, entraforce.com/services/ef-tech-medic, or entraforce.com/services/web-creation
-Email — replaced the broken obfuscated email with support@entraforce.com
-Download the file and re-upload it to your GitHub repository (replace the existing index.html) to push the changes live. Want me to walk you through that?
-
-Entraforce
-Code · HTML 
-can we link my github here so you can directly push it out there?
-
-9:07 AM
-Unfortunately I can't directly connect to your GitHub account from here — I don't have the ability to authenticate or push code to external services.
-
-But the good news is re-uploading is really quick, only takes about 1 minute:
-
-Go to github.com/osmanm08/entraforce.github.io
-Click on index.html
-Click the pencil icon ✏️ (Edit)
-Select all the code and delete it
-Paste the new code from the downloaded file
-Click Commit changes
-OR even easier:
-
-Go to your repository
-Click Add file → Upload files
-Drag your new entraforce.html file (renamed to index.html)
-It will ask you to confirm overwriting — say yes
-Click Commit changes
-GitHub will automatically redeploy and your live site will update within 1-2 minutes.
-
-Would you like me to also set up a GitHub Action so that in the future any changes you make here can be pushed with one click? That would make updates much faster going forward!
-
-yes! let's do that!
-
-9:10 AM
-Great idea! Here's how to set this up. We'll use a tool called Netlify which connects directly to your GitHub and auto-deploys every time your repository updates — and it has a drag-and-drop option too.
-
-But first, the most direct "one click push" solution is to use GitHub's built-in web editor. Let me set you up with a better workflow:
-
-Step 1 — Install Claude Code
-
-This lets me push code directly to GitHub from our conversations:
-
-Recommended apps and extensions
-Claude Code
-Build, debug, and ship from your terminal.
-
-Claude Code for VS Code
-Ask Claude to explain, edit, or fix code right in VS Code.
-Claude Code is a command line tool that lets me directly write, edit, and push code to your GitHub repository from your terminal. Here's how to get started:
-
-Install Claude Code from the option above
-Open your terminal on your Mac
-Run this command to connect your repository:
-git clone https://github.com/osmanm08/entraforce.github.io
-cd entraforce.github.io
-Then just tell me what changes you want and I'll push them directly!
-Do you have a terminal on your Mac and want to try this? It takes about 5 minutes to set up and after that updates will be instant!
-
-why don't I still see the urls when I click on one of the services?
-
-9:15 AM
-That's because GitHub Pages serves static files — it doesn't know how to handle the URL paths like /services/it-consulting since there's no actual folder with that name. The URL trick only works when hosted on a server.
-
-To fix this properly for GitHub Pages we need to add a 404.html file that redirects back to the main page, plus tweak the routing. Let me update both files:
-
-
-Create 404.html redirect file
-Create 404.html redirect file
-Now update the JS in entraforce.html to read the redirect param on load:
-
-
-Edited a file, read a file
-Edited a file, read a file
-You now have two files to upload to GitHub:
-
-entraforce.html → rename to index.html and replace the existing one
-404.html → upload as a brand new file (keep it named 404.html)
-To upload both:
-
-Go to github.com/osmanm08/entraforce.github.io
-Click Add file → Upload files
-Drag both files in at the same time
-Click Commit changes
-The 404.html is the key — when someone visits entraforce.com/services/it-consulting, GitHub redirects to the 404 page which then bounces them to the right section with the correct URL showing in the address bar!
-
-Entraforce
-Code · HTML 
-404
-Code · HTML 
-okay now can you please fix it? If I click on one of the services it should redirect it to the new urls
-
-9:19 AM
-Let me check the current nav and button links to see exactly what needs updating:
-
-
-Viewed 2 files
-Viewed 2 files
-I see the issue — showPage('services', null) inside showService is overwriting the URL back to /services before the history.pushState for the service slug runs. Let me fix that:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Fixed! The problem was showPage was pushing /services to the URL and then showService was trying to push /services/it-consulting right after — but the first one was winning.
-
-Now they're completely separate functions so the URL updates cleanly.
-
-Upload both files to GitHub:
-
-entraforce.html → rename to index.html (replace existing)
-404.html → new file (keep that name)
-After uploading, clicking IT Consulting Projects in the dropdown will show entraforce.com/services/it-consulting in the address bar, and same for the other two!
-
-Entraforce
-Code · HTML 
-404
-Code · HTML 
-can you push it to github?
-
-9:20 AM
-I can't directly push to GitHub from this chat — I don't have the ability to authenticate or connect to external services.
-
-The quickest way to do this is through Claude Code which I mentioned earlier. Once you install it, I can push directly from your terminal.
-
-But for right now, the fastest manual option:
-
-Go to github.com/osmanm08/entraforce.github.io
-Click on index.html
-Click the pencil ✏️ edit icon on the right
-Press Ctrl+A (select all) and delete everything
-Open your downloaded entraforce.html file in a text editor, select all, copy
-Paste it into GitHub
-Click Commit changes
-Then repeat for 404.html — click Add file → Create new file, name it 404.html, paste the content, commit.
-
-To make future updates instant, install Claude Code from the suggestion I sent earlier — once that's set up on your Mac, just tell me what to change and I'll push it directly to GitHub without you having to do anything! Want to set that up now?
-
-the query should not show in the url. https://entraforce.com/?redirect=%2Fservices%2Fweb-creation It should show a direct path in the url for any of the service that are clicked or for any of the tabs that are clicked
-
-9:40 AM
-You're right — that ?redirect= query string is ugly. The issue is GitHub Pages doesn't support clean URLs natively. The fix is to use history.replaceState immediately in the 404 redirect to clean up the URL before anything renders.
-
-Let me fix the 404.html to be invisible and the index.html to handle it cleanly:
-
-
-Fix 404.html to use sessionStorage instead of query param
-Fix 404.html to use sessionStorage instead of query param
-Now update the routing in index.html to read from sessionStorage instead of query params:
-
-
-Edited a file, read a file
-Edited a file, read a file
-Here's what changed:
-
-404.html now stores the intended path in sessionStorage and redirects to / with no query string at all
-index.html reads from sessionStorage on load, removes it immediately, then uses history.replaceState to set the clean URL silently
-So now clicking IT Consulting will show entraforce.com/services/it-consulting with zero query strings anywhere.
-
-Upload both files to GitHub — entraforce.html as index.html replacing the old one, and 404.html as a new file. The site will update within 1-2 minutes!
-
-Entraforce
-Code · HTML 
-404
-Code · HTML 
-1774968379732_image.png
-9:46 AM
-That red X means the deployment failed. Click on that "Update index.html" text to see the error details — it'll show you exactly what went wrong.
-
-Alternatively go to your repository and click the Actions tab at the top to see the full error log. Send me a screenshot of what it says and I'll fix it right away!
-
-1774968445179_image.png
-9:47 AM
-That's not actually an error — that's just GitHub showing you the diff (what changed between the old and new file). The red lines are what was removed and the green lines are what was added. That's normal!
-
-The red X on the commit might be from the GitHub Pages build. Click the Actions tab at the top of your repository to check.
-
-But first — try visiting entraforce.com right now and click on one of the services in the dropdown. Does the URL update cleanly without the ?redirect= showing?
-
-I am not able to get to any services
-
-9:50 AM
-Let me check what's happening with the services page:
-
-
-Check services page and showService function
-Check services page and showService function
-The problem is that Cloudflare's script tag is injecting itself and potentially breaking the JS. Also the dropdown links need event not e passed properly. Let me rebuild the whole file's script section cleanly:
-
-
-Fix script tag - remove cloudflare injection and clean up
-Fix script tag - remove cloudflare injection and clean up
-Now also fix the dropdown — the Services ▾ parent link needs to also work as a click:
-
-
-Fix services nav parent link and dropdown links
-Fix services nav parent link and dropdown links
-Also fix the other nav links and buttons to have proper hrefs:
-
-
-Edited 2 files, read a file
-Edited 2 files, read a file
-Upload both to GitHub — entraforce.html renamed to index.html replacing the old one, and 404.html replacing the existing one. Here's what was fixed:
-
-Removed the Cloudflare script tag that was interfering with the JS
-All nav links now have proper href paths (/about, /services, /contact) instead of #
-The Services dropdown links correctly call showService() with clean URLs
-Clicking any nav item or service will now update the URL cleanly with no query strings
-Entraforce
-Code · HTML 
-404
-Code · HTML 
-
-Want to be notified when Claude responds?
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-Entraforce · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1019,7 +15,7 @@ Copy
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden}
- 
+
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px}
@@ -1036,11 +32,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .dropdown a:hover{background:var(--navy3);color:var(--gold)}
 .cta-btn{margin-left:1rem;padding:.45rem 1.1rem;background:var(--gold);color:var(--navy);font-size:.82rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:background .2s}
 .cta-btn:hover{background:var(--gold2)}
- 
+
 /* PAGES */
 .page{display:none;padding-top:64px}
 .page.active{display:block}
- 
+
 /* HOME */
 .hero{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:3rem 2rem;overflow:hidden}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.4}
@@ -1059,14 +55,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .stat{flex:1;padding:1.25rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
 .stat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold)}
 .stat-label{font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem}
- 
+
 /* SECTION COMMON */
 .section{max-width:1100px;margin:0 auto;padding:3.5rem 2rem}
 .section-tag{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
 .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.1;margin-bottom:.75rem}
 .section-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.8;max-width:560px}
 .divider{width:40px;height:2px;background:var(--gold);margin:1rem 0 1.5rem}
- 
+
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:1.5rem}
 .about-visual{position:relative;aspect-ratio:1;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
@@ -1081,7 +77,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .value-list li{padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:.75rem}
 .value-list li::before{content:'';width:6px;height:6px;border:1px solid var(--gold);display:block;flex-shrink:0;transform:rotate(45deg)}
 .value-list li strong{color:var(--white)}
- 
+
 /* SERVICES */
 .svc-intro{max-width:1100px;margin:0 auto;padding:3.5rem 2rem 1.5rem}
 .svc-cards{max-width:1100px;margin:0 auto;padding:0 2rem 3.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
@@ -1099,7 +95,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .svc-bullets{list-style:none;margin-top:.6rem}
 .svc-bullets li{font-size:.82rem;color:var(--muted);padding:.28rem 0;display:flex;align-items:flex-start;gap:.6rem}
 .svc-bullets li::before{content:'›';color:var(--gold);font-size:1rem;line-height:1.2;flex-shrink:0}
- 
+
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;margin-top:1.5rem;align-items:start}
 .contact-info p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
@@ -1120,12 +116,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .success-msg .check{font-size:2rem;margin-bottom:.75rem;color:var(--gold)}
 .success-msg h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem}
 .success-msg p{font-size:.9rem;color:var(--muted)}
- 
+
 /* FOOTER */
 footer{background:var(--navy2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
 footer p{font-size:.75rem;color:var(--muted);letter-spacing:.04em}
 footer span{color:var(--gold)}
- 
+
 @media(max-width:700px){
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .about-visual{display:none}
@@ -1136,7 +132,7 @@ footer span{color:var(--gold)}
 </style>
 </head>
 <body>
- 
+
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo" onclick="showPage('home',event)">Entra<span>Force</span></a>
@@ -1156,7 +152,7 @@ footer span{color:var(--gold)}
     <a href="/contact" class="cta-btn" onclick="showPage('contact',event)">Get a Quote</a>
   </div>
 </nav>
- 
+
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="hero">
@@ -1179,7 +175,7 @@ footer span{color:var(--gold)}
   </div>
   <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
- 
+
 <!-- ABOUT -->
 <div class="page" id="page-about">
   <div class="section">
@@ -1207,7 +203,7 @@ footer span{color:var(--gold)}
   </div>
   <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
- 
+
 <!-- SERVICES -->
 <div class="page" id="page-services">
   <div class="svc-intro">
@@ -1217,7 +213,7 @@ footer span{color:var(--gold)}
     <p class="section-sub">Three focused service lines — all designed to help your business run smarter, stay connected, and look professional online.</p>
   </div>
   <div class="svc-cards">
- 
+
     <div class="svc-card" id="it-consulting">
       <div class="svc-icon">⚙</div>
       <div class="svc-tag">Consulting · Infrastructure</div>
@@ -1235,7 +231,7 @@ footer span{color:var(--gold)}
       </div>
       <span class="svc-badge">🔜 Launching Soon</span>
     </div>
- 
+
     <div class="svc-card" id="repair">
       <div class="svc-icon">🔧</div>
       <div class="svc-tag">Repair · Devices · Gadgets</div>
@@ -1254,7 +250,7 @@ footer span{color:var(--gold)}
       <span class="svc-badge">✓ Available Now</span>
       <button onclick="openMedic()" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.55rem 1.1rem;background:var(--gold);color:var(--navy);font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px" onmouseover="this.style.background='#e8c76e'" onmouseout="this.style.background='#c8a84b'">Visit EF Tech Medic →</button>
     </div>
- 
+
     <div class="svc-card" id="web">
       <div class="svc-icon">🌐</div>
       <div class="svc-tag">Web · Content · Branding</div>
@@ -1274,11 +270,11 @@ footer span{color:var(--gold)}
       </div>
       <span class="svc-badge">✓ Available Now</span>
     </div>
- 
+
   </div>
   <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
- 
+
 <!-- CONTACT -->
 <div class="page" id="page-contact">
   <div class="section">
@@ -1334,7 +330,7 @@ footer span{color:var(--gold)}
   </div>
   <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
- 
+
 <!-- EF Tech Medic Overlay -->
 <div id="medic-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:#0a0a0a;overflow-y:auto">
   <div style="position:sticky;top:0;z-index:10;background:#111;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem">
@@ -1343,7 +339,7 @@ footer span{color:var(--gold)}
   </div>
   <div id="medic-content"></div>
 </div>
- 
+
 <script>
 function showPage(id, e) {
   if(e) e.preventDefault();
@@ -1435,7 +431,7 @@ function medicSubmit(btn) {
   btn.style.background='#22c55e'; btn.style.color='#fff'; btn.disabled=true;
   setTimeout(()=>{btn.textContent="🔧 Submit Request — It's Free";btn.style.background='';btn.style.color='';btn.disabled=false;},4000);
 }
- 
+
 function getMedicCSS() { return `
 #medic-content{font-family:'Outfit',sans-serif;color:#f0ece4}
 #medic-content a{text-decoration:none;color:inherit}
@@ -1550,7 +546,7 @@ function getMedicCSS() { return `
 @media(max-width:900px){#medic-content .m-hero-wrap,#medic-content .m-why-grid,#medic-content .m-ct-grid{grid-template-columns:1fr}#medic-content .m-svc-grid{grid-template-columns:1fr 1fr}#medic-content .m-proc-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){#medic-content .m-svc-grid,#medic-content .m-why-cards,#medic-content .m-proc-grid,#medic-content .m-f-row{grid-template-columns:1fr}#medic-content .m-hero-card,#medic-content .m-nav-links,#medic-content .m-nav-phone{display:none}}
 `; }
- 
+
 function getMedicHTML() { return `
 <div class="ann">📞 Call or text anytime — no appointments needed!</div>
 <div class="m-nav">
@@ -1677,5 +673,3 @@ function getMedicHTML() { return `
   <div class="m-ft-wrap">
     <div class="m-ft-logo"><span>EF</span> Techmedic</div>
     <div class="m-ft-about">EF Techmedic is Entraforc
-
-
