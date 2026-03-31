@@ -353,10 +353,17 @@ function showPage(id, e) {
 }
 function showService(slug, e) {
   if(e) e.preventDefault();
-  showPage('services', null);
+  // Switch to services page without changing URL yet
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links li').forEach(l => l.classList.remove('active'));
+  document.getElementById('page-services').classList.add('active');
+  document.getElementById('nav-services').classList.add('active');
+  window.scrollTo(0,0);
+  // Now set the correct service URL
+  history.pushState({page:'services',service:slug}, '', '/services/'+slug);
+  // Scroll to the right card
   const slugMap = {'it-consulting':'it-consulting','ef-tech-medic':'repair','web-creation':'web'};
   const cardId = slugMap[slug] || slug;
-  history.pushState({page:'services',service:slug}, '', '/services/'+slug);
   setTimeout(() => {
     const el = document.getElementById(cardId);
     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
