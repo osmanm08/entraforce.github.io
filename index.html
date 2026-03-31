@@ -379,12 +379,15 @@ window.addEventListener('popstate', function(e) {
 });
 // Handle direct URL on load
 (function(){
-  const params = new URLSearchParams(window.location.search);
-  const redirect = params.get('redirect');
-  const path = redirect || window.location.pathname;
-  if(path.startsWith('/services/it')) { history.replaceState({}, '', '/services/it-consulting'); showService('it-consulting',null); }
-  else if(path.startsWith('/services/ef')) { history.replaceState({}, '', '/services/ef-tech-medic'); showService('ef-tech-medic',null); }
-  else if(path.startsWith('/services/web')) { history.replaceState({}, '', '/services/web-creation'); showService('web-creation',null); }
+  const redirect = sessionStorage.getItem('redirect');
+  if(redirect) {
+    sessionStorage.removeItem('redirect');
+    history.replaceState(null, '', redirect);
+  }
+  const path = window.location.pathname;
+  if(path.startsWith('/services/it-consulting')) showService('it-consulting',null);
+  else if(path.startsWith('/services/ef-tech-medic')) showService('ef-tech-medic',null);
+  else if(path.startsWith('/services/web-creation')) showService('web-creation',null);
   else if(path.startsWith('/services')) { history.replaceState({}, '', '/services'); showPage('services',null); }
   else if(path.startsWith('/about')) { history.replaceState({}, '', '/about'); showPage('about',null); }
   else if(path.startsWith('/contact')) { history.replaceState({}, '', '/contact'); showPage('contact',null); }
