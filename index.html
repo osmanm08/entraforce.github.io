@@ -690,18 +690,4 @@ window.addEventListener('popstate', function(ev) {
     if (r.indexOf('/services/') === 0) { goToService(r.replace('/services/','')); }
     else if (r.indexOf('/about') === 0) { goTo('about'); }
     else if (r.indexOf('/contact') === 0) { goTo('contact'); }
-    else if (r.indexOf('/services') === 0) { goTo('services'); }
-  }
-})();
-
-function submitForm() {
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-}
-
-function openMedic() {
-  var overlay = document.getElementById('medic-overlay');
-  overlay.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  overlay.scrollTop = 0;
-  if (!document.getElementById('
+    else if (r.indexOf('/services') === 0) { goTo('services')
