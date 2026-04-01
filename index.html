@@ -390,7 +390,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support@entraforce.com">support@entraforce.com</a></div></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:supporthref="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -617,7 +617,7 @@ footer span{color:var(--gold)}
           <div class="m-ct-item"><div class="m-ct-ico">📍</div><div><div class="m-ct-key">Drop Off</div><div class="m-ct-val">Shaahi Biryani<br>3421 Renner Rd, Suite 110<br>Plano, TX 75074</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">🕐</div><div><div class="m-ct-key">Hours</div><div class="m-ct-val">Tue–Thu & Sun: 11:30 AM – 10 PM<br>Fri–Sat: 11:30 AM – 11 PM<br>Monday: Closed</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">📞</div><div><div class="m-ct-key">Call or Text</div><div class="m-ct-val"><a href="tel:+12248481702">+1 (224) 848-1702</a></div></div></div>
-          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:support@entraforce.com">support@entraforce.com</a></div></div></div>
+          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:supporthref="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div></div>
         </div>
       </div>
       <div class="m-form-box">
@@ -690,4 +690,54 @@ window.addEventListener('popstate', function(ev) {
     if (r.indexOf('/services/') === 0) { goToService(r.replace('/services/','')); }
     else if (r.indexOf('/about') === 0) { goTo('about'); }
     else if (r.indexOf('/contact') === 0) { goTo('contact'); }
-    else if (r.indexOf('/services') === 0) { goTo('services')
+    else if (r.indexOf('/services') === 0) { goTo('services'); }
+  }
+})();
+
+function submitForm() {
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
+
+function openMedic() {
+  var overlay = document.getElementById('medic-overlay');
+  overlay.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  overlay.scrollTop = 0;
+  if (!document.getElementById('medic-loaded')) {
+    var tpl = document.getElementById('medic-template');
+    var clone = document.importNode(tpl.content, true);
+    document.getElementById('medic-content').appendChild(clone);
+    var marker = document.createElement('div');
+    marker.id = 'medic-loaded';
+    document.getElementById('medic-content').appendChild(marker);
+    document.querySelectorAll('#medic-content a[href^="#m-"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        var t = document.getElementById(this.getAttribute('href').slice(1));
+        if (t) overlay.scrollTop = t.offsetTop - 60;
+      });
+    });
+  }
+}
+
+function closeMedic() {
+  document.getElementById('medic-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function medicSubmit(btn) {
+  btn.textContent = 'Sent! We will be in touch shortly.';
+  btn.style.background = '#22c55e';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+  setTimeout(function() {
+    btn.textContent = 'Submit Request';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+  }, 4000);
+}
+</script>
+</body>
+</html>
