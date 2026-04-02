@@ -13,9 +13,7 @@
   --white:#f4f1eb;--muted:#8a9ab5;--border:#1e2d4d;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden;background-image:radial-gradient(ellipse 80% 50% at 50% -10%,#1a3a6b40,transparent);font-weight:400}
-
-/* NAV */
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden;background-image:radial-gradient(ellipse 80% 50% at 50% -10%,#1a3a6b40,transparent)}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px}
 .logo{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:.05em;color:var(--white);text-decoration:none;cursor:pointer}
@@ -31,31 +29,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .dropdown a:hover{background:var(--navy3);color:var(--gold)}
 .cta-btn{margin-left:1rem;padding:.45rem 1.1rem;background:var(--gold);color:var(--navy);font-size:.82rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;cursor:pointer}
 .cta-btn:hover{background:var(--gold2)}
-
-/* PAGES */
 .page{display:none;padding-top:64px}
 .page.active{display:block}
-
-/* HOME */
 .hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:4rem 2rem 3rem;overflow:hidden;background:#060914}
 .hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(200,168,75,0.15) 1px,transparent 1px);background-size:40px 40px;opacity:.4}
-/* Stars */
 .hero-grid::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.6) 1px,transparent 1px),radial-gradient(circle,rgba(200,168,75,0.4) 1px,transparent 1px);background-size:120px 120px,200px 200px;background-position:0 0,60px 60px;opacity:.3}
-/* GitHub-style purple-gold glow from bottom center */
 .hero-glow-main{position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);width:1000px;height:600px;background:radial-gradient(ellipse,#4a2a8a55 0%,#c8a84b18 35%,transparent 70%);pointer-events:none}
-/* Top gold accent */
 .hero-glow-top{position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,#c8a84b12 0%,transparent 65%);pointer-events:none}
-/* Side glows */
 .hero-glow-left{position:absolute;bottom:20%;left:-150px;width:500px;height:500px;background:radial-gradient(ellipse,#3a1a6b30 0%,transparent 65%);pointer-events:none}
 .hero-glow-right{position:absolute;bottom:20%;right:-150px;width:500px;height:500px;background:radial-gradient(ellipse,#c8a84b15 0%,transparent 65%);pointer-events:none}
 .hero-logo-wrap{position:relative;z-index:1;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center}
-.hero-logo-graphic{font-family:'Bebas Neue',sans-serif;font-size:clamp(6rem,16vw,12rem);font-weight:400;letter-spacing:.15em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(200,168,75,0.12);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;z-index:0}
-.hero-logo-ring{display:none}
-.hero-logo-ring2{display:none}
-.hero-logo-ef{display:none}
+.hero-logo-graphic{font-family:'Bebas Neue',sans-serif;font-size:clamp(6rem,16vw,12rem);letter-spacing:.15em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(200,168,75,0.12);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;z-index:0}
 .hero-content{position:relative;z-index:1;max-width:680px}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);background:var(--gold-dim);padding:.35rem 1rem;border-radius:20px;margin-bottom:1.5rem}
-.hero-badge::before{content:'●';animation:blink 2s ease-in-out infinite;font-size:.5rem}
+.hero-badge::before{content:"●";animation:blink 2s ease-in-out infinite;font-size:.5rem}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.5px;margin-bottom:.75rem}
 .hero h1 em{font-style:normal;color:var(--gold)}
@@ -64,26 +51,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .btn-primary{padding:.78rem 2rem;background:var(--gold);color:var(--navy);font-family:'Manrope',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
 .btn-primary:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(200,168,75,0.4)}
 .btn-secondary{padding:.78rem 2rem;background:rgba(255,255,255,0.05);color:var(--white);font-family:'Manrope',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);cursor:pointer;border-radius:4px;transition:all .2s}
-.btn-secondary:hover{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,0.05)}
-
-/* FEATURE CARDS - GitHub glowing border style */
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;max-width:900px;margin:0 auto;position:relative;z-index:1}
 .feat{background:rgba(13,21,40,0.8);border:1px solid rgba(200,168,75,0.15);padding:1.5rem;text-align:left;transition:all .3s;position:relative;overflow:hidden;border-radius:8px;backdrop-filter:blur(10px)}
 .feat:hover{border-color:rgba(200,168,75,0.5);box-shadow:0 0 30px rgba(200,168,75,0.15),0 0 60px rgba(74,42,138,0.2);transform:translateY(-2px)}
 .feat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
 .feat:hover::before{opacity:1}
 .feat-icon{font-size:1.4rem;margin-bottom:.75rem;display:block}
-.feat-title{font-family:'Manrope',sans-serif;font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.35rem;letter-spacing:.02em}
+.feat-title{font-family:'Manrope',sans-serif;font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.35rem}
 .feat-desc{font-size:.78rem;color:var(--muted);line-height:1.65}
-
-/* SECTIONS */
 .section{max-width:1100px;margin:0 auto;padding:3.5rem 2rem}
 .section-tag{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
 .section-title{font-family:'Manrope',sans-serif;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:800;line-height:1.05;letter-spacing:-.5px;margin-bottom:.75rem}
 .section-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.8;max-width:560px}
 .divider{width:40px;height:2px;background:var(--gold);margin:1rem 0 1.5rem}
-
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:1.5rem}
 .about-visual{position:relative;aspect-ratio:1;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
 .about-logo-big{font-family:'Manrope',sans-serif;font-size:4rem;font-weight:800;color:var(--gold-dim);text-align:center;line-height:1}
@@ -97,8 +78,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .value-list li{padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--muted);display:flex;align-items:center;gap:.75rem}
 .value-list li::before{content:'';width:6px;height:6px;border:1px solid var(--gold);display:block;flex-shrink:0;transform:rotate(45deg)}
 .value-list li strong{color:var(--white)}
-
-/* SERVICES */
 .svc-intro{max-width:1100px;margin:0 auto;padding:3.5rem 2rem 1.5rem}
 .svc-cards{max-width:1100px;margin:0 auto;padding:0 2rem 3.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
 .svc-card{background:rgba(13,21,40,0.9);border:1px solid rgba(200,168,75,0.15);padding:2rem;border-radius:12px;position:relative;overflow:hidden;transition:all .3s;backdrop-filter:blur(10px)}
@@ -115,8 +94,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .svc-bullets{list-style:none;margin-top:.6rem}
 .svc-bullets li{font-size:.82rem;color:var(--muted);padding:.28rem 0;display:flex;align-items:flex-start;gap:.6rem}
 .svc-bullets li::before{content:'›';color:var(--gold);font-size:1rem;line-height:1.2;flex-shrink:0}
-
-/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;margin-top:1.5rem;align-items:start}
 .contact-info p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
 .contact-item{display:flex;gap:1rem;align-items:flex-start;padding:.85rem 0;border-bottom:1px solid var(--border)}
@@ -137,53 +114,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .success-msg .check{font-size:2rem;margin-bottom:.75rem;color:var(--gold)}
 .success-msg h3{font-family:'Manrope',sans-serif;font-weight:700;margin-bottom:.5rem}
 .success-msg p{font-size:.9rem;color:var(--muted)}
-
-/* FOOTER */
 footer{background:var(--navy2);border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center}
 footer p{font-size:.75rem;color:var(--muted);letter-spacing:.04em}
 footer span{color:var(--gold)}
-
-/* MEDIC OVERLAY */
 #medic-overlay{display:none;position:fixed;inset:0;z-index:999;background:#0a0a0a;overflow-y:auto}
 .medic-bar{position:sticky;top:0;z-index:10;background:#111;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem}
 .medic-bar span{font-family:'Manrope',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888}
 .medic-close{background:var(--gold);color:var(--navy);border:none;font-family:'Manrope',sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:.45rem 1rem;cursor:pointer;border-radius:3px}
-
+@keyframes partnerFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media(max-width:700px){
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .about-visual{display:none}
   .form-row{grid-template-columns:1fr}
   .features{grid-template-columns:1fr 1fr}
-  .hero-logo-graphic{font-size:5rem}
 }
-/* CLIENTS */
-.clients-hero{text-align:center;padding:4rem 2rem 2rem;max-width:700px;margin:0 auto}
-.clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:0 auto;padding:0 2rem 4rem}
-.client-card{background:rgba(13,21,40,0.9);border:1px solid rgba(200,168,75,0.15);border-radius:14px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(10px);cursor:pointer;text-decoration:none;display:block;color:inherit;animation:floatCard 4s ease-in-out infinite}
-.client-card:nth-child(2){animation-delay:.4s}
-.client-card:nth-child(3){animation-delay:.8s}
-.client-card:nth-child(4){animation-delay:1.2s}
-.client-card:nth-child(5){animation-delay:1.6s}
-.client-card:nth-child(6){animation-delay:2s}
-.client-card:nth-child(7){animation-delay:2.4s}
-.client-card:nth-child(8){animation-delay:2.8s}
-.client-card:nth-child(9){animation-delay:3.2s}
-.client-card:nth-child(10){animation-delay:3.6s}
-@keyframes floatCard{
-  0%,100%{transform:translateY(0) scale(1);box-shadow:0 4px 20px rgba(200,168,75,0.08)}
-  50%{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 50px rgba(200,168,75,0.18),0 0 60px rgba(74,42,138,0.15)}
-}
-.client-card:hover{animation-play-state:paused;border-color:rgba(200,168,75,0.6);transform:translateY(-12px) scale(1.03) !important;box-shadow:0 24px 60px rgba(200,168,75,0.25),0 0 80px rgba(74,42,138,0.2) !important;transition:all .3s}
-.client-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
-.client-card:hover::before{opacity:1}
-.client-logo-wrap{width:90px;height:90px;margin:0 auto 1.1rem;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(255,255,255,0.05);border:1px solid rgba(200,168,75,0.15)}
-.client-logo-wrap img{width:100%;height:100%;object-fit:contain;padding:8px}
-.client-logo-wrap .logo-emoji{font-size:2.4rem;line-height:1}
-.client-name{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;letter-spacing:-.01em}
-.client-type{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-weight:600}
-.client-url{font-size:.7rem;color:var(--muted);opacity:.7}
-.clients-cta{text-align:center;padding:2rem 2rem 4rem;border-top:1px solid var(--border);max-width:600px;margin:0 auto}
-.clients-cta p{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:1.5rem}
 </style>
 </head>
 <body>
@@ -202,7 +146,7 @@ footer span{color:var(--gold)}
           <a onclick="goToService('web-creation')">Website / Content Creation</a>
         </div>
       </li>
-      <li id="nav-clients"><a onclick="goTo('clients')">Our Partners</a></li>
+      <li id="nav-partners"><a onclick="goTo('partners')">Our Partners</a></li>
       <li id="nav-contact"><a onclick="goTo('contact')">Contact Us</a></li>
     </ul>
     <a class="cta-btn" onclick="goTo('contact')">Get a Quote</a>
@@ -217,33 +161,20 @@ footer span{color:var(--gold)}
     <div class="hero-glow-top"></div>
     <div class="hero-glow-left"></div>
     <div class="hero-glow-right"></div>
-
-    <!-- Enhanced SVG logo graphic -->
     <div class="hero-logo-wrap">
       <svg width="160" height="160" viewBox="0 0 160 160" style="position:relative;z-index:1;filter:drop-shadow(0 0 30px rgba(200,168,75,0.5))">
-        <!-- Outer glow ring -->
         <circle cx="80" cy="80" r="74" fill="none" stroke="url(#goldGrad)" stroke-width="1" opacity="0.4"/>
-        <!-- Rotating dashed ring -->
         <circle cx="80" cy="80" r="66" fill="none" stroke="#c8a84b" stroke-width="0.8" stroke-dasharray="8 4" opacity="0.5" style="animation:spin 20s linear infinite;transform-origin:80px 80px"/>
-        <!-- Inner ring -->
         <circle cx="80" cy="80" r="56" fill="none" stroke="#c8a84b" stroke-width="1" opacity="0.25"/>
-        <!-- Corner marks -->
         <line x1="80" y1="6" x2="80" y2="18" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
         <line x1="80" y1="142" x2="80" y2="154" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
         <line x1="6" y1="80" x2="18" y2="80" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
         <line x1="142" y1="80" x2="154" y2="80" stroke="#c8a84b" stroke-width="2" opacity="0.8"/>
-        <!-- Diagonal marks -->
-        <line x1="27" y1="27" x2="36" y2="36" stroke="#c8a84b" stroke-width="1.5" opacity="0.5"/>
-        <line x1="124" y1="124" x2="133" y2="133" stroke="#c8a84b" stroke-width="1.5" opacity="0.5"/>
-        <line x1="133" y1="27" x2="124" y2="36" stroke="#c8a84b" stroke-width="1.5" opacity="0.5"/>
-        <line x1="27" y1="133" x2="36" y2="124" stroke="#c8a84b" stroke-width="1.5" opacity="0.5"/>
-        <!-- Center fill -->
         <circle cx="80" cy="80" r="48" fill="#080d1a" opacity="0.9"/>
         <circle cx="80" cy="80" r="48" fill="url(#centerGlow)" opacity="0.6"/>
-        <!-- EF text -->
         <text x="80" y="93" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="42" fill="url(#goldGrad)" letter-spacing="4">EF</text>
-        <!-- Gradient defs -->
         <defs>
+          <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
           <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#e8c76e"/>
             <stop offset="50%" stop-color="#c8a84b"/>
@@ -255,10 +186,8 @@ footer span{color:var(--gold)}
           </radialGradient>
         </defs>
       </svg>
-      <!-- Ghost text behind -->
       <div class="hero-logo-graphic">ENTRAFORCE</div>
     </div>
-
     <div class="hero-content">
       <div class="hero-badge">Plano, Texas · Est. 2013</div>
       <h1>Technology <em>Built</em><br>to Move Business Forward</h1>
@@ -268,41 +197,14 @@ footer span{color:var(--gold)}
         <button class="btn-secondary" onclick="goTo('contact')">Talk to Us</button>
       </div>
     </div>
-
-    <!-- Feature cards -->
     <div class="features">
-      <div class="feat">
-        <span class="feat-icon">⚙️</span>
-        <div class="feat-title">IT Consulting</div>
-        <div class="feat-desc">Infrastructure planning, cloud migration, and managed IT for businesses of every size.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🔧</span>
-        <div class="feat-title">EF Tech Medic</div>
-        <div class="feat-desc">Same-day phone, tablet, and smartwatch repair. Honest pricing, no appointments needed.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🌐</span>
-        <div class="feat-title">Web & Content</div>
-        <div class="feat-desc">Professional websites and digital content tailored for restaurants, shops, and local businesses.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🏢</span>
-        <div class="feat-title">SMB to Enterprise</div>
-        <div class="feat-desc">Solutions that scale with your business — from a single storefront to multi-location operations.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🔒</span>
-        <div class="feat-title">Secure & Reliable</div>
-        <div class="feat-desc">Network security, data protection, and infrastructure built to keep your business running safely.</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">📍</span>
-        <div class="feat-title">DFW Based</div>
-        <div class="feat-desc">Proudly serving the Dallas–Fort Worth area with local support you can count on.</div>
-      </div>
+      <div class="feat"><span class="feat-icon">⚙️</span><div class="feat-title">IT Consulting</div><div class="feat-desc">Infrastructure planning, cloud migration, and managed IT for businesses of every size.</div></div>
+      <div class="feat"><span class="feat-icon">🔧</span><div class="feat-title">EF Tech Medic</div><div class="feat-desc">Same-day phone, tablet, and smartwatch repair. Honest pricing, no appointments needed.</div></div>
+      <div class="feat"><span class="feat-icon">🌐</span><div class="feat-title">Web & Content</div><div class="feat-desc">Professional websites and digital content tailored for restaurants, shops, and local businesses.</div></div>
+      <div class="feat"><span class="feat-icon">🏢</span><div class="feat-title">SMB to Enterprise</div><div class="feat-desc">Solutions that scale with your business — from a single storefront to multi-location operations.</div></div>
+      <div class="feat"><span class="feat-icon">🔒</span><div class="feat-title">Secure & Reliable</div><div class="feat-desc">Network security, data protection, and infrastructure built to keep your business running safely.</div></div>
+      <div class="feat"><span class="feat-icon">📍</span><div class="feat-title">DFW Based</div><div class="feat-desc">Proudly serving the Dallas–Fort Worth area with local support you can count on.</div></div>
     </div>
-
   </div>
   <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
@@ -324,10 +226,8 @@ footer span{color:var(--gold)}
         </ul>
       </div>
       <div class="about-visual">
-        <div class="about-corner tl"></div>
-        <div class="about-corner tr"></div>
-        <div class="about-corner bl"></div>
-        <div class="about-corner br"></div>
+        <div class="about-corner tl"></div><div class="about-corner tr"></div>
+        <div class="about-corner bl"></div><div class="about-corner br"></div>
         <div class="about-logo-big">EF<span>EntraForce</span></div>
       </div>
     </div>
@@ -344,14 +244,13 @@ footer span{color:var(--gold)}
     <p class="section-sub">Three focused service lines — all designed to help your business run smarter, stay connected, and look professional online.</p>
   </div>
   <div class="svc-cards">
-
     <div class="svc-card" id="svc-it-consulting">
       <div class="svc-icon">⚙</div>
       <div class="svc-tag">Consulting · Infrastructure</div>
       <h3>IT Consulting Projects</h3>
       <div class="svc-sub">
         <p>We help businesses plan, build, and manage the technology backbone they need to grow.</p>
-        <p><strong style="color:var(--white)">Coming Soon:</strong> Full-service build, maintenance, and management of IT infrastructure for tech businesses from small to large.</p>
+        <p><strong style="color:var(--white)">Coming Soon:</strong> Full-service build, maintenance, and management of IT infrastructure.</p>
         <ul class="svc-bullets">
           <li>Infrastructure planning & design</li>
           <li>Network setup & security configuration</li>
@@ -362,7 +261,6 @@ footer span{color:var(--gold)}
       </div>
       <span class="svc-badge">🔜 Launching Soon</span>
     </div>
-
     <div class="svc-card" id="svc-ef-tech-medic">
       <div class="svc-icon">🔧</div>
       <div class="svc-tag">Repair · Devices · Gadgets</div>
@@ -372,15 +270,14 @@ footer span{color:var(--gold)}
         <ul class="svc-bullets">
           <li>Cell phone screen replacements & battery swaps</li>
           <li>Tablet & iPad repair</li>
-          <li>Laptop diagnostics, repair & tune-ups</li>
-          <li>Data recovery & backup services</li>
+          <li>Apple Watch repair</li>
+          <li>Water damage recovery</li>
           <li>Quick turnaround — most repairs same day</li>
         </ul>
       </div>
       <span class="svc-badge">✓ Available Now</span>
       <button onclick="openMedic()" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.55rem 1.1rem;background:var(--gold);color:var(--navy);font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px">Visit EF Tech Medic →</button>
     </div>
-
     <div class="svc-card" id="svc-web-creation">
       <div class="svc-icon">🌐</div>
       <div class="svc-tag">Web · Content · Branding</div>
@@ -399,7 +296,24 @@ footer span{color:var(--gold)}
       </div>
       <span class="svc-badge">✓ Available Now</span>
     </div>
+  </div>
+  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
+</div>
 
+<!-- PARTNERS -->
+<div class="page" id="page-partners">
+  <div class="section">
+    <div class="section-tag">Who We Partner With</div>
+    <h2 class="section-title">Our Partners</h2>
+    <div class="divider"></div>
+    <p class="section-sub">EntraForce designs, builds, and manages websites for local businesses across the DFW area — helping them establish a professional online presence and grow their digital footprint.</p>
+  </div>
+  <div id="partners-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;padding:0 2rem 2rem"></div>
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2rem">
+    <div class="section-tag">Work With Us</div>
+    <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.75rem">Become a Partner</h2>
+    <p class="section-sub" style="margin:0 auto 1.5rem">We help local businesses across DFW build professional websites, manage their content, and grow their digital presence.</p>
+    <button class="btn-primary" onclick="goTo('contact')">Get a Free Quote →</button>
   </div>
   <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
@@ -419,7 +333,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support@entraforce.com">support&#64;entraforce&#46;com</a></div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -460,32 +374,6 @@ footer span{color:var(--gold)}
   <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
 
-<!-- CLIENTS -->
-<div class="page" id="page-clients">
-  <div class="clients-hero">
-    <div class="section-tag">Who We Partner With</div>
-    <h2 class="section-title">Our Partners</h2>
-    <div class="divider" style="margin:1rem auto 1.5rem"></div>
-    <p class="section-sub" style="margin:0 auto">EntraForce designs, builds, and manages websites for local businesses across the DFW area — helping them establish a professional online presence and grow their digital footprint.</p>
-  </div>
-  <div class="clients-grid" id="clients-grid"></div>
-  <div class="clients-cta">
-    <div class="section-tag">Work With Us</div>
-    <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.75rem">Become a Partner</h3>
-    <p>We help local businesses across DFW build professional websites, manage their content, and grow their digital presence — all at an affordable price.</p>
-    <button class="btn-primary" onclick="goTo('contact')" style="margin-top:1rem">Get a Free Quote →</button>
-  </div>
-  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
-</div>
-
-<!-- EF TECH MEDIC OVERLAY -->
-<div id="medic-overlay">
-  <div class="medic-bar">
-    <span>← EntraForce / Services / EF Tech Medic</span>
-    <button class="medic-close" onclick="closeMedic()">✕ Close</button>
-  </div>
-  <div id="medic-content"></div>
-
 <!-- EF TECH MEDIC OVERLAY -->
 <div id="medic-overlay">
   <div class="medic-bar">
@@ -495,7 +383,7 @@ footer span{color:var(--gold)}
   <div id="medic-content"></div>
 </div>
 
-<!-- Medic template - no JS string escaping needed -->
+<!-- Medic template -->
 <template id="medic-template">
 <style>
 .mt{font-family:'Outfit',sans-serif;color:#f0ece4}.mt a{text-decoration:none;color:inherit}.mt ul{list-style:none}
@@ -506,6 +394,7 @@ footer span{color:var(--gold)}
 .mt .m-nav-links a{font-size:.82rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.05em}.mt .m-nav-links a:hover{color:#f0e614}
 .mt .m-nav-btn{background:#f0e614;color:#000;padding:.55rem 1.3rem;font-size:.82rem;font-weight:800}
 .mt .m-hero{background:#0a0a0a;padding:4rem 1.5rem 3rem;position:relative;overflow:hidden}
+.mt .m-hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(240,230,20,.07) 0%,transparent 70%);pointer-events:none}
 .mt .m-hero-wrap{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
 .mt .m-hero-tag{display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(240,230,20,.3);color:#f0e614;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.38rem 1rem;margin-bottom:1.5rem}
 .mt .m-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,6rem);line-height:.92;letter-spacing:.03em;margin-bottom:1.2rem;color:#f0ece4}.mt .m-h1 .y{color:#f0e614}
@@ -664,7 +553,7 @@ footer span{color:var(--gold)}
           <div class="m-ct-item"><div class="m-ct-ico">📍</div><div><div class="m-ct-key">Drop Off</div><div class="m-ct-val">Shaahi Biryani<br>3421 Renner Rd, Suite 110<br>Plano, TX 75074</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">🕐</div><div><div class="m-ct-key">Hours</div><div class="m-ct-val">Tue–Thu & Sun: 11:30 AM – 10 PM<br>Fri–Sat: 11:30 AM – 11 PM<br>Monday: Closed</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">📞</div><div><div class="m-ct-key">Call or Text</div><div class="m-ct-val"><a href="tel:+12248481702">+1 (224) 848-1702</a></div></div></div>
-          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div></div>
+          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:support@entraforce.com">support&#64;entraforce&#46;com</a></div></div></div>
         </div>
       </div>
       <div class="m-form-box">
@@ -694,8 +583,193 @@ footer span{color:var(--gold)}
     <div class="m-ft-bottom"><div>© 2026 EF Techmedic (Entraforce). All rights reserved.</div></div>
   </div>
 </div>
+
+<!-- Medic AI Chatbot -->
+<style>
+#mc-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:600;width:56px;height:56px;border-radius:50%;background:#f0e614;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(240,230,20,0.4);transition:all .2s}
+#mc-btn:hover{background:#ffe033;transform:scale(1.08)}
+#mc-btn .mn{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a}
+#mc-box{position:fixed;bottom:5rem;right:1.5rem;z-index:600;width:360px;max-height:520px;background:#111;border:1px solid #222;border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.7)}
+#mc-box.open{display:flex}
+.mc-head{background:#181818;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid #222}
+.mc-avatar{width:36px;height:36px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:#000}
+.mc-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.05em;color:#f0ece4}
+.mc-status{font-size:.68rem;color:#22c55e;display:flex;align-items:center;gap:.3rem}
+.mc-status::before{content:'●';font-size:.5rem}
+.mc-close{background:none;border:none;color:#888;cursor:pointer;font-size:1.1rem;padding:.2rem;margin-left:auto}
+.mc-close:hover{color:#f0ece4}
+.mc-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:200px;max-height:320px}
+.mc-m{display:flex;gap:.5rem;align-items:flex-end}
+.mc-m.u{flex-direction:row-reverse}
+.mc-b{max-width:80%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5;font-family:'Outfit',sans-serif}
+.mc-m.b .mc-b{background:#222;color:#f0ece4;border-bottom-left-radius:3px}
+.mc-m.u .mc-b{background:#f0e614;color:#000;font-weight:600;border-bottom-right-radius:3px}
+.mc-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.mc-m.b .mc-dot{background:#f0e614;color:#000}
+.mc-m.u .mc-dot{background:#222;color:#f0ece4}
+.mc-typ{display:flex;gap:4px;align-items:center;padding:.5rem .85rem;background:#222;border-radius:12px;border-bottom-left-radius:3px}
+.mc-typ span{width:6px;height:6px;background:#555;border-radius:50%;animation:mcb .8s ease-in-out infinite}
+.mc-typ span:nth-child(2){animation-delay:.15s}.mc-typ span:nth-child(3){animation-delay:.3s}
+@keyframes mcb{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.mc-qbtns{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem;border-top:1px solid #222}
+.mc-q{font-size:.68rem;padding:.28rem .65rem;border:1px solid #222;background:transparent;color:#888;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'Outfit',sans-serif}
+.mc-q:hover{border-color:#f0e614;color:#f0e614}
+.mc-inp-row{padding:.75rem 1rem;border-top:1px solid #222;display:flex;gap:.5rem;align-items:center}
+.mc-inp-row input{flex:1;background:#181818;border:1px solid #222;color:#f0ece4;padding:.55rem .85rem;border-radius:8px;font-family:'Outfit',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s}
+.mc-inp-row input:focus{border-color:#f0e614}
+.mc-inp-row input::placeholder{color:#555}
+.mc-send{width:34px;height:34px;background:#f0e614;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;color:#000}
+.mc-send:hover{background:#ffe033}
+.mc-send:disabled{opacity:.5;cursor:not-allowed}
+</style>
+<button id="mc-btn" onclick="mcToggle()" title="Chat with EF Tech Medic AI">🔧<span class="mn"></span></button>
+<div id="mc-box">
+  <div class="mc-head">
+    <div class="mc-avatar">🔧</div>
+    <div>
+      <div class="mc-name">EF Tech Medic AI</div>
+      <div class="mc-status">Online — repair help available</div>
+    </div>
+    <button class="mc-close" onclick="mcToggle()">✕</button>
+  </div>
+  <div class="mc-msgs" id="mc-msgs"></div>
+  <div class="mc-qbtns" id="mc-qbtns">
+    <button class="mc-q" onclick="mcQ('How much does a screen repair cost?')">Screen repair cost</button>
+    <button class="mc-q" onclick="mcQ('What phones do you fix?')">Supported phones</button>
+    <button class="mc-q" onclick="mcQ('Where are you located?')">Location & hours</button>
+    <button class="mc-q" onclick="mcQ('How long does repair take?')">Repair time</button>
+  </div>
+  <div class="mc-inp-row">
+    <input type="text" id="mc-inp" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')mcSend()">
+    <button class="mc-send" id="mc-send" onclick="mcSend()">➤</button>
+  </div>
 </div>
-</template>
+<script>
+var mcOpen=false, mcHistory=[], mcInited=false;
+var MC_SYS=`You are the AI assistant for EF Tech Medic, a device repair service in Plano, TX run by EntraForce. Be friendly, helpful, and concise. Keep replies under 3 sentences.
+
+Services: Smartphone repair (iPhone, Samsung, Pixel, OnePlus, LG), iPad & tablet repair, Apple Watch repair, HDMI & micro soldering, water damage recovery, battery replacement.
+We do NOT repair: game consoles, MacBooks, laptops.
+Location: Drop off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074.
+Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday CLOSED.
+Phone: (224) 848-1702. Email: support@entraforce.com.
+No appointments needed — just walk in. Free diagnosis. No-obligation quote.
+Never quote specific prices. Encourage customers to drop in or call for a quote.`;
+
+function mcToggle(){
+  var p=document.getElementById('mc-panel');
+  var b=document.getElementById('mc-bubble');
+  if(!p)return;
+  var open=p.style.display==='flex';
+  p.style.display=open?'none':'flex';
+  b.style.transform=open?'':'scale(0.9)';
+  if(!open&&!window.mcInited){window.mcInited=true;mcInit();}
+}
+function mcInit(){
+  var msgs=document.getElementById('mc-msgs');
+  if(!msgs)return;
+  mcAdd('b','Hey! 👋 I\'m the EF Tech Medic assistant. What can I help you with today?');
+  var qbtns=document.getElementById('mc-qbtns');
+  var qs=['Repair prices?','Drop-off hours?','What do you fix?','Get a quote'];
+  qs.forEach(function(q){
+    var btn=document.createElement('button');
+    btn.textContent=q;
+    btn.style.cssText='background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.3rem .7rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif;transition:border-color .2s';
+    btn.onmouseenter=function(){this.style.borderColor='#f0e614';};
+    btn.onmouseleave=function(){this.style.borderColor='#333';};
+    btn.onclick=function(){
+      document.getElementById('mc-inp').value=q;
+      mcSend();
+    };
+    qbtns.appendChild(btn);
+  });
+}
+function mcAdd(role,text){
+  var msgs=document.getElementById('mc-msgs');
+  if(!msgs)return;
+  var d=document.createElement('div');
+  var isUser=role==='u';
+  d.style.cssText='max-width:85%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5;font-family:Outfit,sans-serif;'+(isUser?'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px':'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #222');
+  d.textContent=text;
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function mcTyping(){
+  var msgs=document.getElementById('mc-msgs');
+  if(!msgs)return;
+  var d=document.createElement('div');
+  d.id='mc-typ';
+  d.style.cssText='background:#1a1a1a;border:1px solid #222;color:#888;padding:.6rem .85rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.82rem;align-self:flex-start;font-family:Outfit,sans-serif';
+  d.textContent='Typing...';
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+  mcOpen=!mcOpen;
+  document.getElementById('mc-box').classList.toggle('open',mcOpen);
+  if(mcOpen&&!mcInited){
+    mcInited=true;
+    mcAdd('b',"Hey! I'm the EF Tech Medic assistant 🔧 Got a cracked screen or broken device? I can help you figure out next steps. What's going on?");
+  }
+  if(mcOpen) setTimeout(function(){document.getElementById('mc-inp').focus();},100);
+}
+function mcQ(t){document.getElementById('mc-inp').value=t;mcSend();}
+function mcAdd(role,text){
+  var msgs=document.getElementById('mc-msgs');
+  var d=document.createElement('div');
+  d.className='mc-m '+role;
+  d.innerHTML='<div class="mc-dot">'+(role==='b'?'🔧':'👤')+'</div><div class="mc-b">'+text.replace(/\n/g,'<br>')+'</div>';
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function mcTyping(){
+  var msgs=document.getElementById('mc-msgs');
+  var d=document.createElement('div');
+  d.className='mc-m b';d.id='mc-typ';
+  d.innerHTML='<div class="mc-dot">🔧</div><div class="mc-typ"><span></span><span></span><span></span></div>';
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+async function mcSend(){
+  var inp=document.getElementById('mc-inp');
+  var t=inp.value.trim();if(!t)return;
+  inp.value='';
+  document.getElementById('mc-qbtns').style.display='none';
+  document.getElementById('mc-send').disabled=true;
+  mcAdd('u',t);mcHistory.push({role:'user',content:t});mcTyping();
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:MC_SYS,messages:mcHistory})
+    });
+    var data=await r.json();
+    var reply=data.content&&data.content[0]?data.content[0].text:"Sorry! Please call us at (224) 848-1702 for help.";
+    mcHistory.push({role:'assistant',content:reply});
+    var typ=document.getElementById('mc-typ');if(typ)typ.remove();
+    mcAdd('b',reply);
+  }catch(e){
+    var typ=document.getElementById('mc-typ');if(typ)typ.remove();
+    mcAdd('b','Having trouble connecting. Call us at (224) 848-1702 — we\'re happy to help!');
+  }
+  document.getElementById('mc-send').disabled=false;inp.focus();
+}
+<!-- EF Tech Medic Chatbot -->
+<div id="mc-bubble" onclick="mcToggle()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 20px rgba(240,230,20,0.4);font-size:1.5rem;transition:transform .2s">💬</div>
+<div id="mc-panel" style="display:none;position:fixed;bottom:5rem;right:1.5rem;width:340px;max-height:520px;background:#111;border:1px solid #333;border-radius:16px;overflow:hidden;z-index:9999;box-shadow:0 8px 40px rgba(0,0,0,0.6);flex-direction:column">
+  <div style="background:#0a0a0a;padding:1rem 1.2rem;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <div style="width:32px;height:32px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem">🔧</div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:#f0ece4">EF Tech Medic</div><div style="font-size:.65rem;color:#22c55e">● Online now</div></div>
+    </div>
+    <button onclick="mcToggle()" style="background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:0">✕</button>
+  </div>
+  <div id="mc-msgs" style="flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;max-height:320px"></div>
+  <div id="mc-qbtns" style="padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.4rem"></div>
+  <div style="padding:.75rem 1rem;border-top:1px solid #222;display:flex;gap:.5rem">
+    <input id="mc-inp" type="text" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')mcSend()" style="flex:1;background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.55rem .85rem;border-radius:8px;font-size:.82rem;outline:none;font-family:'Outfit',sans-serif">
+    <button id="mc-send" onclick="mcSend()" style="background:#f0e614;color:#000;border:none;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:center">↑</button>
+  </div>
+</div>
+
 
 <script>
 function goTo(page) {
@@ -704,7 +778,7 @@ function goTo(page) {
   document.getElementById('page-' + page).classList.add('active');
   document.getElementById('nav-' + page).classList.add('active');
   window.scrollTo(0, 0);
-  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', clients:'/clients'};
+  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners'};
   history.pushState({page: page}, '', urls[page] || '/');
 }
 
@@ -737,6 +811,7 @@ window.addEventListener('popstate', function(ev) {
     if (r.indexOf('/services/') === 0) { goToService(r.replace('/services/','')); }
     else if (r.indexOf('/about') === 0) { goTo('about'); }
     else if (r.indexOf('/contact') === 0) { goTo('contact'); }
+    else if (r.indexOf('/partners') === 0) { goTo('partners'); }
     else if (r.indexOf('/services') === 0) { goTo('services'); }
   }
 })();
@@ -784,79 +859,201 @@ function medicSubmit(btn) {
     btn.style.color = '';
     btn.disabled = false;
   }, 4000);
-// Build client cards
-var clients = [
-  {name:'WisdomTech',type:'Technology & IT Services',url:'https://www.wisdomtech.us',domain:'wisdomtech.us',logo:'https://wisdomtech.us/wp-content/uploads/2019/08/logo.png'},
-  {name:'Shams Caterers',type:'Food & Catering',url:'https://www.shamscaterers.com',domain:'shamscaterers.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=346,fit=crop,q=95/A3QJOrQyKRcG49bG/base_logo_transparent_background-mk39q5x4PLIp29yl.png'},
-  {name:'Spice on Wheels',type:'Food Truck & Mobile Catering',url:'https://www.spiceonwheels.us',domain:'spiceonwheels.us',emoji:'🚐🌶️'},
-  {name:'Shaahi Biryani DFW',type:'Restaurant · Plano, TX',url:'https://www.shaahibiryanidfw.com',domain:'shaahibiryanidfw.com',emoji:'🍛👑'},
-  {name:'Desert Avenue',type:'Lifestyle & Retail',url:'https://www.desertavenue.us',domain:'desertavenue.us',emoji:'🌴🏜️'},
-  {name:'AtoZ Party Depot',type:'Party Supplies & Rentals',url:'https://www.atozpartydepot.com',domain:'atozpartydepot.com',emoji:'🎉🎈'},
-  {name:'EF Tech Medic',type:'Device Repair · Plano, TX',url:'https://www.eftechmedic.com',domain:'eftechmedic.com',emoji:'🔧📱'},
-  {name:'Shams Villa',type:'Luxury Villa Rentals · Texas',url:'https://www.shamsvilla.com',domain:'shamsvilla.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=246,fit=crop,q=95/AoPGq6vp21IGn08q/shams-villa-AE04aMRb52hD1vGE.png'},
-  {name:'Coffee & Mocktails Corner',type:'Café & Beverages',url:'https://www.coffeemocktailscorner.com',domain:'coffeemocktailscorner.com',emoji:'☕🍹'},
-  {name:'EntraForce',type:'Technology & Web Services',url:'https://www.entraforce.com',domain:'entraforce.com',emoji:'⚡🔷'}
-];
+}
+
+// Build partner cards
 (function(){
-  var grid = document.getElementById('clients-grid');
-  if (!grid) return;
-  clients.forEach(function(c) {
-    var logoHtml = c.logo
-      ? '<img src="' + c.logo + '" alt="' + c.name + ' logo" onerror="this.parentNode.innerHTML=\'<span class=logo-emoji>' + (c.emoji||'🌐') + '</span>\'">'
-      : '<span class="logo-emoji">' + (c.emoji||'🌐') + '</span>';
+  var partners = [
+    {name:'WisdomTech',type:'Technology & IT',url:'https://www.wisdomtech.us',domain:'wisdomtech.us',logo:'https://wisdomtech.us/wp-content/uploads/2019/08/logo.png'},
+    {name:'Shams Caterers',type:'Food & Catering',url:'https://www.shamscaterers.com',domain:'shamscaterers.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=346,fit=crop,q=95/A3QJOrQyKRcG49bG/base_logo_transparent_background-mk39q5x4PLIp29yl.png'},
+    {name:'Spice on Wheels',type:'Food Truck & Catering',url:'https://www.spiceonwheels.us',domain:'spiceonwheels.us',emoji:'🚐'},
+    {name:'Shaahi Biryani DFW',type:'Restaurant · Plano TX',url:'https://www.shaahibiryanidfw.com',domain:'shaahibiryanidfw.com',emoji:'🍛'},
+    {name:'Desert Avenue',type:'Lifestyle & Retail',url:'https://www.desertavenue.us',domain:'desertavenue.us',emoji:'🌴'},
+    {name:'AtoZ Party Depot',type:'Party Supplies & Rentals',url:'https://www.atozpartydepot.com',domain:'atozpartydepot.com',emoji:'🎉'},
+    {name:'EF Tech Medic',type:'Device Repair · Plano TX',url:'https://www.eftechmedic.com',domain:'eftechmedic.com',emoji:'🔧'},
+    {name:'Shams Villa',type:'Luxury Villa Rentals',url:'https://www.shamsvilla.com',domain:'shamsvilla.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=246,fit=crop,q=95/AoPGq6vp21IGn08q/shams-villa-AE04aMRb52hD1vGE.png'},
+    {name:'Coffee & Mocktails Corner',type:'Cafe & Beverages',url:'https://www.coffeemocktailscorner.com',domain:'coffeemocktailscorner.com',emoji:'☕'},
+    {name:'EntraForce',type:'Technology & Web Services',url:'https://www.entraforce.com',domain:'entraforce.com',emoji:'⚡'}
+  ];
+  var grid = document.getElementById('partners-grid');
+  if(!grid) return;
+  partners.forEach(function(p,i){
+    var logoHtml = p.logo
+      ? '<img src="'+p.logo+'" alt="'+p.name+'" style="width:100%;height:100%;object-fit:contain;padding:8px" onerror="this.parentNode.innerHTML='<span style=font-size:2rem>'+(p.emoji||'🌐')+'</span>'">'
+      : '<span style="font-size:2rem">'+(p.emoji||'🌐')+'</span>';
     var card = document.createElement('a');
-    card.className = 'client-card';
-    card.href = c.url;
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
-    card.innerHTML = '<div class="client-logo-wrap">' + logoHtml + '</div><div class="client-name">' + c.name + '</div><div class="client-type">' + c.type + '</div><div class="client-url">' + c.domain + '</div>';
+    card.href = p.url; card.target='_blank'; card.rel='noopener noreferrer';
+    card.style.cssText = 'display:block;background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:2rem 1.5rem;text-align:center;text-decoration:none;color:inherit;animation:partnerFloat 4s ease-in-out '+(i*0.4)+'s infinite;cursor:pointer;transition:border-color .3s,box-shadow .3s';
+    card.innerHTML = '<div style="width:80px;height:80px;margin:0 auto 1rem;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(200,168,75,0.05);border:1px solid var(--border);overflow:hidden">'+logoHtml+'</div><div style="font-family:Manrope,sans-serif;font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.3rem">'+p.name+'</div><div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:600">'+p.type+'</div><div style="font-size:.7rem;color:var(--muted)">'+p.domain+'</div>';
+    card.onmouseenter=function(){this.style.borderColor='rgba(200,168,75,0.5)';this.style.boxShadow='0 0 30px rgba(200,168,75,0.15)';this.style.animationPlayState='paused';};
+    card.onmouseleave=function(){this.style.borderColor='';this.style.boxShadow='';this.style.animationPlayState='';};
     grid.appendChild(card);
   });
 })();
+</script>
 
-function submitForm() {
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-}
+<!-- AI CHATBOT -->
+<style>
+#ef-chat-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(200,168,75,0.4);transition:all .2s}
+#ef-chat-btn:hover{background:var(--gold2);transform:scale(1.08)}
+#ef-chat-btn .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#22c55e;border-radius:50%;border:2px solid var(--navy);animation:blink 2s ease-in-out infinite}
+#ef-chat-box{position:fixed;bottom:5rem;right:1.5rem;z-index:500;width:360px;max-height:520px;background:var(--navy2);border:1px solid var(--border);border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+#ef-chat-box.open{display:flex}
+.ef-chat-head{background:linear-gradient(135deg,var(--navy3),var(--navy2));padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--border)}
+.ef-chat-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ef-chat-info{flex:1}
+.ef-chat-name{font-family:'Manrope',sans-serif;font-size:.88rem;font-weight:700;color:var(--white)}
+.ef-chat-status{font-size:.68rem;color:#22c55e;display:flex;align-items:center;gap:.3rem}
+.ef-chat-status::before{content:'●';font-size:.5rem}
+.ef-chat-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:.2rem;transition:color .2s}
+.ef-chat-close:hover{color:var(--white)}
+.ef-chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:200px;max-height:320px}
+.ef-msg{display:flex;gap:.5rem;align-items:flex-end}
+.ef-msg.user{flex-direction:row-reverse}
+.ef-msg-bubble{max-width:80%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5}
+.ef-msg.bot .ef-msg-bubble{background:var(--navy3);color:var(--white);border-bottom-left-radius:3px}
+.ef-msg.user .ef-msg-bubble{background:var(--gold);color:var(--navy);font-weight:600;border-bottom-right-radius:3px}
+.ef-msg-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.ef-msg.bot .ef-msg-dot{background:var(--gold);color:var(--navy)}
+.ef-msg.user .ef-msg-dot{background:var(--navy3);color:var(--white)}
+.ef-typing{display:flex;gap:4px;align-items:center;padding:.5rem .85rem;background:var(--navy3);border-radius:12px;border-bottom-left-radius:3px;width:fit-content}
+.ef-typing span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:efbounce .8s ease-in-out infinite}
+.ef-typing span:nth-child(2){animation-delay:.15s}
+.ef-typing span:nth-child(3){animation-delay:.3s}
+@keyframes efbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.ef-chat-input{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;gap:.5rem;align-items:center}
+.ef-chat-input input{flex:1;background:var(--navy3);border:1px solid var(--border);color:var(--white);padding:.55rem .85rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s}
+.ef-chat-input input:focus{border-color:var(--gold)}
+.ef-chat-input input::placeholder{color:var(--muted)}
+.ef-chat-send{width:34px;height:34px;background:var(--gold);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s;flex-shrink:0}
+.ef-chat-send:hover{background:var(--gold2)}
+.ef-chat-send:disabled{opacity:.5;cursor:not-allowed}
+.ef-quick-btns{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem;border-top:1px solid var(--border)}
+.ef-qbtn{font-size:.68rem;padding:.28rem .65rem;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.ef-qbtn:hover{border-color:var(--gold);color:var(--gold)}
+</style>
 
-function openMedic() {
-  var overlay = document.getElementById('medic-overlay');
-  overlay.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  overlay.scrollTop = 0;
-  if (!document.getElementById('medic-loaded')) {
-    var tpl = document.getElementById('medic-template');
-    var clone = document.importNode(tpl.content, true);
-    document.getElementById('medic-content').appendChild(clone);
-    var marker = document.createElement('div');
-    marker.id = 'medic-loaded';
-    document.getElementById('medic-content').appendChild(marker);
-    document.querySelectorAll('#medic-content a[href^="#m-"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        e.preventDefault();
-        var t = document.getElementById(this.getAttribute('href').slice(1));
-        if (t) overlay.scrollTop = t.offsetTop - 60;
-      });
-    });
+<!-- Chat button -->
+<button id="ef-chat-btn" onclick="efToggleChat()" title="Chat with EntraForce AI">
+  💬
+  <span class="notif"></span>
+</button>
+
+<!-- Chat box -->
+<div id="ef-chat-box">
+  <div class="ef-chat-head">
+    <div class="ef-chat-avatar">⚡</div>
+    <div class="ef-chat-info">
+      <div class="ef-chat-name">EntraForce AI</div>
+      <div class="ef-chat-status">Online — ask me anything</div>
+    </div>
+    <button class="ef-chat-close" onclick="efToggleChat()">✕</button>
+  </div>
+  <div class="ef-chat-msgs" id="ef-chat-msgs"></div>
+  <div class="ef-quick-btns" id="ef-quick-btns">
+    <button class="ef-qbtn" onclick="efQuick('What services do you offer?')">Our services</button>
+    <button class="ef-qbtn" onclick="efQuick('How do I get a quote?')">Get a quote</button>
+    <button class="ef-qbtn" onclick="efQuick('Tell me about EF Tech Medic')">Tech Medic</button>
+    <button class="ef-qbtn" onclick="efQuick('What are your hours?')">Hours & location</button>
+  </div>
+  <div class="ef-chat-input">
+    <input type="text" id="ef-chat-inp" placeholder="Ask about our services..." onkeydown="if(event.key==='Enter')efSend()">
+    <button class="ef-chat-send" id="ef-chat-send-btn" onclick="efSend()">➤</button>
+  </div>
+</div>
+
+<script>
+var efChatOpen = false;
+var efChatHistory = [];
+var efChatInited = false;
+
+var EF_SYSTEM = `You are the AI assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Be helpful, friendly, and concise. Keep replies under 3 sentences unless more detail is needed.
+
+EntraForce offers three services:
+1. IT Consulting Projects - Infrastructure planning, cloud migration, network setup, managed IT support. Coming soon.
+2. EF Tech Medic - Device repair: phones, iPads, Apple Watch, HDMI/micro soldering, water damage recovery, battery replacement. Drop off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702.
+3. Website & Content Creation - Professional websites for restaurants, retail, cafes, local businesses.
+
+EntraForce location: 5501 Estate Ln, Plano, TX 75094. Hours: Mon-Sun 8AM-8PM. Phone: (224) 848-1702. Email: support@entraforce.com.
+Partners include: WisdomTech, Shams Caterers, Spice on Wheels, Shaahi Biryani DFW, Desert Avenue, AtoZ Party Depot, Shams Villa, Coffee & Mocktails Corner.
+Always encourage visitors to get a quote or visit. Never make up prices.`;
+
+function efToggleChat() {
+  efChatOpen = !efChatOpen;
+  document.getElementById('ef-chat-box').classList.toggle('open', efChatOpen);
+  if (efChatOpen && !efChatInited) {
+    efChatInited = true;
+    efAddMsg('bot', "Hi! I'm the EntraForce AI assistant 👋 I can help with questions about our IT consulting, device repair, or web services. What can I help you with?");
+  }
+  if (efChatOpen) {
+    setTimeout(function(){ document.getElementById('ef-chat-inp').focus(); }, 100);
   }
 }
 
-function closeMedic() {
-  document.getElementById('medic-overlay').style.display = 'none';
-  document.body.style.overflow = '';
+function efQuick(text) {
+  document.getElementById('ef-chat-inp').value = text;
+  efSend();
 }
 
-function medicSubmit(btn) {
-  btn.textContent = 'Sent! We will be in touch shortly.';
-  btn.style.background = '#22c55e';
-  btn.style.color = '#fff';
-  btn.disabled = true;
-  setTimeout(function() {
-    btn.textContent = 'Submit Request';
-    btn.style.background = '';
-    btn.style.color = '';
-    btn.disabled = false;
-  }, 4000);
+function efAddMsg(role, text) {
+  var msgs = document.getElementById('ef-chat-msgs');
+  var div = document.createElement('div');
+  div.className = 'ef-msg ' + role;
+  div.innerHTML = '<div class="ef-msg-dot">' + (role === 'bot' ? '⚡' : '👤') + '</div><div class="ef-msg-bubble">' + text.replace(/\n/g,'<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function efShowTyping() {
+  var msgs = document.getElementById('ef-chat-msgs');
+  var div = document.createElement('div');
+  div.className = 'ef-msg bot';
+  div.id = 'ef-typing';
+  div.innerHTML = '<div class="ef-msg-dot">⚡</div><div class="ef-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function efRemoveTyping() {
+  var t = document.getElementById('ef-typing');
+  if (t) t.remove();
+}
+
+async function efSend() {
+  var inp = document.getElementById('ef-chat-inp');
+  var text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  document.getElementById('ef-quick-btns').style.display = 'none';
+  document.getElementById('ef-chat-send-btn').disabled = true;
+
+  efAddMsg('user', text);
+  efChatHistory.push({role:'user', content: text});
+  efShowTyping();
+
+  try {
+    var resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 300,
+        system: EF_SYSTEM,
+        messages: efChatHistory
+      })
+    });
+    var data = await resp.json();
+    var reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I couldn't get a response. Please call us at (224) 848-1702!";
+    efChatHistory.push({role:'assistant', content: reply});
+    efRemoveTyping();
+    efAddMsg('bot', reply);
+  } catch(e) {
+    efRemoveTyping();
+    efAddMsg('bot', 'Sorry, I had trouble connecting. Please call us at (224) 848-1702 or email support@entraforce.com!');
+  }
+  document.getElementById('ef-chat-send-btn').disabled = false;
+  inp.focus();
 }
 </script>
 </body>
