@@ -156,6 +156,34 @@ footer span{color:var(--gold)}
   .features{grid-template-columns:1fr 1fr}
   .hero-logo-graphic{font-size:5rem}
 }
+/* CLIENTS */
+.clients-hero{text-align:center;padding:4rem 2rem 2rem;max-width:700px;margin:0 auto}
+.clients-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:0 auto;padding:0 2rem 4rem}
+.client-card{background:rgba(13,21,40,0.9);border:1px solid rgba(200,168,75,0.15);border-radius:14px;padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(10px);cursor:pointer;text-decoration:none;display:block;color:inherit;animation:floatCard 4s ease-in-out infinite}
+.client-card:nth-child(2){animation-delay:.4s}
+.client-card:nth-child(3){animation-delay:.8s}
+.client-card:nth-child(4){animation-delay:1.2s}
+.client-card:nth-child(5){animation-delay:1.6s}
+.client-card:nth-child(6){animation-delay:2s}
+.client-card:nth-child(7){animation-delay:2.4s}
+.client-card:nth-child(8){animation-delay:2.8s}
+.client-card:nth-child(9){animation-delay:3.2s}
+.client-card:nth-child(10){animation-delay:3.6s}
+@keyframes floatCard{
+  0%,100%{transform:translateY(0) scale(1);box-shadow:0 4px 20px rgba(200,168,75,0.08)}
+  50%{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 50px rgba(200,168,75,0.18),0 0 60px rgba(74,42,138,0.15)}
+}
+.client-card:hover{animation-play-state:paused;border-color:rgba(200,168,75,0.6);transform:translateY(-12px) scale(1.03) !important;box-shadow:0 24px 60px rgba(200,168,75,0.25),0 0 80px rgba(74,42,138,0.2) !important;transition:all .3s}
+.client-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.client-card:hover::before{opacity:1}
+.client-logo-wrap{width:90px;height:90px;margin:0 auto 1.1rem;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(255,255,255,0.05);border:1px solid rgba(200,168,75,0.15)}
+.client-logo-wrap img{width:100%;height:100%;object-fit:contain;padding:8px}
+.client-logo-wrap .logo-emoji{font-size:2.4rem;line-height:1}
+.client-name{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;letter-spacing:-.01em}
+.client-type{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-weight:600}
+.client-url{font-size:.7rem;color:var(--muted);opacity:.7}
+.clients-cta{text-align:center;padding:2rem 2rem 4rem;border-top:1px solid var(--border);max-width:600px;margin:0 auto}
+.clients-cta p{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:1.5rem}
 </style>
 </head>
 <body>
@@ -174,6 +202,7 @@ footer span{color:var(--gold)}
           <a onclick="goToService('web-creation')">Website / Content Creation</a>
         </div>
       </li>
+      <li id="nav-clients"><a onclick="goTo('clients')">Our Clients</a></li>
       <li id="nav-contact"><a onclick="goTo('contact')">Contact Us</a></li>
     </ul>
     <a class="cta-btn" onclick="goTo('contact')">Get a Quote</a>
@@ -390,7 +419,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📧</div>
-          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:supporthref="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div>
+          <div><div class="contact-item-label">Email</div><div class="contact-item-val"><a href="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
@@ -427,6 +456,24 @@ footer span{color:var(--gold)}
         </div>
       </div>
     </div>
+  </div>
+  <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
+</div>
+
+<!-- CLIENTS -->
+<div class="page" id="page-clients">
+  <div class="clients-hero">
+    <div class="section-tag">Who We Work With</div>
+    <h2 class="section-title">Our Clients</h2>
+    <div class="divider" style="margin:1rem auto 1.5rem"></div>
+    <p class="section-sub" style="margin:0 auto">EntraForce designs, builds, and manages websites for local businesses across the DFW area — helping them establish a professional online presence and grow their digital footprint.</p>
+  </div>
+  <div class="clients-grid" id="clients-grid"></div>
+  <div class="clients-cta">
+    <div class="section-tag">Work With Us</div>
+    <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.75rem">Is Your Business Next?</h3>
+    <p>We help local businesses across DFW build professional websites, manage their content, and grow their digital presence — all at an affordable price.</p>
+    <button class="btn-primary" onclick="goTo('contact')" style="margin-top:1rem">Get a Free Quote →</button>
   </div>
   <footer><p>© 2024 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
@@ -617,7 +664,7 @@ footer span{color:var(--gold)}
           <div class="m-ct-item"><div class="m-ct-ico">📍</div><div><div class="m-ct-key">Drop Off</div><div class="m-ct-val">Shaahi Biryani<br>3421 Renner Rd, Suite 110<br>Plano, TX 75074</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">🕐</div><div><div class="m-ct-key">Hours</div><div class="m-ct-val">Tue–Thu & Sun: 11:30 AM – 10 PM<br>Fri–Sat: 11:30 AM – 11 PM<br>Monday: Closed</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">📞</div><div><div class="m-ct-key">Call or Text</div><div class="m-ct-val"><a href="tel:+12248481702">+1 (224) 848-1702</a></div></div></div>
-          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:supporthref="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div></div>
+          <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="mailto:support&#64;entraforce&#46;com">support&#64;entraforce&#46;com</a></div></div></div>
         </div>
       </div>
       <div class="m-form-box">
@@ -657,7 +704,7 @@ function goTo(page) {
   document.getElementById('page-' + page).classList.add('active');
   document.getElementById('nav-' + page).classList.add('active');
   window.scrollTo(0, 0);
-  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact'};
+  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', clients:'/clients'};
   history.pushState({page: page}, '', urls[page] || '/');
 }
 
@@ -737,7 +784,35 @@ function medicSubmit(btn) {
     btn.style.color = '';
     btn.disabled = false;
   }, 4000);
-}
+// Build client cards
+var clients = [
+  {name:'WisdomTech',type:'Technology & IT Services',url:'https://www.wisdomtech.us',domain:'wisdomtech.us',logo:'https://wisdomtech.us/wp-content/uploads/2019/08/logo.png'},
+  {name:'Shams Caterers',type:'Food & Catering',url:'https://www.shamscaterers.com',domain:'shamscaterers.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=346,fit=crop,q=95/A3QJOrQyKRcG49bG/base_logo_transparent_background-mk39q5x4PLIp29yl.png'},
+  {name:'Spice on Wheels',type:'Food Truck & Mobile Catering',url:'https://www.spiceonwheels.us',domain:'spiceonwheels.us',emoji:'🚐🌶️'},
+  {name:'Shaahi Biryani DFW',type:'Restaurant · Plano, TX',url:'https://www.shaahibiryanidfw.com',domain:'shaahibiryanidfw.com',emoji:'🍛👑'},
+  {name:'Desert Avenue',type:'Lifestyle & Retail',url:'https://www.desertavenue.us',domain:'desertavenue.us',emoji:'🌴🏜️'},
+  {name:'AtoZ Party Depot',type:'Party Supplies & Rentals',url:'https://www.atozpartydepot.com',domain:'atozpartydepot.com',emoji:'🎉🎈'},
+  {name:'EF Tech Medic',type:'Device Repair · Plano, TX',url:'https://www.eftechmedic.com',domain:'eftechmedic.com',emoji:'🔧📱'},
+  {name:'Shams Villa',type:'Luxury Villa Rentals · Texas',url:'https://www.shamsvilla.com',domain:'shamsvilla.com',logo:'https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=246,fit=crop,q=95/AoPGq6vp21IGn08q/shams-villa-AE04aMRb52hD1vGE.png'},
+  {name:'Coffee & Mocktails Corner',type:'Café & Beverages',url:'https://www.coffeemocktailscorner.com',domain:'coffeemocktailscorner.com',emoji:'☕🍹'},
+  {name:'EntraForce',type:'Technology & Web Services',url:'https://www.entraforce.com',domain:'entraforce.com',emoji:'⚡🔷'}
+];
+(function(){
+  var grid = document.getElementById('clients-grid');
+  if (!grid) return;
+  clients.forEach(function(c) {
+    var logoHtml = c.logo
+      ? '<img src="' + c.logo + '" alt="' + c.name + ' logo" onerror="this.parentNode.innerHTML=\'<span class=logo-emoji>' + (c.emoji||'🌐') + '</span>\'">'
+      : '<span class="logo-emoji">' + (c.emoji||'🌐') + '</span>';
+    var card = document.createElement('a');
+    card.className = 'client-card';
+    card.href = c.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.innerHTML = '<div class="client-logo-wrap">' + logoHtml + '</div><div class="client-name">' + c.name + '</div><div class="client-type">' + c.type + '</div><div class="client-url">' + c.domain + '</div>';
+    grid.appendChild(card);
+  });
+})();
 </script>
 </body>
 </html>
