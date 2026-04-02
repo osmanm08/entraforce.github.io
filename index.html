@@ -453,6 +453,18 @@ footer span{color:var(--gold)}
 .mt .m-ft-about{font-size:.78rem;color:#555;line-height:1.65;max-width:280px;margin-bottom:1rem}
 .mt .m-ft-bottom{display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid #222;font-size:.72rem;color:#555;flex-wrap:wrap;gap:1rem}
 @media(max-width:900px){.mt .m-hero-wrap,.mt .m-why-grid,.mt .m-ct-grid{grid-template-columns:1fr}.mt .m-svc-grid{grid-template-columns:1fr 1fr}.mt .m-proc-grid{grid-template-columns:1fr 1fr}}
+
+/* ── Chatbot ── */
+#ef-bubble{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 20px rgba(240,230,20,.4);font-size:1.4rem;border:none;transition:transform .2s}
+#ef-bubble:hover{transform:scale(1.1)}
+#ef-chat{display:none;position:fixed;bottom:5rem;right:1.5rem;width:320px;background:#111;border:1px solid #333;border-radius:16px;overflow:hidden;z-index:9999;box-shadow:0 8px 40px rgba(0,0,0,.6);flex-direction:column;max-height:480px}
+#ef-chat-head{background:#0a0a0a;padding:.9rem 1.1rem;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between}
+#ef-chat-msgs{overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.6rem;max-height:280px}
+#ef-chat-qbtns{padding:.4rem .9rem;display:flex;flex-wrap:wrap;gap:.35rem;min-height:0}
+#ef-chat-inp-row{padding:.7rem .9rem;border-top:1px solid #222;display:flex;gap:.5rem}
+#ef-chat-inp{flex:1;background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.5rem .8rem;border-radius:8px;font-size:.8rem;outline:none;font-family:'Outfit',sans-serif}
+#ef-chat-inp:focus{border-color:#f0e614}
+#ef-chat-send{background:#f0e614;color:#000;border:none;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:900;flex-shrink:0}
 @media(max-width:600px){.mt .m-svc-grid,.mt .m-why-cards,.mt .m-proc-grid,.mt .m-f-row{grid-template-columns:1fr}.mt .m-hero-card{display:none}}
 </style>
 <div class="mt">
@@ -584,192 +596,28 @@ footer span{color:var(--gold)}
   </div>
 </div>
 
-<!-- Medic AI Chatbot -->
-<style>
-#mc-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:600;width:56px;height:56px;border-radius:50%;background:#f0e614;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(240,230,20,0.4);transition:all .2s}
-#mc-btn:hover{background:#ffe033;transform:scale(1.08)}
-#mc-btn .mn{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#22c55e;border-radius:50%;border:2px solid #0a0a0a}
-#mc-box{position:fixed;bottom:5rem;right:1.5rem;z-index:600;width:360px;max-height:520px;background:#111;border:1px solid #222;border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.7)}
-#mc-box.open{display:flex}
-.mc-head{background:#181818;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid #222}
-.mc-avatar{width:36px;height:36px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;color:#000}
-.mc-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.05em;color:#f0ece4}
-.mc-status{font-size:.68rem;color:#22c55e;display:flex;align-items:center;gap:.3rem}
-.mc-status::before{content:'●';font-size:.5rem}
-.mc-close{background:none;border:none;color:#888;cursor:pointer;font-size:1.1rem;padding:.2rem;margin-left:auto}
-.mc-close:hover{color:#f0ece4}
-.mc-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:200px;max-height:320px}
-.mc-m{display:flex;gap:.5rem;align-items:flex-end}
-.mc-m.u{flex-direction:row-reverse}
-.mc-b{max-width:80%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5;font-family:'Outfit',sans-serif}
-.mc-m.b .mc-b{background:#222;color:#f0ece4;border-bottom-left-radius:3px}
-.mc-m.u .mc-b{background:#f0e614;color:#000;font-weight:600;border-bottom-right-radius:3px}
-.mc-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
-.mc-m.b .mc-dot{background:#f0e614;color:#000}
-.mc-m.u .mc-dot{background:#222;color:#f0ece4}
-.mc-typ{display:flex;gap:4px;align-items:center;padding:.5rem .85rem;background:#222;border-radius:12px;border-bottom-left-radius:3px}
-.mc-typ span{width:6px;height:6px;background:#555;border-radius:50%;animation:mcb .8s ease-in-out infinite}
-.mc-typ span:nth-child(2){animation-delay:.15s}.mc-typ span:nth-child(3){animation-delay:.3s}
-@keyframes mcb{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.mc-qbtns{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem;border-top:1px solid #222}
-.mc-q{font-size:.68rem;padding:.28rem .65rem;border:1px solid #222;background:transparent;color:#888;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'Outfit',sans-serif}
-.mc-q:hover{border-color:#f0e614;color:#f0e614}
-.mc-inp-row{padding:.75rem 1rem;border-top:1px solid #222;display:flex;gap:.5rem;align-items:center}
-.mc-inp-row input{flex:1;background:#181818;border:1px solid #222;color:#f0ece4;padding:.55rem .85rem;border-radius:8px;font-family:'Outfit',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s}
-.mc-inp-row input:focus{border-color:#f0e614}
-.mc-inp-row input::placeholder{color:#555}
-.mc-send{width:34px;height:34px;background:#f0e614;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;color:#000}
-.mc-send:hover{background:#ffe033}
-.mc-send:disabled{opacity:.5;cursor:not-allowed}
-</style>
-<button id="mc-btn" onclick="mcToggle()" title="Chat with EF Tech Medic AI">🔧<span class="mn"></span></button>
-<div id="mc-box">
-  <div class="mc-head">
-    <div class="mc-avatar">🔧</div>
-    <div>
-      <div class="mc-name">EF Tech Medic AI</div>
-      <div class="mc-status">Online — repair help available</div>
-    </div>
-    <button class="mc-close" onclick="mcToggle()">✕</button>
-  </div>
-  <div class="mc-msgs" id="mc-msgs"></div>
-  <div class="mc-qbtns" id="mc-qbtns">
-    <button class="mc-q" onclick="mcQ('How much does a screen repair cost?')">Screen repair cost</button>
-    <button class="mc-q" onclick="mcQ('What phones do you fix?')">Supported phones</button>
-    <button class="mc-q" onclick="mcQ('Where are you located?')">Location & hours</button>
-    <button class="mc-q" onclick="mcQ('How long does repair take?')">Repair time</button>
-  </div>
-  <div class="mc-inp-row">
-    <input type="text" id="mc-inp" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')mcSend()">
-    <button class="mc-send" id="mc-send" onclick="mcSend()">➤</button>
-  </div>
-</div>
-<script>
-var mcOpen=false, mcHistory=[], mcInited=false;
-var MC_SYS=`You are the AI assistant for EF Tech Medic, a device repair service in Plano, TX run by EntraForce. Be friendly, helpful, and concise. Keep replies under 3 sentences.
-
-Services: Smartphone repair (iPhone, Samsung, Pixel, OnePlus, LG), iPad & tablet repair, Apple Watch repair, HDMI & micro soldering, water damage recovery, battery replacement.
-We do NOT repair: game consoles, MacBooks, laptops.
-Location: Drop off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074.
-Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday CLOSED.
-Phone: (224) 848-1702. Email: support@entraforce.com.
-No appointments needed — just walk in. Free diagnosis. No-obligation quote.
-Never quote specific prices. Encourage customers to drop in or call for a quote.`;
-
-function mcToggle(){
-  var p=document.getElementById('mc-panel');
-  var b=document.getElementById('mc-bubble');
-  if(!p)return;
-  var open=p.style.display==='flex';
-  p.style.display=open?'none':'flex';
-  b.style.transform=open?'':'scale(0.9)';
-  if(!open&&!window.mcInited){window.mcInited=true;mcInit();}
-}
-function mcInit(){
-  var msgs=document.getElementById('mc-msgs');
-  if(!msgs)return;
-  mcAdd('b','Hey! 👋 I\'m the EF Tech Medic assistant. What can I help you with today?');
-  var qbtns=document.getElementById('mc-qbtns');
-  var qs=['Repair prices?','Drop-off hours?','What do you fix?','Get a quote'];
-  qs.forEach(function(q){
-    var btn=document.createElement('button');
-    btn.textContent=q;
-    btn.style.cssText='background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.3rem .7rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif;transition:border-color .2s';
-    btn.onmouseenter=function(){this.style.borderColor='#f0e614';};
-    btn.onmouseleave=function(){this.style.borderColor='#333';};
-    btn.onclick=function(){
-      document.getElementById('mc-inp').value=q;
-      mcSend();
-    };
-    qbtns.appendChild(btn);
-  });
-}
-function mcAdd(role,text){
-  var msgs=document.getElementById('mc-msgs');
-  if(!msgs)return;
-  var d=document.createElement('div');
-  var isUser=role==='u';
-  d.style.cssText='max-width:85%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5;font-family:Outfit,sans-serif;'+(isUser?'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px':'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #222');
-  d.textContent=text;
-  msgs.appendChild(d);
-  msgs.scrollTop=msgs.scrollHeight;
-}
-function mcTyping(){
-  var msgs=document.getElementById('mc-msgs');
-  if(!msgs)return;
-  var d=document.createElement('div');
-  d.id='mc-typ';
-  d.style.cssText='background:#1a1a1a;border:1px solid #222;color:#888;padding:.6rem .85rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.82rem;align-self:flex-start;font-family:Outfit,sans-serif';
-  d.textContent='Typing...';
-  msgs.appendChild(d);
-  msgs.scrollTop=msgs.scrollHeight;
-}
-
-  mcOpen=!mcOpen;
-  document.getElementById('mc-box').classList.toggle('open',mcOpen);
-  if(mcOpen&&!mcInited){
-    mcInited=true;
-    mcAdd('b',"Hey! I'm the EF Tech Medic assistant 🔧 Got a cracked screen or broken device? I can help you figure out next steps. What's going on?");
-  }
-  if(mcOpen) setTimeout(function(){document.getElementById('mc-inp').focus();},100);
-}
-function mcQ(t){document.getElementById('mc-inp').value=t;mcSend();}
-function mcAdd(role,text){
-  var msgs=document.getElementById('mc-msgs');
-  var d=document.createElement('div');
-  d.className='mc-m '+role;
-  d.innerHTML='<div class="mc-dot">'+(role==='b'?'🔧':'👤')+'</div><div class="mc-b">'+text.replace(/\n/g,'<br>')+'</div>';
-  msgs.appendChild(d);
-  msgs.scrollTop=msgs.scrollHeight;
-}
-function mcTyping(){
-  var msgs=document.getElementById('mc-msgs');
-  var d=document.createElement('div');
-  d.className='mc-m b';d.id='mc-typ';
-  d.innerHTML='<div class="mc-dot">🔧</div><div class="mc-typ"><span></span><span></span><span></span></div>';
-  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
-}
-async function mcSend(){
-  var inp=document.getElementById('mc-inp');
-  var t=inp.value.trim();if(!t)return;
-  inp.value='';
-  document.getElementById('mc-qbtns').style.display='none';
-  document.getElementById('mc-send').disabled=true;
-  mcAdd('u',t);mcHistory.push({role:'user',content:t});mcTyping();
-  try{
-    var r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:MC_SYS,messages:mcHistory})
-    });
-    var data=await r.json();
-    var reply=data.content&&data.content[0]?data.content[0].text:"Sorry! Please call us at (224) 848-1702 for help.";
-    mcHistory.push({role:'assistant',content:reply});
-    var typ=document.getElementById('mc-typ');if(typ)typ.remove();
-    mcAdd('b',reply);
-  }catch(e){
-    var typ=document.getElementById('mc-typ');if(typ)typ.remove();
-    mcAdd('b','Having trouble connecting. Call us at (224) 848-1702 — we\'re happy to help!');
-  }
-  document.getElementById('mc-send').disabled=false;inp.focus();
-}
-<!-- EF Tech Medic Chatbot -->
-<div id="mc-bubble" onclick="mcToggle()" style="position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 20px rgba(240,230,20,0.4);font-size:1.5rem;transition:transform .2s">💬</div>
-<div id="mc-panel" style="display:none;position:fixed;bottom:5rem;right:1.5rem;width:340px;max-height:520px;background:#111;border:1px solid #333;border-radius:16px;overflow:hidden;z-index:9999;box-shadow:0 8px 40px rgba(0,0,0,0.6);flex-direction:column">
-  <div style="background:#0a0a0a;padding:1rem 1.2rem;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between">
+<!-- CHATBOT BUBBLE & PANEL -->
+<button id="ef-bubble" onclick="efToggle()">💬</button>
+<div id="ef-chat">
+  <div id="ef-chat-head">
     <div style="display:flex;align-items:center;gap:.6rem">
       <div style="width:32px;height:32px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem">🔧</div>
-      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:#f0ece4">EF Tech Medic</div><div style="font-size:.65rem;color:#22c55e">● Online now</div></div>
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:#f0ece4">EF Tech Medic</div>
+        <div style="font-size:.65rem;color:#22c55e">● Online now</div>
+      </div>
     </div>
-    <button onclick="mcToggle()" style="background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer;padding:0">✕</button>
+    <button onclick="efToggle()" style="background:none;border:none;color:#888;font-size:1.1rem;cursor:pointer;padding:0">✕</button>
   </div>
-  <div id="mc-msgs" style="flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;max-height:320px"></div>
-  <div id="mc-qbtns" style="padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.4rem"></div>
-  <div style="padding:.75rem 1rem;border-top:1px solid #222;display:flex;gap:.5rem">
-    <input id="mc-inp" type="text" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')mcSend()" style="flex:1;background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.55rem .85rem;border-radius:8px;font-size:.82rem;outline:none;font-family:'Outfit',sans-serif">
-    <button id="mc-send" onclick="mcSend()" style="background:#f0e614;color:#000;border:none;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:center">↑</button>
+  <div id="ef-chat-msgs"></div>
+  <div id="ef-chat-qbtns"></div>
+  <div id="ef-chat-inp-row">
+    <input id="ef-chat-inp" type="text" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')efSend()">
+    <button id="ef-chat-send" onclick="efSend()">↑</button>
   </div>
 </div>
-
+</div>
+</template>
 
 <script>
 function goTo(page) {
@@ -890,128 +738,59 @@ function medicSubmit(btn) {
     grid.appendChild(card);
   });
 })();
-</script>
+// ── EF Tech Medic Chatbot ──
+var efHistory = [];
+var efInited = false;
+var EF_SYS = 'You are the friendly AI assistant for EF Tech Medic, a device repair shop in Plano, TX run by EntraForce. Keep answers short (2-4 sentences). Always be helpful and warm. Key facts: Drop-off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. Email: support@entraforce.com. Services: smartphone repair (iPhone, Samsung, Pixel, OnePlus, LG), iPad/tablet repair, Apple Watch repair, HDMI & micro soldering, water damage recovery, battery replacement. We do NOT repair game consoles, MacBooks, or laptops. No pricing listed — customers get a free quote. Most repairs same day. No appointment needed, walk-ins welcome. If unsure, suggest calling (224) 848-1702.';
 
-<!-- AI CHATBOT -->
-<style>
-#ef-chat-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 20px rgba(200,168,75,0.4);transition:all .2s}
-#ef-chat-btn:hover{background:var(--gold2);transform:scale(1.08)}
-#ef-chat-btn .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#22c55e;border-radius:50%;border:2px solid var(--navy);animation:blink 2s ease-in-out infinite}
-#ef-chat-box{position:fixed;bottom:5rem;right:1.5rem;z-index:500;width:360px;max-height:520px;background:var(--navy2);border:1px solid var(--border);border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-#ef-chat-box.open{display:flex}
-.ef-chat-head{background:linear-gradient(135deg,var(--navy3),var(--navy2));padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--border)}
-.ef-chat-avatar{width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.ef-chat-info{flex:1}
-.ef-chat-name{font-family:'Manrope',sans-serif;font-size:.88rem;font-weight:700;color:var(--white)}
-.ef-chat-status{font-size:.68rem;color:#22c55e;display:flex;align-items:center;gap:.3rem}
-.ef-chat-status::before{content:'●';font-size:.5rem}
-.ef-chat-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:.2rem;transition:color .2s}
-.ef-chat-close:hover{color:var(--white)}
-.ef-chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;min-height:200px;max-height:320px}
-.ef-msg{display:flex;gap:.5rem;align-items:flex-end}
-.ef-msg.user{flex-direction:row-reverse}
-.ef-msg-bubble{max-width:80%;padding:.6rem .85rem;border-radius:12px;font-size:.82rem;line-height:1.5}
-.ef-msg.bot .ef-msg-bubble{background:var(--navy3);color:var(--white);border-bottom-left-radius:3px}
-.ef-msg.user .ef-msg-bubble{background:var(--gold);color:var(--navy);font-weight:600;border-bottom-right-radius:3px}
-.ef-msg-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
-.ef-msg.bot .ef-msg-dot{background:var(--gold);color:var(--navy)}
-.ef-msg.user .ef-msg-dot{background:var(--navy3);color:var(--white)}
-.ef-typing{display:flex;gap:4px;align-items:center;padding:.5rem .85rem;background:var(--navy3);border-radius:12px;border-bottom-left-radius:3px;width:fit-content}
-.ef-typing span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:efbounce .8s ease-in-out infinite}
-.ef-typing span:nth-child(2){animation-delay:.15s}
-.ef-typing span:nth-child(3){animation-delay:.3s}
-@keyframes efbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.ef-chat-input{padding:.75rem 1rem;border-top:1px solid var(--border);display:flex;gap:.5rem;align-items:center}
-.ef-chat-input input{flex:1;background:var(--navy3);border:1px solid var(--border);color:var(--white);padding:.55rem .85rem;border-radius:8px;font-family:'Inter',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s}
-.ef-chat-input input:focus{border-color:var(--gold)}
-.ef-chat-input input::placeholder{color:var(--muted)}
-.ef-chat-send{width:34px;height:34px;background:var(--gold);border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s;flex-shrink:0}
-.ef-chat-send:hover{background:var(--gold2)}
-.ef-chat-send:disabled{opacity:.5;cursor:not-allowed}
-.ef-quick-btns{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem 1rem;border-top:1px solid var(--border)}
-.ef-qbtn{font-size:.68rem;padding:.28rem .65rem;border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap}
-.ef-qbtn:hover{border-color:var(--gold);color:var(--gold)}
-</style>
-
-<!-- Chat button -->
-<button id="ef-chat-btn" onclick="efToggleChat()" title="Chat with EntraForce AI">
-  💬
-  <span class="notif"></span>
-</button>
-
-<!-- Chat box -->
-<div id="ef-chat-box">
-  <div class="ef-chat-head">
-    <div class="ef-chat-avatar">⚡</div>
-    <div class="ef-chat-info">
-      <div class="ef-chat-name">EntraForce AI</div>
-      <div class="ef-chat-status">Online — ask me anything</div>
-    </div>
-    <button class="ef-chat-close" onclick="efToggleChat()">✕</button>
-  </div>
-  <div class="ef-chat-msgs" id="ef-chat-msgs"></div>
-  <div class="ef-quick-btns" id="ef-quick-btns">
-    <button class="ef-qbtn" onclick="efQuick('What services do you offer?')">Our services</button>
-    <button class="ef-qbtn" onclick="efQuick('How do I get a quote?')">Get a quote</button>
-    <button class="ef-qbtn" onclick="efQuick('Tell me about EF Tech Medic')">Tech Medic</button>
-    <button class="ef-qbtn" onclick="efQuick('What are your hours?')">Hours & location</button>
-  </div>
-  <div class="ef-chat-input">
-    <input type="text" id="ef-chat-inp" placeholder="Ask about our services..." onkeydown="if(event.key==='Enter')efSend()">
-    <button class="ef-chat-send" id="ef-chat-send-btn" onclick="efSend()">➤</button>
-  </div>
-</div>
-
-<script>
-var efChatOpen = false;
-var efChatHistory = [];
-var efChatInited = false;
-
-var EF_SYSTEM = `You are the AI assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Be helpful, friendly, and concise. Keep replies under 3 sentences unless more detail is needed.
-
-EntraForce offers three services:
-1. IT Consulting Projects - Infrastructure planning, cloud migration, network setup, managed IT support. Coming soon.
-2. EF Tech Medic - Device repair: phones, iPads, Apple Watch, HDMI/micro soldering, water damage recovery, battery replacement. Drop off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702.
-3. Website & Content Creation - Professional websites for restaurants, retail, cafes, local businesses.
-
-EntraForce location: 5501 Estate Ln, Plano, TX 75094. Hours: Mon-Sun 8AM-8PM. Phone: (224) 848-1702. Email: support@entraforce.com.
-Partners include: WisdomTech, Shams Caterers, Spice on Wheels, Shaahi Biryani DFW, Desert Avenue, AtoZ Party Depot, Shams Villa, Coffee & Mocktails Corner.
-Always encourage visitors to get a quote or visit. Never make up prices.`;
-
-function efToggleChat() {
-  efChatOpen = !efChatOpen;
-  document.getElementById('ef-chat-box').classList.toggle('open', efChatOpen);
-  if (efChatOpen && !efChatInited) {
-    efChatInited = true;
-    efAddMsg('bot', "Hi! I'm the EntraForce AI assistant 👋 I can help with questions about our IT consulting, device repair, or web services. What can I help you with?");
-  }
-  if (efChatOpen) {
-    setTimeout(function(){ document.getElementById('ef-chat-inp').focus(); }, 100);
-  }
+function efToggle() {
+  var chat = document.getElementById('ef-chat');
+  var bubble = document.getElementById('ef-bubble');
+  if (!chat) return;
+  var open = chat.style.display === 'flex';
+  chat.style.display = open ? 'none' : 'flex';
+  bubble.textContent = open ? '💬' : '✕';
+  if (!open && !efInited) { efInited = true; efInit(); }
 }
 
-function efQuick(text) {
-  document.getElementById('ef-chat-inp').value = text;
-  efSend();
+function efInit() {
+  efAddMsg('bot', 'Hey! 👋 I am the EF Tech Medic assistant. What can I help you with?');
+  var qbtns = document.getElementById('ef-chat-qbtns');
+  if (!qbtns) return;
+  var qs = ['What do you fix?', 'Drop-off hours?', 'Where are you located?', 'Get a quote'];
+  qs.forEach(function(q) {
+    var btn = document.createElement('button');
+    btn.textContent = q;
+    btn.style.cssText = 'background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif;transition:border-color .2s';
+    btn.onmouseenter = function(){ this.style.borderColor='#f0e614'; };
+    btn.onmouseleave = function(){ this.style.borderColor='#333'; };
+    btn.onclick = function() {
+      document.getElementById('ef-chat-inp').value = q;
+      efSend();
+    };
+    qbtns.appendChild(btn);
+  });
 }
 
 function efAddMsg(role, text) {
   var msgs = document.getElementById('ef-chat-msgs');
-  var div = document.createElement('div');
-  div.className = 'ef-msg ' + role;
-  div.innerHTML = '<div class="ef-msg-dot">' + (role === 'bot' ? '⚡' : '👤') + '</div><div class="ef-msg-bubble">' + text.replace(/\n/g,'<br>') + '</div>';
-  msgs.appendChild(div);
+  if (!msgs) return;
+  var d = document.createElement('div');
+  var isUser = role === 'user';
+  d.style.cssText = 'max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Outfit,sans-serif;word-break:break-word;' + (isUser ? 'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px' : 'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #2a2a2a');
+  d.textContent = text;
+  msgs.appendChild(d);
   msgs.scrollTop = msgs.scrollHeight;
-  return div;
 }
 
-function efShowTyping() {
+function efTyping() {
   var msgs = document.getElementById('ef-chat-msgs');
-  var div = document.createElement('div');
-  div.className = 'ef-msg bot';
-  div.id = 'ef-typing';
-  div.innerHTML = '<div class="ef-msg-dot">⚡</div><div class="ef-typing"><span></span><span></span><span></span></div>';
-  msgs.appendChild(div);
+  if (!msgs) return;
+  var d = document.createElement('div');
+  d.id = 'ef-typing';
+  d.style.cssText = 'background:#1a1a1a;border:1px solid #2a2a2a;color:#666;padding:.55rem .8rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.8rem;align-self:flex-start;font-family:Outfit,sans-serif';
+  d.textContent = 'Typing...';
+  msgs.appendChild(d);
   msgs.scrollTop = msgs.scrollHeight;
 }
 
@@ -1022,39 +801,41 @@ function efRemoveTyping() {
 
 async function efSend() {
   var inp = document.getElementById('ef-chat-inp');
+  var send = document.getElementById('ef-chat-send');
+  var qbtns = document.getElementById('ef-chat-qbtns');
+  if (!inp) return;
   var text = inp.value.trim();
   if (!text) return;
   inp.value = '';
-  document.getElementById('ef-quick-btns').style.display = 'none';
-  document.getElementById('ef-chat-send-btn').disabled = true;
-
+  if (qbtns) qbtns.style.display = 'none';
+  if (send) send.disabled = true;
   efAddMsg('user', text);
-  efChatHistory.push({role:'user', content: text});
-  efShowTyping();
-
+  efHistory.push({ role: 'user', content: text });
+  efTyping();
   try {
-    var resp = await fetch('https://api.anthropic.com/v1/messages', {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-haiku-4-5-20251001',
         max_tokens: 300,
-        system: EF_SYSTEM,
-        messages: efChatHistory
+        system: EF_SYS,
+        messages: efHistory
       })
     });
-    var data = await resp.json();
-    var reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I couldn't get a response. Please call us at (224) 848-1702!";
-    efChatHistory.push({role:'assistant', content: reply});
+    var data = await res.json();
+    var reply = (data.content && data.content[0]) ? data.content[0].text : 'Please call us at (224) 848-1702 for help!';
+    efHistory.push({ role: 'assistant', content: reply });
     efRemoveTyping();
     efAddMsg('bot', reply);
   } catch(e) {
     efRemoveTyping();
-    efAddMsg('bot', 'Sorry, I had trouble connecting. Please call us at (224) 848-1702 or email support@entraforce.com!');
+    efAddMsg('bot', 'Having trouble connecting. Call us at (224) 848-1702 — we are happy to help!');
   }
-  document.getElementById('ef-chat-send-btn').disabled = false;
-  inp.focus();
+  if (send) send.disabled = false;
+  if (inp) inp.focus();
 }
+
 </script>
 </body>
 </html>
