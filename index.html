@@ -454,15 +454,14 @@ footer span{color:var(--gold)}
 .mt .m-ft-bottom{display:flex;justify-content:space-between;padding-top:1.5rem;border-top:1px solid #222;font-size:.72rem;color:#555;flex-wrap:wrap;gap:1rem}
 @media(max-width:900px){.mt .m-hero-wrap,.mt .m-why-grid,.mt .m-ct-grid{grid-template-columns:1fr}.mt .m-svc-grid{grid-template-columns:1fr 1fr}.mt .m-proc-grid{grid-template-columns:1fr 1fr}}
 
-/* ── Chatbot ── */
 #ef-bubble{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:9999;box-shadow:0 4px 20px rgba(240,230,20,.4);font-size:1.4rem;border:none;transition:transform .2s}
 #ef-bubble:hover{transform:scale(1.1)}
 #ef-chat{display:none;position:fixed;bottom:5rem;right:1.5rem;width:320px;background:#111;border:1px solid #333;border-radius:16px;overflow:hidden;z-index:9999;box-shadow:0 8px 40px rgba(0,0,0,.6);flex-direction:column;max-height:480px}
 #ef-chat-head{background:#0a0a0a;padding:.9rem 1.1rem;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between}
 #ef-chat-msgs{overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.6rem;max-height:280px}
-#ef-chat-qbtns{padding:.4rem .9rem;display:flex;flex-wrap:wrap;gap:.35rem;min-height:0}
+#ef-chat-qbtns{padding:.4rem .9rem;display:flex;flex-wrap:wrap;gap:.35rem}
 #ef-chat-inp-row{padding:.7rem .9rem;border-top:1px solid #222;display:flex;gap:.5rem}
-#ef-chat-inp{flex:1;background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.5rem .8rem;border-radius:8px;font-size:.8rem;outline:none;font-family:'Outfit',sans-serif}
+#ef-chat-inp{flex:1;background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.5rem .8rem;border-radius:8px;font-size:.8rem;outline:none;font-family:Outfit,sans-serif}
 #ef-chat-inp:focus{border-color:#f0e614}
 #ef-chat-send{background:#f0e614;color:#000;border:none;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:.95rem;font-weight:900;flex-shrink:0}
 @media(max-width:600px){.mt .m-svc-grid,.mt .m-why-cards,.mt .m-proc-grid,.mt .m-f-row{grid-template-columns:1fr}.mt .m-hero-card{display:none}}
@@ -596,24 +595,20 @@ footer span{color:var(--gold)}
   </div>
 </div>
 
-<!-- CHATBOT BUBBLE & PANEL -->
-<button id="ef-bubble" onclick="efToggle()">💬</button>
+<button id="ef-bubble" onclick="efToggle()">&#x1F4AC;</button>
 <div id="ef-chat">
   <div id="ef-chat-head">
     <div style="display:flex;align-items:center;gap:.6rem">
-      <div style="width:32px;height:32px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem">🔧</div>
-      <div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:#f0ece4">EF Tech Medic</div>
-        <div style="font-size:.65rem;color:#22c55e">● Online now</div>
-      </div>
+      <div style="width:32px;height:32px;background:#f0e614;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem">&#x1F527;</div>
+      <div><div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.06em;color:#f0ece4">EF Tech Medic</div><div style="font-size:.65rem;color:#22c55e">&#x25CF; Online now</div></div>
     </div>
-    <button onclick="efToggle()" style="background:none;border:none;color:#888;font-size:1.1rem;cursor:pointer;padding:0">✕</button>
+    <button onclick="efToggle()" style="background:none;border:none;color:#888;font-size:1.1rem;cursor:pointer;padding:0">&#x2715;</button>
   </div>
   <div id="ef-chat-msgs"></div>
   <div id="ef-chat-qbtns"></div>
   <div id="ef-chat-inp-row">
     <input id="ef-chat-inp" type="text" placeholder="Ask about repairs..." onkeydown="if(event.key==='Enter')efSend()">
-    <button id="ef-chat-send" onclick="efSend()">↑</button>
+    <button id="ef-chat-send" onclick="efSend()">&#x2191;</button>
   </div>
 </div>
 </div>
@@ -738,102 +733,72 @@ function medicSubmit(btn) {
     grid.appendChild(card);
   });
 })();
-// ── EF Tech Medic Chatbot ──
-var efHistory = [];
-var efInited = false;
-var EF_SYS = 'You are the friendly AI assistant for EF Tech Medic, a device repair shop in Plano, TX run by EntraForce. Keep answers short (2-4 sentences). Always be helpful and warm. Key facts: Drop-off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. Email: support@entraforce.com. Services: smartphone repair (iPhone, Samsung, Pixel, OnePlus, LG), iPad/tablet repair, Apple Watch repair, HDMI & micro soldering, water damage recovery, battery replacement. We do NOT repair game consoles, MacBooks, or laptops. No pricing listed — customers get a free quote. Most repairs same day. No appointment needed, walk-ins welcome. If unsure, suggest calling (224) 848-1702.';
-
-function efToggle() {
-  var chat = document.getElementById('ef-chat');
-  var bubble = document.getElementById('ef-bubble');
-  if (!chat) return;
-  var open = chat.style.display === 'flex';
-  chat.style.display = open ? 'none' : 'flex';
-  bubble.textContent = open ? '💬' : '✕';
-  if (!open && !efInited) { efInited = true; efInit(); }
+var efHistory=[];var efInited=false;
+var EF_SYS='You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX run by EntraForce. Keep answers short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix: smartphones (iPhone, Samsung, Pixel, OnePlus, LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. We do NOT fix game consoles, MacBooks or laptops. No pricing listed - free quote given. Most repairs same day. Walk-ins welcome, no appointment needed. If unsure say call (224) 848-1702.';
+function efToggle(){
+  var c=document.getElementById('ef-chat');
+  var b=document.getElementById('ef-bubble');
+  if(!c)return;
+  var open=c.style.display==='flex';
+  c.style.display=open?'none':'flex';
+  b.innerHTML=open?'&#x1F4AC;':'&#x2715;';
+  if(!open&&!efInited){efInited=true;efInit();}
 }
-
-function efInit() {
-  efAddMsg('bot', 'Hey! 👋 I am the EF Tech Medic assistant. What can I help you with?');
-  var qbtns = document.getElementById('ef-chat-qbtns');
-  if (!qbtns) return;
-  var qs = ['What do you fix?', 'Drop-off hours?', 'Where are you located?', 'Get a quote'];
-  qs.forEach(function(q) {
-    var btn = document.createElement('button');
-    btn.textContent = q;
-    btn.style.cssText = 'background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif;transition:border-color .2s';
-    btn.onmouseenter = function(){ this.style.borderColor='#f0e614'; };
-    btn.onmouseleave = function(){ this.style.borderColor='#333'; };
-    btn.onclick = function() {
-      document.getElementById('ef-chat-inp').value = q;
-      efSend();
-    };
-    qbtns.appendChild(btn);
+function efInit(){
+  efAddMsg('bot','Hey! I am the EF Tech Medic assistant. What can I help you with?');
+  var q=document.getElementById('ef-chat-qbtns');if(!q)return;
+  ['What do you fix?','Drop-off hours?','Where are you?','Get a quote'].forEach(function(t){
+    var b=document.createElement('button');
+    b.textContent=t;
+    b.style.cssText='background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif';
+    b.onmouseenter=function(){this.style.borderColor='#f0e614';};
+    b.onmouseleave=function(){this.style.borderColor='#333';};
+    b.onclick=function(){document.getElementById('ef-chat-inp').value=t;efSend();};
+    q.appendChild(b);
   });
 }
-
-function efAddMsg(role, text) {
-  var msgs = document.getElementById('ef-chat-msgs');
-  if (!msgs) return;
-  var d = document.createElement('div');
-  var isUser = role === 'user';
-  d.style.cssText = 'max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Outfit,sans-serif;word-break:break-word;' + (isUser ? 'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px' : 'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #2a2a2a');
-  d.textContent = text;
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
+function efAddMsg(role,text){
+  var m=document.getElementById('ef-chat-msgs');if(!m)return;
+  var d=document.createElement('div');
+  var u=role==='user';
+  d.style.cssText='max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Outfit,sans-serif;word-break:break-word;'+(u?'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px':'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #2a2a2a');
+  d.textContent=text;m.appendChild(d);m.scrollTop=m.scrollHeight;
 }
-
-function efTyping() {
-  var msgs = document.getElementById('ef-chat-msgs');
-  if (!msgs) return;
-  var d = document.createElement('div');
-  d.id = 'ef-typing';
-  d.style.cssText = 'background:#1a1a1a;border:1px solid #2a2a2a;color:#666;padding:.55rem .8rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.8rem;align-self:flex-start;font-family:Outfit,sans-serif';
-  d.textContent = 'Typing...';
-  msgs.appendChild(d);
-  msgs.scrollTop = msgs.scrollHeight;
+function efTyping(){
+  var m=document.getElementById('ef-chat-msgs');if(!m)return;
+  var d=document.createElement('div');d.id='ef-typ';
+  d.style.cssText='background:#1a1a1a;border:1px solid #2a2a2a;color:#666;padding:.55rem .8rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.8rem;align-self:flex-start;font-family:Outfit,sans-serif';
+  d.textContent='Typing...';m.appendChild(d);m.scrollTop=m.scrollHeight;
 }
-
-function efRemoveTyping() {
-  var t = document.getElementById('ef-typing');
-  if (t) t.remove();
-}
-
-async function efSend() {
-  var inp = document.getElementById('ef-chat-inp');
-  var send = document.getElementById('ef-chat-send');
-  var qbtns = document.getElementById('ef-chat-qbtns');
-  if (!inp) return;
-  var text = inp.value.trim();
-  if (!text) return;
-  inp.value = '';
-  if (qbtns) qbtns.style.display = 'none';
-  if (send) send.disabled = true;
-  efAddMsg('user', text);
-  efHistory.push({ role: 'user', content: text });
+function efRemoveTyping(){var t=document.getElementById('ef-typ');if(t)t.remove();}
+async function efSend(){
+  var inp=document.getElementById('ef-chat-inp');
+  var send=document.getElementById('ef-chat-send');
+  var q=document.getElementById('ef-chat-qbtns');
+  if(!inp)return;
+  var text=inp.value.trim();if(!text)return;
+  inp.value='';
+  if(q)q.style.display='none';
+  if(send)send.disabled=true;
+  efAddMsg('user',text);
+  efHistory.push({role:'user',content:text});
   efTyping();
-  try {
-    var res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
-        system: EF_SYS,
-        messages: efHistory
-      })
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:250,system:EF_SYS,messages:efHistory})
     });
-    var data = await res.json();
-    var reply = (data.content && data.content[0]) ? data.content[0].text : 'Please call us at (224) 848-1702 for help!';
-    efHistory.push({ role: 'assistant', content: reply });
+    var data=await res.json();
+    var reply=(data.content&&data.content[0])?data.content[0].text:'Please call us at (224) 848-1702!';
+    efHistory.push({role:'assistant',content:reply});
+    efRemoveTyping();efAddMsg('bot',reply);
+  }catch(e){
     efRemoveTyping();
-    efAddMsg('bot', reply);
-  } catch(e) {
-    efRemoveTyping();
-    efAddMsg('bot', 'Having trouble connecting. Call us at (224) 848-1702 — we are happy to help!');
+    efAddMsg('bot','Having trouble. Call (224) 848-1702 — we are happy to help!');
   }
-  if (send) send.disabled = false;
-  if (inp) inp.focus();
+  if(send)send.disabled=false;
+  if(inp)inp.focus();
 }
 
 </script>
