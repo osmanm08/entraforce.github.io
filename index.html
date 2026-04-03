@@ -149,7 +149,6 @@ footer span{color:var(--gold)}
     <a class="logo" onclick="goTo('home')">Entra<span>Force</span></a>
     <ul class="nav-links">
       <li class="active" id="nav-home"><a onclick="goTo('home')">Home</a></li>
-      <li id="nav-about"><a onclick="goTo('about')">About Us</a></li>
       <li class="has-dropdown" id="nav-services">
         <a onclick="goTo('services')">Services ▾</a>
         <div class="dropdown">
@@ -159,6 +158,7 @@ footer span{color:var(--gold)}
         </div>
       </li>
       <li id="nav-partners"><a onclick="goTo('partners')">Our Partners</a></li>
+      <li id="nav-about"><a onclick="goTo('about')">About Us</a></li>
       <li id="nav-contact"><a onclick="goTo('contact')">Contact Us</a></li>
     </ul>
     <a class="cta-btn" onclick="goTo('contact')">Get a Quote</a>
@@ -947,7 +947,7 @@ function medicSubmit(btn) {
 
 
 var efHistory=[];var efInited=false;
-var EF_SYS='You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given on site. Most repairs same day. Walk-ins welcome. If unsure say call (224) 848-1702.';
+var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given on site. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/12248481702 — always share this when user wants to contact or book. Say: Chat with us on WhatsApp: https://wa.me/12248481702. If unsure say call (224) 848-1702 or WhatsApp: https://wa.me/12248481702'";
 function efToggle(){
   var c=document.getElementById('ef-chat');
   var b=document.getElementById('ef-bubble');
@@ -960,7 +960,7 @@ function efToggle(){
 function efInit(){
   efAddMsg('bot','Hey! I am the EF Tech Medic assistant. What can I help you with?');
   var q=document.getElementById('ef-chat-qbtns');if(!q)return;
-  ['What do you fix?','Drop-off hours?','Where are you located?','Get a quote'].forEach(function(t){
+  ['What do you fix?','Drop-off hours?','Get a quote','WhatsApp us'].forEach(function(t){
     var b=document.createElement('button');b.textContent=t;
     b.style.cssText='background:#1a1a1a;border:1px solid #333;color:#f0ece4;padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Outfit,sans-serif';
     b.onmouseenter=function(){this.style.borderColor='#f0e614';};
@@ -973,7 +973,7 @@ function efAddMsg(role,text){
   var m=document.getElementById('ef-chat-msgs');if(!m)return;
   var d=document.createElement('div');var u=role==='user';
   d.style.cssText='max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Outfit,sans-serif;word-break:break-word;'+(u?'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px':'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #2a2a2a');
-  d.textContent=text;m.appendChild(d);m.scrollTop=m.scrollHeight;
+  d.innerHTML=text.replace(/(https:\/\/wa\.me\/\S+)/g,'<a href="$1" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline">&#x1F4AC; Open WhatsApp</a>');m.appendChild(d);m.scrollTop=m.scrollHeight;
 }
 function efTyping(){
   var m=document.getElementById('ef-chat-msgs');if(!m)return;
@@ -1006,7 +1006,7 @@ async function efSend(){
 
 // ── EntraForce Main Chatbot ──
 var mainHistory=[];var mainInited=false;
-var MAIN_SYS='You are the friendly assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Keep replies short (2-4 sentences). EntraForce offers three services: 1) IT Consulting Projects - infrastructure planning, network setup, cloud migration, managed IT support (launching soon). 2) EF Tech Medic - device repair for phones, tablets, Apple Watch, water damage, battery replacement. Drop-off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. 3) Website & Content Creation - professional websites for restaurants, retail, local businesses. Contact: support@entraforce.com, (224) 848-1702, 5501 Estate Ln Plano TX 75094. Hours: Mon-Sun 8AM-8PM. If unsure say contact us at support@entraforce.com or call (224) 848-1702.';
+var MAIN_SYS="You are the friendly assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Keep replies short (2-4 sentences). EntraForce offers three services: 1) IT Consulting Projects - infrastructure planning, network setup, cloud migration, managed IT support (launching soon). 2) EF Tech Medic - device repair for phones, tablets, Apple Watch, water damage, battery replacement. Drop-off at Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. 3) Website & Content Creation - professional websites for restaurants, retail, local businesses. Contact: support@entraforce.com, (224) 848-1702, 5501 Estate Ln Plano TX 75094. Hours: Mon-Sun 8AM-8PM. For WhatsApp chat link: https://wa.me/12248481702 — always offer this when user wants to contact, inquire, or reach us. Say something like: You can reach us directly on WhatsApp here: https://wa.me/12248481702. If unsure say contact us at support@entraforce.com or WhatsApp: https://wa.me/12248481702'";
 
 function mainToggle(){
   var c=document.getElementById('main-chat');
@@ -1020,7 +1020,7 @@ function mainToggle(){
 function mainInit(){
   mainAddMsg('bot','Hi! I am the EntraForce assistant. How can I help you today?');
   var q=document.getElementById('main-chat-qbtns');if(!q)return;
-  ['Our services?','Device repair?','Build a website?','Contact info?'].forEach(function(t){
+  ['Our services?','Device repair?','Build a website?','WhatsApp us'].forEach(function(t){
     var b=document.createElement('button');b.textContent=t;
     b.style.cssText='background:var(--navy);border:1px solid var(--border);color:var(--muted);padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Inter,sans-serif;transition:border-color .2s,color .2s';
     b.onmouseenter=function(){this.style.borderColor='var(--gold)';this.style.color='var(--gold)';};
@@ -1033,7 +1033,8 @@ function mainAddMsg(role,text){
   var m=document.getElementById('main-chat-msgs');if(!m)return;
   var d=document.createElement('div');var u=role==='user';
   d.style.cssText='max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Inter,sans-serif;word-break:break-word;'+(u?'background:var(--gold);color:var(--navy);align-self:flex-end;border-bottom-right-radius:3px':'background:var(--navy);border:1px solid var(--border);color:var(--white);align-self:flex-start;border-bottom-left-radius:3px');
-  d.textContent=text;m.appendChild(d);m.scrollTop=m.scrollHeight;
+  d.innerHTML=text.replace(/(https:\/\/wa\.me\/\S+)/g,'<a href="$1" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline">&#x1F4AC; Open WhatsApp</a>');
+  m.appendChild(d);m.scrollTop=m.scrollHeight;
 }
 function mainTyping(){
   var m=document.getElementById('main-chat-msgs');if(!m)return;
