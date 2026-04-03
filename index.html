@@ -948,6 +948,11 @@ function medicSubmit(btn) {
 
 var efHistory=[];var efInited=false;
 var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given on site. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/12248481702 — always share this when user wants to contact or book. Say: Chat with us on WhatsApp: https://wa.me/12248481702. If unsure say call (224) 848-1702 or WhatsApp: https://wa.me/12248481702'";
+
+// ── EF Tech Medic Chatbot functions ──
+var efHistory=[];var efInited=false;
+var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/12248481702 always share this when user wants to contact or book. If unsure say call (224) 848-1702.";
+
 function efToggle(){
   var c=document.getElementById('ef-chat');
   var b=document.getElementById('ef-bubble');
@@ -976,6 +981,110 @@ function efInit(){
     };
     q.appendChild(b);
   });
+}
+function efAddMsg(role,text){
+  var m=document.getElementById('ef-chat-msgs');if(!m)return;
+  var d=document.createElement('div');var u=role==='user';
+  d.style.cssText='max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Outfit,sans-serif;word-break:break-word;'+(u?'background:#f0e614;color:#000;align-self:flex-end;border-bottom-right-radius:3px':'background:#1a1a1a;color:#f0ece4;align-self:flex-start;border-bottom-left-radius:3px;border:1px solid #2a2a2a');
+  d.innerHTML=text.replace(/(https:\/\/wa\.me\/[\w]+)/g,'<a href="$1" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline">&#x1F4AC; Open WhatsApp</a>');
+  m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+function efTyping(){
+  var m=document.getElementById('ef-chat-msgs');if(!m)return;
+  var d=document.createElement('div');d.id='ef-typ';
+  d.style.cssText='background:#1a1a1a;border:1px solid #2a2a2a;color:#666;padding:.55rem .8rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.8rem;align-self:flex-start;font-family:Outfit,sans-serif';
+  d.textContent='Typing...';m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+function efRemoveTyping(){var t=document.getElementById('ef-typ');if(t)t.remove();}
+async function efSend(){
+  var inp=document.getElementById('ef-chat-inp');
+  var send=document.getElementById('ef-chat-send');
+  var q=document.getElementById('ef-chat-qbtns');
+  if(!inp)return;var text=inp.value.trim();if(!text)return;
+  inp.value='';if(q)q.style.display='none';if(send)send.disabled=true;
+  efAddMsg('user',text);efHistory.push({role:'user',content:text});efTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:250,system:EF_SYS,messages:efHistory})
+    });
+    var data=await res.json();
+    var reply=(data.content&&data.content[0])?data.content[0].text:'Please call (224) 848-1702 for help!';
+    efHistory.push({role:'assistant',content:reply});
+    efRemoveTyping();efAddMsg('bot',reply);
+  }catch(e){
+    efRemoveTyping();efAddMsg('bot','Having trouble connecting. Call (224) 848-1702 or <a href="https://wa.me/12248481702" target="_blank" style="color:#25D366;font-weight:700">WhatsApp us</a>!');
+  }
+  if(send)send.disabled=false;if(inp)inp.focus();
+}
+
+// ── EntraForce Main Chatbot functions ──
+var mainHistory=[];var mainInited=false;
+var MAIN_SYS="You are the friendly assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Keep replies short (2-4 sentences). Services: 1) IT Consulting - infrastructure, network, cloud, managed IT (launching soon). 2) EF Tech Medic - device repair, drop-off at Shaahi Biryani 3421 Renner Rd Suite 110 Plano TX, hours Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. 3) Website & Content Creation for local businesses. Contact: support@entraforce.com, (224) 848-1702, 5501 Estate Ln Plano TX 75094. Hours: Mon-Sun 8AM-8PM. For WhatsApp: https://wa.me/12248481702 always offer this when user wants to contact. If unsure say contact support@entraforce.com or WhatsApp us.";
+
+function mainToggle(){
+  var c=document.getElementById('main-chat');
+  var b=document.getElementById('main-bubble');
+  if(!c||!b)return;
+  var open=c.style.display==='flex';
+  c.style.display=open?'none':'flex';
+  b.innerHTML=open?'&#x1F4AC;':'&#x2715;';
+  if(!open&&!mainInited){mainInited=true;mainInit();}
+}
+function mainInit(){
+  mainAddMsg('bot','Hi! I am the EntraForce assistant. How can I help you today?');
+  var q=document.getElementById('main-chat-qbtns');if(!q)return;
+  ['Our services?','Device repair?','Build a website?','WhatsApp us'].forEach(function(t){
+    var b=document.createElement('button');b.textContent=t;
+    b.style.cssText='background:var(--navy);border:1px solid var(--border);color:var(--muted);padding:.28rem .65rem;border-radius:20px;font-size:.72rem;cursor:pointer;font-family:Inter,sans-serif;transition:border-color .2s,color .2s';
+    b.onmouseenter=function(){this.style.borderColor='var(--gold)';this.style.color='var(--gold)';};
+    b.onmouseleave=function(){this.style.borderColor='var(--border)';this.style.color='var(--muted)';};
+    b.onclick=function(){
+      if(t==='WhatsApp us'){
+        mainAddMsg('user','WhatsApp us');
+        mainAddMsg('bot','Chat with us directly on WhatsApp — no need to save our number! &#x1F4AC; <a href="https://wa.me/12248481702" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline">Open WhatsApp Chat</a>');
+        document.getElementById('main-chat-qbtns').style.display='none';
+      } else {
+        document.getElementById('main-chat-inp').value=t;mainSend();
+      }
+    };
+    q.appendChild(b);
+  });
+}
+function mainAddMsg(role,text){
+  var m=document.getElementById('main-chat-msgs');if(!m)return;
+  var d=document.createElement('div');var u=role==='user';
+  d.style.cssText='max-width:88%;padding:.55rem .8rem;border-radius:12px;font-size:.82rem;line-height:1.55;font-family:Inter,sans-serif;word-break:break-word;'+(u?'background:var(--gold);color:var(--navy);align-self:flex-end;border-bottom-right-radius:3px':'background:var(--navy);border:1px solid var(--border);color:var(--white);align-self:flex-start;border-bottom-left-radius:3px');
+  d.innerHTML=text.replace(/(https:\/\/wa\.me\/[\w]+)/g,'<a href="$1" target="_blank" style="color:#25D366;font-weight:700;text-decoration:underline">&#x1F4AC; Open WhatsApp</a>');
+  m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+function mainTyping(){
+  var m=document.getElementById('main-chat-msgs');if(!m)return;
+  var d=document.createElement('div');d.id='main-typ';
+  d.style.cssText='background:var(--navy);border:1px solid var(--border);color:var(--muted);padding:.55rem .8rem;border-radius:12px;border-bottom-left-radius:3px;font-size:.8rem;align-self:flex-start;font-family:Inter,sans-serif';
+  d.textContent='Typing...';m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+function mainRemoveTyping(){var t=document.getElementById('main-typ');if(t)t.remove();}
+async function mainSend(){
+  var inp=document.getElementById('main-chat-inp');
+  var send=document.getElementById('main-chat-send');
+  var q=document.getElementById('main-chat-qbtns');
+  if(!inp)return;var text=inp.value.trim();if(!text)return;
+  inp.value='';if(q)q.style.display='none';if(send)send.disabled=true;
+  mainAddMsg('user',text);mainHistory.push({role:'user',content:text});mainTyping();
+  try{
+    var res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:250,system:MAIN_SYS,messages:mainHistory})
+    });
+    var data=await res.json();
+    var reply=(data.content&&data.content[0])?data.content[0].text:'Contact us at (224) 848-1702 or support@entraforce.com!';
+    mainHistory.push({role:'assistant',content:reply});
+    mainRemoveTyping();mainAddMsg('bot',reply);
+  }catch(e){
+    mainRemoveTyping();mainAddMsg('bot','Having trouble connecting. Call (224) 848-1702 or <a href="https://wa.me/12248481702" target="_blank" style="color:#25D366;font-weight:700">WhatsApp us</a>!');
+  }
+  if(send)send.disabled=false;if(inp)inp.focus();
 }
 </script>
 </body>
