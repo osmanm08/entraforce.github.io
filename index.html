@@ -862,12 +862,21 @@ function medicSubmit(btn) {
       "z-index:5"
     ].join(";"));
 
+    // For cover mode remove flex so absolute img fills properly
+    if(isCover){
+      var cur=card.getAttribute("style");
+      card.setAttribute("style",cur
+        .replace("display:flex;","display:block;")
+        .replace("align-items:center;","")
+        .replace("justify-content:center;","")
+      );
+    }
     if(p.logo){
       var img=document.createElement("img");
       img.src=p.logo; img.alt=p.name;
       var isCover=p.sz==="cover";
       img.setAttribute("style",isCover
-        ?"width:100%;height:100%;object-fit:cover;display:block"
+        ?"position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"
         :"width:"+(p.sz||"90%")+";height:"+(p.sz||"90%")+";object-fit:contain;display:block"
       );
       img.onerror=function(){
