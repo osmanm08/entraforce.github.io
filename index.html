@@ -725,6 +725,11 @@ function goToService(slug) {
 window.addEventListener('popstate', function(ev) {
   if (ev.state && ev.state.page) {
     document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
+    document.getElementById('page-' + ev.state.page).classList.add('active');
+    document.getElementById('nav-' + ev.state.page).classList.add('active');
+  }
+});
 
 // WhatsApp delegated click handler - works everywhere in the page
 document.addEventListener('click', function(e) {
@@ -733,11 +738,6 @@ document.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
     window.open(el.getAttribute('data-wa'), '_blank');
-  }
-});
-    document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
-    document.getElementById('page-' + ev.state.page).classList.add('active');
-    document.getElementById('nav-' + ev.state.page).classList.add('active');
   }
 });
 
@@ -1092,8 +1092,12 @@ async function mainSend(){
     mainHistory.push({role:'assistant',content:reply});
     mainRemoveTyping();mainAddMsg('bot',reply);
   }catch(e){
-    mainRemoveTyping();mainAddMsg('bot','Having trouble connecting. Call (224) 848-1702 or <span data-wa="https://wa.m
-    <canvas id="fluid" style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:block;pointer-events:none;z-index:50;"></canvas>
+    mainAddMsg('bot','Having trouble connecting. Call us at (224) 848-1702!');
+  }
+}
+</script>
+
+<canvas id="fluid" style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:block;pointer-events:none;z-index:50;"></canvas>
 <script>
 (function () {
   const canvas = document.getElementById('fluid');
