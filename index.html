@@ -403,13 +403,52 @@ footer span{color:var(--gold)}
           </div>
           <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@yourbusiness.com"></div>
           <div class="form-group"><label>Service Interested In</label>
-            <select>
+            <select id="service-select" onchange="onServiceChange()">
               <option value="">Select a service...</option>
               <option>IT Consulting Projects</option>
               <option>EF Tech Medic</option>
               <option>Website / Content Creation</option>
               <option>General Inquiry</option>
             </select>
+          </div>
+          <div id="website-fields" style="display:none;border:1px solid var(--gold-dim);border-radius:4px;padding:1.1rem 1.1rem .25rem;margin-bottom:1.1rem;background:rgba(200,168,75,0.04)">
+            <div style="font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">Tell us about your website</div>
+            <div class="form-group"><label>Type of Business</label><input type="text" placeholder="Restaurant, retail shop, salon, etc."></div>
+            <div class="form-row">
+              <div class="form-group"><label>Project Type</label>
+                <select>
+                  <option value="">Select...</option>
+                  <option>Brand new website</option>
+                  <option>Redesign existing site</option>
+                  <option>Add features to existing site</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Existing Website (if any)</label><input type="text" placeholder="yourbusiness.com"></div>
+            </div>
+            <div class="form-group"><label>Pages / Features Needed</label><textarea placeholder="e.g., Home, About, Menu, Online ordering, Photo gallery, Contact form..." style="min-height:90px"></textarea></div>
+            <div class="form-row">
+              <div class="form-group"><label>Budget Range</label>
+                <select>
+                  <option value="">Select...</option>
+                  <option>Under $1,000</option>
+                  <option>$1,000 – $2,500</option>
+                  <option>$2,500 – $5,000</option>
+                  <option>$5,000+</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Timeline</label>
+                <select>
+                  <option value="">Select...</option>
+                  <option>ASAP</option>
+                  <option>Within 1 month</option>
+                  <option>1 – 3 months</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label>Style / Design References (optional)</label><input type="text" placeholder="Sites you like, brand colors, etc."></div>
           </div>
           <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project or what you need help with..."></textarea></div>
           <button class="submit-btn" onclick="submitForm()">Send Message →</button>
@@ -752,6 +791,12 @@ document.addEventListener('click', function(e) {
     else if (r.indexOf('/services') === 0) { goTo('services'); }
   }
 })();
+
+function onServiceChange() {
+  var sel = document.getElementById('service-select');
+  var box = document.getElementById('website-fields');
+  box.style.display = (sel.value === 'Website / Content Creation') ? 'block' : 'none';
+}
 
 function submitForm() {
   document.getElementById('contact-form').style.display = 'none';
