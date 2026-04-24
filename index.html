@@ -29,8 +29,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .dropdown a:hover{background:var(--navy3);color:var(--gold)}
 .cta-btn{margin-left:1rem;padding:.45rem 1.1rem;background:var(--gold);color:var(--navy);font-size:.82rem;font-weight:700;border-radius:3px;text-decoration:none;letter-spacing:.05em;text-transform:uppercase;transition:background .2s;cursor:pointer}
 .cta-btn:hover{background:var(--gold2)}
-.page{display:none;padding-top:64px}
-.page.active{display:block}
+.page{padding-top:64px;scroll-margin-top:64px}
 .hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:4rem 2rem 3rem;overflow:hidden;background:#060914}
 .hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(200,168,75,0.15) 1px,transparent 1px);background-size:40px 40px;opacity:.4}
 .hero-grid::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.6) 1px,transparent 1px),radial-gradient(circle,rgba(200,168,75,0.4) 1px,transparent 1px);background-size:120px 120px,200px 200px;background-position:0 0,60px 60px;opacity:.3}
@@ -218,7 +217,6 @@ footer span{color:var(--gold)}
       <div class="feat"><span class="feat-icon">📍</span><div class="feat-title">DFW Based</div><div class="feat-desc">Proudly serving the Dallas–Fort Worth area with local support you can count on.</div></div>
     </div>
   </div>
-  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
 
 <!-- ABOUT -->
@@ -244,7 +242,6 @@ footer span{color:var(--gold)}
       </div>
     </div>
   </div>
-  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
 
 <!-- SERVICES -->
@@ -310,7 +307,6 @@ footer span{color:var(--gold)}
       <button onclick="goToWebsiteForm()" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.55rem 1.1rem;background:var(--gold);color:var(--navy);font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px">Request a Quote →</button>
     </div>
   </div>
-  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
 
 <!-- PARTNERS -->
@@ -367,7 +363,6 @@ footer span{color:var(--gold)}
     <p class="section-sub" style="margin:0 auto 1.5rem">We help local businesses across DFW build professional websites and grow their digital presence.</p>
     <button class="btn-primary" onclick="goTo('contact')">Get a Free Quote →</button>
   </div>
-  <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
 </div>
 
 <!-- CONTACT -->
@@ -761,36 +756,54 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function goTo(page) {
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
-  document.getElementById('page-' + page).classList.add('active');
-  document.getElementById('nav-' + page).classList.add('active');
-  window.scrollTo(0, 0);
   var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners'};
   history.pushState({page: page}, '', urls[page] || '/');
+  if (page === 'home') {
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else {
+    var target = document.getElementById('page-' + page);
+    if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 }
 
 function goToService(slug) {
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
-  document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
-  document.getElementById('page-services').classList.add('active');
-  document.getElementById('nav-services').classList.add('active');
-  window.scrollTo(0, 0);
   history.pushState({page:'services', slug: slug}, '', '/services/' + slug);
-  setTimeout(function() {
-    var el = document.getElementById('svc-' + slug);
-    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-  }, 150);
+  var el = document.getElementById('svc-' + slug);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 window.addEventListener('popstate', function(ev) {
   if (ev.state && ev.state.page) {
-    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
-    document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
-    document.getElementById('page-' + ev.state.page).classList.add('active');
-    document.getElementById('nav-' + ev.state.page).classList.add('active');
+    if (ev.state.slug) {
+      var el = document.getElementById('svc-' + ev.state.slug);
+      if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    } else if (ev.state.page === 'home') {
+      window.scrollTo({top:0, behavior:'smooth'});
+    } else {
+      var target = document.getElementById('page-' + ev.state.page);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }
   }
 });
+
+// Highlight nav based on which section is in view
+(function() {
+  var pages = ['home','about','services','partners','contact'];
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var id = e.target.id.replace('page-','');
+        document.querySelectorAll('.nav-links li').forEach(function(l){ l.classList.remove('active'); });
+        var nav = document.getElementById('nav-' + id);
+        if (nav) nav.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  pages.forEach(function(p) {
+    var el = document.getElementById('page-' + p);
+    if (el) observer.observe(el);
+  });
+})();
 
 // WhatsApp delegated click handler - works everywhere in the page
 document.addEventListener('click', function(e) {
