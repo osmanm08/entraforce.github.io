@@ -307,6 +307,7 @@ footer span{color:var(--gold)}
         </ul>
       </div>
       <span class="svc-badge">✓ Available Now</span>
+      <button onclick="goToWebsiteForm()" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;padding:.55rem 1.1rem;background:var(--gold);color:var(--navy);font-family:'Manrope',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:3px">Request a Quote →</button>
     </div>
   </div>
   <footer><p>© 2013 <span>EntraForce</span> · Plano, Texas · All Rights Reserved</p></footer>
@@ -449,6 +450,27 @@ footer span{color:var(--gold)}
               </div>
             </div>
             <div class="form-group"><label>Style / Design References (optional)</label><input type="text" placeholder="Sites you like, brand colors, etc."></div>
+            <div class="form-group"><label>Content You Need</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .9rem;font-size:.85rem;color:var(--white)">
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Logo & branding</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Photography</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Website copywriting</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Blog / articles</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Social media graphics</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Video / reels</label>
+              </div>
+            </div>
+            <div class="form-group"><label>SEO Services</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem .9rem;font-size:.85rem;color:var(--white)">
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Local SEO (Google Maps)</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Google Business Profile</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Keyword optimization</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> On-page / technical SEO</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Blog SEO content</label>
+                <label style="display:flex;align-items:center;gap:.5rem;text-transform:none;letter-spacing:0;color:var(--white);font-size:.85rem;margin:0;cursor:pointer"><input type="checkbox" style="width:auto;margin:0"> Not sure — recommend</label>
+              </div>
+            </div>
+            <div class="form-group"><label>Target Keywords / Search Terms (optional)</label><input type="text" placeholder="e.g., halal restaurant Plano, biryani catering Dallas"></div>
           </div>
           <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project or what you need help with..."></textarea></div>
           <button class="submit-btn" onclick="submitForm()">Send Message →</button>
@@ -796,6 +818,16 @@ function onServiceChange() {
   var sel = document.getElementById('service-select');
   var box = document.getElementById('website-fields');
   box.style.display = (sel.value === 'Website / Content Creation') ? 'block' : 'none';
+}
+
+function goToWebsiteForm() {
+  goTo('contact');
+  setTimeout(function() {
+    var sel = document.getElementById('service-select');
+    sel.value = 'Website / Content Creation';
+    onServiceChange();
+    document.getElementById('website-fields').scrollIntoView({behavior:'smooth', block:'start'});
+  }, 100);
 }
 
 function submitForm() {
