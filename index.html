@@ -156,6 +156,7 @@ footer span{color:var(--gold)}
           <a onclick="goToService('web-creation')">Website / Content Creation</a>
         </div>
       </li>
+      <li id="nav-pricing"><a onclick="goTo('pricing')">Pricing</a></li>
       <li id="nav-partners"><a onclick="goTo('partners')">Our Work</a></li>
       <li id="nav-about"><a onclick="goTo('about')">About Us</a></li>
       <li id="nav-contact"><a onclick="goTo('contact')">Contact Us</a></li>
@@ -362,6 +363,125 @@ footer span{color:var(--gold)}
     <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.75rem">Become a Partner</h2>
     <p class="section-sub" style="margin:0 auto 1.5rem">We help local businesses across DFW build professional websites and grow their digital presence.</p>
     <button class="btn-primary" onclick="goTo('contact')">Get a Free Quote →</button>
+  </div>
+</div>
+
+<!-- PRICING -->
+<style>
+.pricing-card{position:relative;background:var(--navy2);border:1px solid var(--gold-dim);padding:2rem 1.75rem 1.75rem;border-radius:6px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pricing-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(200,168,75,0.15);border-color:var(--gold)}
+.pricing-card.highlighted{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 12px 36px rgba(200,168,75,0.18)}
+.pricing-card.highlighted::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:800;letter-spacing:.15em;padding:.3rem .75rem;border-radius:3px;text-transform:uppercase}
+.price{margin:1rem 0 .35rem}
+.price-amt{font-family:"Manrope",sans-serif;font-size:2.6rem;font-weight:800;color:#f4f1eb;line-height:1}
+.price-amt small{font-size:1rem;font-weight:600;color:var(--muted);margin-left:.15rem}
+.price-was{display:inline-block;margin-left:.6rem;font-size:1rem;color:var(--muted);text-decoration:line-through;font-weight:500}
+.price-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.4;min-height:2.4em}
+.svc-bullets-pricing{list-style:none;padding:0;margin:0 0 1.5rem;flex-grow:1}
+.svc-bullets-pricing li{display:flex;gap:.6rem;padding:.4rem 0;font-size:.88rem;line-height:1.45;color:#d8d2c6}
+.svc-bullets-pricing li::before{content:"\2713";color:var(--gold);font-size:.95rem;line-height:1.4;flex-shrink:0;font-weight:700}
+.founding-note{font-size:.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;text-align:center;margin-top:.85rem;font-weight:600;opacity:.85}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:2.5rem auto 1rem;padding:0 1rem}
+.recurring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:780px;margin:1.5rem auto;padding:0 1rem}
+.pricing-card .btn-primary{width:100%;justify-content:center}
+</style>
+<div class="page" id="page-pricing">
+  <div class="section" style="text-align:center;padding-bottom:1rem">
+    <div class="section-tag">Founding Pricing &mdash; First 50 Clients</div>
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="divider" style="margin:1rem auto 0"></div>
+    <p class="section-sub" style="margin:.75rem auto 0">Real websites for real local businesses across Chicagoland and DFW. No hidden fees, no surprise quotes &mdash; pick a plan, lock in your founding rate.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="svc-tag">Starter</div>
+      <div class="price"><span class="price-amt">$499</span><span class="price-was">$899</span></div>
+      <p class="price-sub">For solo owners with simple needs</p>
+      <ul class="svc-bullets-pricing">
+        <li>1-page mobile-first website</li>
+        <li>Contact form &amp; basic SEO</li>
+        <li>Google Business Profile help</li>
+        <li>7-day delivery</li>
+        <li>14 days of edits included</li>
+      </ul>
+      <button class="btn-primary" onclick="goTo('contact')">Get Started &rarr;</button>
+      <div class="founding-note">Founding rate &mdash; first 50 clients only</div>
+    </div>
+
+    <div class="pricing-card highlighted">
+      <div class="popular-badge">Most Popular</div>
+      <div class="svc-tag">Standard</div>
+      <div class="price"><span class="price-amt">$1,499</span><span class="price-was">$2,799</span></div>
+      <p class="price-sub">Best for most local businesses</p>
+      <ul class="svc-bullets-pricing">
+        <li>4&ndash;6 page custom website</li>
+        <li>Mobile-first, fast loading</li>
+        <li>Full SEO + Google Business setup</li>
+        <li>Photo optimization &amp; analytics</li>
+        <li>10-day delivery</li>
+        <li>30 days of edits included</li>
+        <li>Multilingual support (English, Spanish, Hindi/Urdu, Arabic)</li>
+      </ul>
+      <button class="btn-primary" onclick="goTo('contact')">Get Started &rarr;</button>
+      <div class="founding-note">Founding rate &mdash; first 50 clients only</div>
+    </div>
+
+    <div class="pricing-card">
+      <div class="svc-tag">Premium</div>
+      <div class="price"><span class="price-amt">$2,999</span><span class="price-was">$5,499</span></div>
+      <p class="price-sub">Restaurants, multi-location, e-commerce</p>
+      <ul class="svc-bullets-pricing">
+        <li>Everything in Standard</li>
+        <li>Up to 12 pages</li>
+        <li>Online ordering / booking integration</li>
+        <li>Content writing for up to 8 pages</li>
+        <li>Advanced SEO &amp; analytics dashboard</li>
+        <li>14-day delivery</li>
+        <li>90 days of priority support</li>
+      </ul>
+      <button class="btn-primary" onclick="goTo('contact')">Get Started &rarr;</button>
+      <div class="founding-note">Founding rate &mdash; first 50 clients only</div>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">Ongoing Care Plans</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:.5rem">Keep It Running. Keep It Growing.</h2>
+    <p class="section-sub" style="margin:.5rem auto 1rem">Add a monthly Care plan to any package above. Cancel anytime, no contracts.</p>
+  </div>
+
+  <div class="recurring-grid">
+    <div class="pricing-card">
+      <div class="svc-tag">Care</div>
+      <div class="price"><span class="price-amt">$59<small>/mo</small></span></div>
+      <p class="price-sub">Hosting, updates, peace of mind</p>
+      <ul class="svc-bullets-pricing">
+        <li>Hosting + domain renewal handled</li>
+        <li>Security updates &amp; weekly backups</li>
+        <li>Up to 1 hour of edits per month</li>
+        <li>Cancel anytime</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <div class="svc-tag">Care+</div>
+      <div class="price"><span class="price-amt">$149<small>/mo</small></span></div>
+      <p class="price-sub">Everything above, plus growth</p>
+      <ul class="svc-bullets-pricing">
+        <li>Everything in Care</li>
+        <li>Monthly content updates</li>
+        <li>SEO monitoring &amp; monthly reports</li>
+        <li>Priority response within 24 hrs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:0">
+    <div class="section-tag">Need Something Custom?</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:.5rem">Custom Builds &amp; App Development</h2>
+    <p class="section-sub" style="margin:.5rem auto 1.5rem">E-commerce, custom web applications, and mobile apps &mdash; quoted based on your scope. Tell us what you're building.</p>
+    <button class="btn-primary" onclick="goTo('contact')">Get a Custom Quote &rarr;</button>
   </div>
 </div>
 
@@ -756,7 +876,7 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function goTo(page) {
-  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners'};
+  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners', pricing:'/pricing'};
   history.pushState({page: page}, '', urls[page] || '/');
   if (page === 'home') {
     window.scrollTo({top:0, behavior:'smooth'});
@@ -788,7 +908,7 @@ window.addEventListener('popstate', function(ev) {
 
 // Highlight nav based on which section is in view
 (function() {
-  var pages = ['home','about','services','partners','contact'];
+  var pages = ['home','about','services','partners','pricing','contact'];
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
@@ -823,6 +943,7 @@ document.addEventListener('click', function(e) {
     else if (r.indexOf('/about') === 0) { goTo('about'); }
     else if (r.indexOf('/contact') === 0) { goTo('contact'); }
     else if (r.indexOf('/partners') === 0) { goTo('partners'); }
+    else if (r.indexOf('/pricing') === 0) { goTo('pricing'); }
     else if (r.indexOf('/services') === 0) { goTo('services'); }
   }
 })();
