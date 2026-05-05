@@ -385,6 +385,18 @@ footer span{color:var(--gold)}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:2.5rem auto 1rem;padding:0 1rem}
 .recurring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:780px;margin:1.5rem auto;padding:0 1rem}
 .pricing-card .btn-primary{width:100%;justify-content:center}
+.domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:980px;margin:2rem auto 0;padding:0 1rem}
+.domain-card{background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1.75rem 1.5rem;text-align:left;transition:transform .2s,border-color .2s,box-shadow .2s}
+.domain-card:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 8px 24px rgba(200,168,75,0.12)}
+.domain-tag{display:inline-block;background:var(--gold);color:var(--navy);font-size:.65rem;font-weight:800;padding:3px 10px;border-radius:3px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.85rem}
+.domain-title{font-family:'Manrope',sans-serif;font-size:1.15rem;font-weight:700;color:#f4f1eb;margin-bottom:.55rem;letter-spacing:-.2px}
+.domain-desc{font-size:.85rem;color:var(--muted);line-height:1.55;margin:0}
+.domain-process-heading{text-align:center;margin:2.5rem auto .5rem;color:var(--gold);font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase}
+.domain-process{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:980px;margin:.5rem auto 0;padding:0 1rem;position:relative}
+.process-step{padding:1.25rem 1rem;text-align:center}
+.process-num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#e8c76e,#a07830);color:#080d1a;font-weight:800;font-size:1.05rem;margin-bottom:.85rem;font-family:'Manrope',sans-serif}
+.process-title{font-family:'Manrope',sans-serif;font-size:1rem;font-weight:700;color:#f4f1eb;margin-bottom:.4rem;letter-spacing:-.2px}
+.process-desc{font-size:.82rem;color:var(--muted);line-height:1.55;margin:0}
 </style>
 <div class="page" id="page-pricing">
   <div class="section" style="text-align:center;padding-bottom:1rem">
@@ -478,6 +490,49 @@ footer span{color:var(--gold)}
   </div>
 
   <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:0">
+    <div class="section-tag">Domain Registration</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:.5rem">Need a Domain? We'll Handle It.</h2>
+    <p class="section-sub" style="margin:.5rem auto 1rem">Don't have a website name yet? We register it for you, set up DNS, and manage renewals &mdash; so you never lose your URL.</p>
+  </div>
+
+  <div class="domain-grid">
+    <div class="domain-card">
+      <span class="domain-tag">Free Year One</span>
+      <div class="domain-title">First-Year .com Domain</div>
+      <p class="domain-desc">Included free on Standard and Premium packages. We register it the day we start your project, so the URL is yours from day one.</p>
+    </div>
+    <div class="domain-card">
+      <span class="domain-tag">$29/year</span>
+      <div class="domain-title">Annual Renewal</div>
+      <p class="domain-desc">Standard renewal pricing after year one. We send a reminder 30 days before expiry so your URL never goes dark.</p>
+    </div>
+    <div class="domain-card">
+      <span class="domain-tag">Included</span>
+      <div class="domain-title">DNS, SSL &amp; Email</div>
+      <p class="domain-desc">DNS configuration, SSL certificate setup, and basic email forwarding (yourname@yourdomain.com) all handled for you.</p>
+    </div>
+  </div>
+
+  <div class="domain-process-heading">How It Works</div>
+  <div class="domain-process">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <div class="process-title">We register it</div>
+      <p class="process-desc">We buy your .com under your business name. You're the legal owner from day one &mdash; no hidden ownership games.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <div class="process-title">We set it up</div>
+      <p class="process-desc">DNS records, SSL certificate, and basic email forwarding (yourname@yourdomain.com) &mdash; all configured for you.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <div class="process-title">We keep it active</div>
+      <p class="process-desc">Reminder 30 days before expiry. $29/year flat. We never let your URL go dark, even if you forget.</p>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
     <div class="section-tag">Need Something Custom?</div>
     <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:.5rem">Custom Builds &amp; App Development</h2>
     <p class="section-sub" style="margin:.5rem auto 1.5rem">E-commerce, custom web applications, and mobile apps &mdash; quoted based on your scope. Tell us what you're building.</p>
