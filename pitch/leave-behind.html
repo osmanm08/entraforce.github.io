@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EntraForce — At a Glance</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#080d1a;--navy-soft:#1a2540;
+  --gold:#a8862c;--gold-light:#c8a84b;
+  --ink:#1a1f2e;--muted:#5a6678;--line:#dde2eb;--bg:#fafaf7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#e8e8e2;font-family:'Inter',sans-serif;color:var(--ink);font-size:11pt;line-height:1.45}
+.page{
+  width:8.5in;min-height:11in;margin:0.4in auto;background:var(--bg);
+  padding:0.5in 0.55in;box-shadow:0 4px 24px rgba(0,0,0,0.08);
+  display:flex;flex-direction:column;
+}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--gold);padding-bottom:.5rem;margin-bottom:.85rem}
+.brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:.08em;color:var(--navy)}
+.brand span{color:var(--gold)}
+.brand-sub{font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:.15rem;font-weight:500}
+.header-meta{text-align:right;font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.header-meta strong{color:var(--navy);font-weight:700;display:block;font-size:.85rem;letter-spacing:0;margin-bottom:.1rem}
+
+/* Hero strip */
+.hero{margin-bottom:.85rem}
+.hero h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.6rem;color:var(--navy);line-height:1.15;margin-bottom:.3rem}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:.85rem;color:var(--muted);max-width:6.5in;line-height:1.55}
+
+/* Section heads */
+.sec-title{font-family:'Manrope',sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;border-left:3px solid var(--gold);padding-left:.5rem}
+
+/* Services grid */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:.5rem;margin-bottom:.85rem}
+.svc{border:1px solid var(--line);border-radius:4px;padding:.55rem .65rem;background:#fff}
+.svc-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:.78rem;color:var(--navy);margin-bottom:.15rem}
+.svc-desc{font-size:.68rem;color:var(--muted);line-height:1.4}
+
+/* Pricing */
+.pricing-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.55rem}
+.tier{border:1px solid var(--line);border-radius:4px;padding:.6rem .7rem;background:#fff;position:relative}
+.tier.featured{border:1.5px solid var(--gold);background:#fffdf5}
+.tier.featured::before{content:'POPULAR';position:absolute;top:-7px;right:.5rem;background:var(--gold);color:#fff;font-size:.5rem;font-weight:800;letter-spacing:.15em;padding:.1rem .35rem;border-radius:2px}
+.tier-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:.78rem;color:var(--navy)}
+.tier-target{font-size:.62rem;color:var(--muted);margin-bottom:.3rem}
+.tier-price{font-family:'Manrope',sans-serif;font-weight:800;font-size:1.2rem;color:var(--gold);line-height:1}
+.tier-was{font-size:.65rem;color:var(--muted);text-decoration:line-through;margin-left:.3rem;vertical-align:middle}
+.tier ul{list-style:none;margin-top:.4rem;padding-top:.35rem;border-top:1px solid var(--line);font-size:.62rem;color:var(--ink);line-height:1.55}
+.tier ul li{padding:.05rem 0;padding-left:.7rem;position:relative}
+.tier ul li::before{content:'✓';position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* Care row */
+.care-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.85rem}
+.care{border:1px solid var(--line);border-left:3px solid var(--gold);background:#fff;padding:.55rem .7rem;border-radius:0 4px 4px 0}
+.care-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:.75rem;color:var(--navy)}
+.care-name span{color:var(--gold)}
+.care-d{font-size:.65rem;color:var(--muted);line-height:1.5;margin-top:.15rem}
+
+/* Why us */
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.45rem;margin-bottom:.85rem}
+.why{font-size:.68rem;line-height:1.45;color:var(--ink)}
+.why strong{display:block;font-family:'Manrope',sans-serif;font-weight:700;color:var(--navy);font-size:.72rem;margin-bottom:.1rem}
+
+/* Portfolio */
+.port-list{font-size:.7rem;color:var(--ink);line-height:1.7;margin-bottom:.85rem}
+.port-list strong{color:var(--navy);font-weight:700}
+
+/* Footer / Contact */
+.footer{margin-top:auto;border-top:2px solid var(--gold);padding-top:.55rem;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:.6rem;align-items:start}
+.foot-cta{font-family:'Manrope',sans-serif;font-weight:700;font-size:.88rem;color:var(--navy);line-height:1.25}
+.foot-cta span{color:var(--gold);display:block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-top:.15rem}
+.foot-item{font-size:.68rem;color:var(--ink);line-height:1.5}
+.foot-label{font-size:.55rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:.1rem}
+
+@media print{
+  html,body{background:#fff}
+  .page{margin:0;box-shadow:none;width:8.5in;min-height:10.95in;padding:.45in .5in}
+  @page{size:letter;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="brand">ENTRA<span>FORCE</span></div>
+      <div class="brand-sub">Websites · Content · Apps · Google Business</div>
+    </div>
+    <div class="header-meta">
+      <strong>Founding Pricing</strong>
+      First 50 clients only
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Technology Built to <em>Move Business Forward</em></h1>
+    <p>We build websites, write content, develop apps, and manage Google Business Profiles for small businesses in DFW and Chicagoland. Honest pricing, fast delivery, multilingual by default. You own everything from day one.</p>
+  </div>
+
+  <div class="sec-title">What We Do</div>
+  <div class="svc-grid">
+    <div class="svc"><div class="svc-name">🌐 Websites</div><div class="svc-desc">Custom mobile-first sites that load fast, rank on Google, and convert visitors into customers.</div></div>
+    <div class="svc"><div class="svc-name">✍️ Content</div><div class="svc-desc">Copy, photo prep, blog posts, social graphics — written to sell, optimized for search.</div></div>
+    <div class="svc"><div class="svc-name">📱 Apps</div><div class="svc-desc">Ordering, loyalty, booking, internal tools. Custom mobile and web apps, modern stack, no lock-in.</div></div>
+    <div class="svc"><div class="svc-name">📍 Google Business</div><div class="svc-desc">Profile setup, optimization, weekly posts, review response, monthly reporting. Multi-location ready.</div></div>
+  </div>
+
+  <div class="sec-title">Website Packages · Founding Pricing</div>
+  <div class="pricing-row">
+    <div class="tier">
+      <div class="tier-name">Starter</div>
+      <div class="tier-target">Solo owners · simple needs</div>
+      <div><span class="tier-price">$499</span><span class="tier-was">$899</span></div>
+      <ul>
+        <li>1-page mobile-first site</li>
+        <li>Contact form + basic SEO</li>
+        <li>Google Business setup</li>
+        <li>7-day delivery</li>
+      </ul>
+    </div>
+    <div class="tier featured">
+      <div class="tier-name">Standard</div>
+      <div class="tier-target">Best for most local businesses</div>
+      <div><span class="tier-price">$1,499</span><span class="tier-was">$2,799</span></div>
+      <ul>
+        <li>4–6 page custom site</li>
+        <li>Full SEO + analytics</li>
+        <li>Multilingual support</li>
+        <li>30 days of edits</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="tier-name">Premium</div>
+      <div class="tier-target">Restaurants · multi-location · e-comm</div>
+      <div><span class="tier-price">$2,999</span><span class="tier-was">$5,499</span></div>
+      <ul>
+        <li>Up to 12 pages</li>
+        <li>Online ordering / booking</li>
+        <li>Content for 8 pages</li>
+        <li>90 days priority support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-title">Ongoing Care Plans</div>
+  <div class="care-row">
+    <div class="care"><div class="care-name">Care <span>· $59/mo</span></div><div class="care-d">Hosting, SSL, weekly backups, security updates, 1 hour of edits per month. Cancel anytime.</div></div>
+    <div class="care"><div class="care-name">Care+ <span>· $149/mo</span></div><div class="care-d">Everything in Care + monthly content, Google Business management, SEO reports, 24-hr response.</div></div>
+  </div>
+
+  <div class="sec-title">App Packages · Founding Pricing</div>
+  <div class="pricing-row">
+    <div class="tier">
+      <div class="tier-name">App Starter</div>
+      <div class="tier-target">Single-purpose · PWA · 4–6 wks</div>
+      <div><span class="tier-price">$1,999</span><span class="tier-was">$3,999</span></div>
+      <ul>
+        <li>Installable progressive web app</li>
+        <li>One core feature</li>
+        <li>No app store fees</li>
+      </ul>
+    </div>
+    <div class="tier featured">
+      <div class="tier-name">App Standard</div>
+      <div class="tier-target">Ordering · loyalty · booking · 6–10 wks</div>
+      <div><span class="tier-price">$4,999</span><span class="tier-was">$9,999</span></div>
+      <ul>
+        <li>Hybrid iOS + Android</li>
+        <li>Square / Stripe / Shopify</li>
+        <li>Admin panel + analytics</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <div class="tier-name">App Premium</div>
+      <div class="tier-target">Full custom · integrations · 10–16 wks</div>
+      <div><span class="tier-price">$9,999</span><span class="tier-was">$19,999</span></div>
+      <ul>
+        <li>Native or full hybrid build</li>
+        <li>Multi-role + admin dashboard</li>
+        <li>App store publishing handled</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.6rem;color:var(--muted);margin-bottom:.85rem;line-height:1.5"><strong style="color:var(--gold);font-weight:600">App store fees passed through at cost:</strong> Apple Developer Program $99/yr · Google Play $25 one-time — paid directly by you, never marked up. App Starter is a PWA and skips both. <em>Local agencies quote $15k–$50k for the same work.</em></p>
+
+  <div class="sec-title">Why EntraForce</div>
+  <div class="why-grid">
+    <div class="why"><strong>Founder-led.</strong>You talk to the person building it. No offshore handoffs, no account managers.</div>
+    <div class="why"><strong>Multilingual.</strong>English, Spanish, Hindi/Urdu, Arabic — copy and support in the language your customers speak.</div>
+    <div class="why"><strong>Transparent.</strong>Flat-rate packages, no surprise quotes. You see the number before you sign.</div>
+    <div class="why"><strong>You own it.</strong>Domain, code, content, accounts — all in your name from day one. Leave us anytime.</div>
+    <div class="why"><strong>Two metros.</strong>DFW and Chicagoland. Same pricing, same team, same response time.</div>
+    <div class="why"><strong>Founding rates.</strong>First 50 clients lock in pricing 30–45% below typical agency rates.</div>
+  </div>
+
+  <div class="sec-title">Selected Work</div>
+  <div class="port-list">
+    <strong>Shaahi Biryani</strong> (restaurant, Plano) · <strong>Shams Caterers</strong> · <strong>Shams Villa</strong> (luxury rentals) · <strong>Spice on Wheels</strong> (food truck) · <strong>Coffee with Osman</strong> · <strong>Coffee &amp; Mocktails</strong> · <strong>WisdomTech</strong> · <strong>EF Tech Medic</strong> — plus partner businesses. Live URLs on request.
+  </div>
+
+  <div class="footer">
+    <div class="foot-cta">Let's talk.<span>Free 30-min discovery call</span></div>
+    <div class="foot-item"><div class="foot-label">Phone</div>(224) 848-1702<br>WhatsApp welcome</div>
+    <div class="foot-item"><div class="foot-label">Email</div>support@entraforce.com</div>
+    <div class="foot-item"><div class="foot-label">Web</div>entraforce.com<br>Mon–Sun · 8am–8pm</div>
+  </div>
+
+</div>
+</body>
+</html>

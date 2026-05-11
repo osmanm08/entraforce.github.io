@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EntraForce — Sales Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#080d1a;--navy2:#0d1528;--navy3:#111e38;
+  --gold:#c8a84b;--gold2:#e8c76e;--gold-dim:#c8a84b33;
+  --white:#f4f1eb;--muted:#8a9ab5;--border:#1e2d4d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:var(--navy);color:var(--white);font-family:'Inter',sans-serif;overflow:hidden}
+.deck{position:relative;width:100vw;height:100vh}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 6rem 5rem;opacity:0;visibility:hidden;transition:opacity .35s ease;
+  background-image:radial-gradient(ellipse 80% 50% at 50% -10%,#1a3a6b40,transparent);
+}
+.slide.active{opacity:1;visibility:visible}
+.slide-num{position:absolute;top:1.5rem;right:2rem;font-size:.7rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase}
+.brand{position:absolute;top:1.5rem;left:2rem;font-family:'Manrope',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.15em}
+.brand span{color:var(--gold)}
+.tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);background:var(--gold-dim);padding:.4rem 1rem;border-radius:20px;margin-bottom:1.75rem}
+h1.title{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(3rem,6vw,5.5rem);line-height:1.02;letter-spacing:-1px;margin-bottom:1.25rem}
+h1.title em{font-style:normal;color:var(--gold)}
+h2.section{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(2.2rem,4.2vw,3.6rem);line-height:1.08;letter-spacing:-.5px;margin-bottom:1rem}
+.sub{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:780px;font-weight:300}
+.divider{width:48px;height:2px;background:var(--gold);margin:1rem 0 1.5rem}
+.bg-mark{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(8rem,22vw,18rem);letter-spacing:.15em;color:transparent;-webkit-text-stroke:1px rgba(200,168,75,0.06);bottom:-3rem;right:-2rem;line-height:.85;pointer-events:none;user-select:none}
+.glow{position:absolute;width:600px;height:600px;background:radial-gradient(ellipse,#4a2a8a33 0%,#c8a84b10 35%,transparent 70%);pointer-events:none}
+.glow.tl{top:-200px;left:-200px}
+.glow.br{bottom:-200px;right:-200px}
+
+/* Cover */
+.cover{text-align:center;align-items:center}
+.cover .badge{margin-bottom:2rem}
+.cover h1{font-size:clamp(3.5rem,8vw,7rem);margin-bottom:.5rem}
+.cover .tagline{font-size:1.15rem;color:var(--muted);max-width:640px;margin:0 auto 3rem;line-height:1.7;font-weight:300}
+.cover .meta{font-size:.8rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase}
+.cover .meta span{color:var(--gold)}
+
+/* Two-column */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.two-text h2{margin-bottom:1rem}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.stat{background:rgba(13,21,40,0.6);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+.stat-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:.4rem}
+.stat-label{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+/* Services grid */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem}
+.svc{background:rgba(13,21,40,0.7);border:1px solid rgba(200,168,75,0.18);border-radius:8px;padding:1.75rem;transition:all .3s}
+.svc:hover{border-color:rgba(200,168,75,0.5);box-shadow:0 0 30px rgba(200,168,75,0.12)}
+.svc-icon{font-size:1.8rem;margin-bottom:.85rem}
+.svc-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.4rem}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.65}
+.svc-tag{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);padding:.2rem .55rem;border-radius:3px;margin-bottom:.65rem}
+
+/* Service detail */
+.svc-detail h2 em{font-style:normal;color:var(--gold)}
+.feature-list{margin-top:1.75rem;display:grid;grid-template-columns:1fr 1fr;gap:.8rem 2rem;max-width:880px}
+.feature-list li{list-style:none;font-size:.95rem;color:var(--white);padding:.65rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.85rem}
+.feature-list li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.svc-price{margin-top:2rem;display:inline-flex;align-items:baseline;gap:.75rem;padding:1rem 1.5rem;background:rgba(200,168,75,0.08);border:1px solid var(--gold-dim);border-radius:6px}
+.svc-price strong{font-family:'Manrope',sans-serif;font-size:1.4rem;color:var(--gold)}
+.svc-price span{font-size:.85rem;color:var(--muted)}
+
+/* Why us */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
+.why{background:rgba(13,21,40,0.6);border:1px solid var(--border);border-radius:8px;padding:1.5rem;border-left:3px solid var(--gold)}
+.why-t{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.4rem}
+.why-d{font-size:.85rem;color:var(--muted);line-height:1.65}
+
+/* Portfolio grid */
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+.port{background:rgba(13,21,40,0.7);border:1px solid var(--border);border-radius:6px;padding:1.1rem;text-align:left}
+.port-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:.92rem;margin-bottom:.25rem}
+.port-cat{font-size:.7rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.price-card{background:rgba(13,21,40,0.7);border:1px solid var(--border);border-radius:10px;padding:1.75rem;position:relative}
+.price-card.featured{border-color:var(--gold);box-shadow:0 0 24px rgba(200,168,75,0.18)}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.6rem;font-weight:800;letter-spacing:.15em;padding:.25rem .7rem;border-radius:3px}
+.price-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.35rem}
+.price-target{font-size:.72rem;color:var(--muted);margin-bottom:1rem;min-height:1.2em}
+.price-amt{font-family:'Manrope',sans-serif;font-weight:800;font-size:2.2rem;color:var(--gold);line-height:1}
+.price-was{display:inline-block;font-size:.85rem;color:var(--muted);text-decoration:line-through;margin-left:.5rem}
+.price-incl{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);line-height:1.7}
+.price-incl li{list-style:none;padding:.2rem 0;display:flex;gap:.5rem}
+.price-incl li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+.care-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;max-width:760px}
+.care{background:rgba(200,168,75,0.05);border:1px solid var(--gold-dim);border-radius:8px;padding:1.25rem}
+.care-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.35rem}
+.care-name span{color:var(--gold)}
+.care-d{font-size:.78rem;color:var(--muted);line-height:1.65}
+
+/* Process */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;position:relative}
+.step{background:rgba(13,21,40,0.6);border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative}
+.step-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:2.2rem;color:var(--gold-dim);line-height:1}
+.step-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;margin:.5rem 0 .35rem}
+.step-d{font-size:.78rem;color:var(--muted);line-height:1.65}
+
+/* Closing */
+.cta{text-align:center;align-items:center}
+.cta h1{font-size:clamp(3rem,6vw,5rem);margin-bottom:1.25rem}
+.cta .sub{margin:0 auto 2.5rem;text-align:center}
+.cta-row{display:flex;gap:1rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap}
+.btn{padding:.95rem 2rem;font-family:'Manrope',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:880px;margin:0 auto}
+.contact{background:rgba(13,21,40,0.6);border:1px solid var(--border);border-radius:8px;padding:1.1rem;text-align:center}
+.contact-label{font-size:.65rem;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.35rem}
+.contact-val{font-size:.85rem;font-weight:500}
+
+/* Nav controls */
+.controls{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:1rem;background:rgba(13,21,40,0.85);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:30px;padding:.5rem 1.25rem;z-index:50}
+.controls button{background:transparent;border:none;color:var(--white);font-size:1.1rem;cursor:pointer;padding:.25rem .5rem;opacity:.6;transition:opacity .2s}
+.controls button:hover{opacity:1;color:var(--gold)}
+.dots{display:flex;gap:.4rem}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all .2s}
+.dot.active{background:var(--gold);transform:scale(1.4)}
+.dot:hover{background:var(--gold2)}
+.hint{position:fixed;bottom:1rem;right:1.5rem;font-size:.65rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;opacity:.5;z-index:50}
+
+@media (max-width:900px){
+  .slide{padding:3rem 2rem 5rem}
+  .two,.svc-grid,.feature-list,.price-grid,.process,.port-grid,.contact-grid,.care-row,.why-grid{grid-template-columns:1fr;gap:1rem}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1. Cover -->
+  <section class="slide cover active">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="glow tl"></div><div class="glow br"></div>
+    <div class="tag badge">Sales Presentation · 2026</div>
+    <h1 class="title">Technology Built to <em>Move Business Forward</em></h1>
+    <p class="tagline">Websites, content, apps & Google Business Profiles for small businesses in DFW and Chicagoland — built honestly, priced fairly, delivered fast.</p>
+    <div class="meta">EntraForce · <span>Plano, TX</span> · entraforce.com</div>
+    <div class="slide-num">01 / 12</div>
+  </section>
+
+  <!-- 2. The Problem -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">The Problem</div>
+    <h2 class="section">Most local businesses are <em style="color:var(--gold);font-style:normal">losing customers</em> before they walk in the door.</h2>
+    <div class="divider"></div>
+    <p class="sub">When somebody searches for your business, what they find — or don't find — decides whether they show up. Outdated sites, missing Google listings, no online ordering, no mobile app. The customer moves on to the next result. You never knew they were there.</p>
+    <div class="stat-grid" style="max-width:880px">
+      <div class="stat"><div class="stat-num">76%</div><div class="stat-label">of consumers check a business's online presence before visiting in person.</div></div>
+      <div class="stat"><div class="stat-num">53%</div><div class="stat-label">will leave a site that takes longer than 3 seconds to load on mobile.</div></div>
+      <div class="stat"><div class="stat-num">88%</div><div class="stat-label">of local searches on a phone result in a call or visit within 24 hours.</div></div>
+      <div class="stat"><div class="stat-num">$0</div><div class="stat-label">spent on tech is still a choice — usually the most expensive one.</div></div>
+    </div>
+    <div class="slide-num">02 / 12</div>
+  </section>
+
+  <!-- 3. What We Do -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">What We Do</div>
+    <h2 class="section">Four services. One partner. <em style="color:var(--gold);font-style:normal">Built for SMBs.</em></h2>
+    <p class="sub">We're not a generic agency. We're a small, founder-led shop focused on local businesses — including the South Asian-owned restaurants, caterers, and retailers that big agencies overlook. Everything we build is mobile-first, SEO-ready, and made to convert.</p>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-icon">🌐</div>
+        <div class="svc-title">Websites</div>
+        <div class="svc-desc">Custom-built, mobile-first sites that load fast, rank on Google, and turn visitors into customers.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">✍️</div>
+        <div class="svc-title">Content Creation</div>
+        <div class="svc-desc">Copy, photography prep, blog posts, and social content tuned to your industry and audience.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">📱</div>
+        <div class="svc-title">Apps</div>
+        <div class="svc-desc">Custom mobile and web apps — ordering, loyalty, booking, internal tools. Quoted to your scope.</div>
+      </div>
+      <div class="svc">
+        <div class="svc-icon">📍</div>
+        <div class="svc-title">Google Business Profile</div>
+        <div class="svc-desc">Setup, optimization, and ongoing management of the listing that drives most of your local traffic.</div>
+      </div>
+    </div>
+    <div class="slide-num">03 / 12</div>
+  </section>
+
+  <!-- 4. Websites Detail -->
+  <section class="slide svc-detail">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Service 01 · Websites</div>
+    <h2 class="section">A site that <em>actually works</em> for your business.</h2>
+    <div class="divider"></div>
+    <p class="sub">Most small-business websites are templates a teenager built once and never touched again. We build custom — designed around how your customers actually decide to buy, eat, book, or visit.</p>
+    <ul class="feature-list">
+      <li>Custom mobile-first design — not a template</li>
+      <li>Fast page loads (under 2 seconds on mobile)</li>
+      <li>Full on-page SEO setup, ready to rank</li>
+      <li>Online ordering / booking / lead-form integration</li>
+      <li>Multilingual support (English, Spanish, Hindi/Urdu, Arabic)</li>
+      <li>You own the domain and code from day one</li>
+      <li>Hosting, SSL, and email forwarding handled</li>
+      <li>7-to-14 day delivery on most projects</li>
+    </ul>
+    <div class="svc-price"><strong>From $499</strong><span>· founding pricing, first 50 clients</span></div>
+    <div class="slide-num">04 / 12</div>
+  </section>
+
+  <!-- 5. Content Detail -->
+  <section class="slide svc-detail">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Service 02 · Content Creation</div>
+    <h2 class="section">Words and visuals that <em>sell for you</em> when you're not in the room.</h2>
+    <div class="divider"></div>
+    <p class="sub">A beautiful site with weak copy is still a weak site. We write the words, prep the photos, and build the content engine — so every page does its job.</p>
+    <ul class="feature-list">
+      <li>Homepage and service-page copywriting</li>
+      <li>Menu, product, and catalog descriptions</li>
+      <li>SEO-targeted blog posts (food, retail, services)</li>
+      <li>Photography direction & image optimization</li>
+      <li>Social media graphics and post templates</li>
+      <li>Google reviews response templates</li>
+      <li>Multilingual copy where it matters to your audience</li>
+      <li>Bundled into Standard & Premium website packages</li>
+    </ul>
+    <div class="svc-price"><strong>Included or à la carte</strong><span>· starts at $99/page standalone</span></div>
+    <div class="slide-num">05 / 12</div>
+  </section>
+
+  <!-- 6. Apps Detail -->
+  <section class="slide svc-detail">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Service 03 · Apps</div>
+    <h2 class="section">When a website isn't enough, <em>build the app.</em></h2>
+    <div class="divider"></div>
+    <p class="sub">For businesses that need more than a brochure online — ordering, loyalty, repeat-customer engagement, internal tools — we build custom mobile and web apps. Local agencies quote $15k–$50k for the same work. We deliver it for a fraction of that under founding rates.</p>
+    <div class="price-grid" style="margin-top:1.5rem">
+      <div class="price-card">
+        <div class="price-name">App Starter</div>
+        <div class="price-target">Single-purpose · PWA · 4–6 wks</div>
+        <div><span class="price-amt">$1,999</span><span class="price-was">$3,999</span></div>
+        <ul class="price-incl">
+          <li>Mobile-friendly progressive web app</li>
+          <li>One core feature (lead form, menu, gallery)</li>
+          <li>Installable on iOS + Android home screen</li>
+          <li>No app store fees or review delays</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">App Standard</div>
+        <div class="price-target">Ordering · loyalty · booking · 6–10 wks</div>
+        <div><span class="price-amt">$4,999</span><span class="price-was">$9,999</span></div>
+        <ul class="price-incl">
+          <li>Hybrid iOS + Android app</li>
+          <li>Ordering, loyalty, or booking flow</li>
+          <li>Square / Stripe / Shopify integration</li>
+          <li>Admin panel + analytics</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">App Premium</div>
+        <div class="price-target">Full custom · integrations · 10–16 wks</div>
+        <div><span class="price-amt">$9,999</span><span class="price-was">$19,999</span></div>
+        <ul class="price-incl">
+          <li>Native or full hybrid build</li>
+          <li>Multi-role users + admin dashboard</li>
+          <li>Custom integrations (POS, CRM, payments)</li>
+          <li>App store publishing handled</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:1.25rem;max-width:880px;line-height:1.6"><strong style="color:var(--gold);font-weight:600">Note on app store fees:</strong> Apple Developer Program ($99/yr) and Google Play Developer ($25 one-time) are paid directly by you to Apple and Google — never marked up by us. App Starter is a progressive web app and doesn't require either.</p>
+    <div class="slide-num">06 / 12</div>
+  </section>
+
+  <!-- 7. GBP Detail -->
+  <section class="slide svc-detail">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Service 04 · Google Business Profile</div>
+    <h2 class="section">The free listing that <em>most businesses leave broken.</em></h2>
+    <div class="divider"></div>
+    <p class="sub">Your Google Business Profile drives more local foot traffic than your website ever will. Most owners set it up once and forget it. We fix it, optimize it, and keep it working.</p>
+    <ul class="feature-list">
+      <li>Full profile setup or recovery (suspended listings included)</li>
+      <li>Category and service-area optimization</li>
+      <li>Photo uploads, captions, and refresh schedule</li>
+      <li>Weekly Google Posts (offers, updates, events)</li>
+      <li>Q&A seeding and review response management</li>
+      <li>Booking links, menu links, ordering integrations</li>
+      <li>Monthly performance reporting (calls, directions, clicks)</li>
+      <li>Multi-location management at scale</li>
+    </ul>
+    <div class="svc-price"><strong>Setup free with any website</strong><span>· ongoing management from $149/mo (Care+)</span></div>
+    <div class="slide-num">07 / 12</div>
+  </section>
+
+  <!-- 8. Why Us -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Why EntraForce</div>
+    <h2 class="section">We're <em style="color:var(--gold);font-style:normal">not the cheapest.</em> We're the one you don't have to redo in 18 months.</h2>
+    <div class="divider"></div>
+    <div class="why-grid">
+      <div class="why"><div class="why-t">Local, founder-led</div><div class="why-d">You talk to the person building your site. No account manager, no offshore handoff, no waiting weeks for a one-word reply.</div></div>
+      <div class="why"><div class="why-t">Multilingual by default</div><div class="why-d">English, Spanish, Hindi/Urdu, Arabic. We work with businesses serving multilingual communities — and we speak the language.</div></div>
+      <div class="why"><div class="why-t">Honest pricing</div><div class="why-d">Flat-rate packages. No hidden fees, no surprise quotes, no upsell traps. You see the number before you sign.</div></div>
+      <div class="why"><div class="why-t">You own everything</div><div class="why-d">Domain, code, content, accounts — all in your name from day one. If you ever leave us, you keep it all.</div></div>
+      <div class="why"><div class="why-t">Built for both metros</div><div class="why-d">Active in DFW (Plano + suburbs) and Chicagoland (Devon Ave, Schaumburg, Naperville). Same pricing, same team, same response time.</div></div>
+      <div class="why"><div class="why-t">Founding pricing</div><div class="why-d">First 50 clients lock in rates 30–45% below typical agency pricing — for life on Care plans.</div></div>
+    </div>
+    <div class="slide-num">08 / 12</div>
+  </section>
+
+  <!-- 9. Our Work -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Our Work</div>
+    <h2 class="section">Real sites. <em style="color:var(--gold);font-style:normal">Real businesses.</em> Live today.</h2>
+    <p class="sub">A selection of websites we've built and businesses we partner with across DFW and Chicagoland.</p>
+    <div class="port-grid">
+      <div class="port"><div class="port-name">Shaahi Biryani</div><div class="port-cat">Restaurant · Plano</div></div>
+      <div class="port"><div class="port-name">Shams Caterers</div><div class="port-cat">Catering</div></div>
+      <div class="port"><div class="port-name">Shams Villa</div><div class="port-cat">Luxury Rentals</div></div>
+      <div class="port"><div class="port-name">Spice on Wheels</div><div class="port-cat">Food Truck</div></div>
+      <div class="port"><div class="port-name">Coffee with Osman</div><div class="port-cat">Life Guidance</div></div>
+      <div class="port"><div class="port-name">Coffee & Mocktails</div><div class="port-cat">Cafe · Beverages</div></div>
+      <div class="port"><div class="port-name">WisdomTech</div><div class="port-cat">IT Services</div></div>
+      <div class="port"><div class="port-name">EF Tech Medic</div><div class="port-cat">Device Repair</div></div>
+    </div>
+    <p class="sub" style="margin-top:1.5rem;font-size:.85rem">Plus partner businesses Dessert Avenue and AtoZ Party Depot. Live URLs available on request.</p>
+    <div class="slide-num">09 / 12</div>
+  </section>
+
+  <!-- 10. Pricing -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">Founding Pricing · First 50 Clients</div>
+    <h2 class="section">Pick your package. <em style="color:var(--gold);font-style:normal">Lock your rate.</em></h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-target">Solo owners · simple needs</div>
+        <div><span class="price-amt">$499</span><span class="price-was">$899</span></div>
+        <ul class="price-incl">
+          <li>1-page mobile-first site</li>
+          <li>Contact form + basic SEO</li>
+          <li>Google Business setup</li>
+          <li>7-day delivery</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Standard</div>
+        <div class="price-target">Best for most local businesses</div>
+        <div><span class="price-amt">$1,499</span><span class="price-was">$2,799</span></div>
+        <ul class="price-incl">
+          <li>4–6 page custom site</li>
+          <li>Full SEO + analytics</li>
+          <li>Multilingual support</li>
+          <li>30 days of edits included</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Premium</div>
+        <div class="price-target">Restaurants · multi-location · e-comm</div>
+        <div><span class="price-amt">$2,999</span><span class="price-was">$5,499</span></div>
+        <ul class="price-incl">
+          <li>Up to 12 pages</li>
+          <li>Ordering / booking integration</li>
+          <li>Content writing (8 pages)</li>
+          <li>90 days priority support</li>
+        </ul>
+      </div>
+    </div>
+    <div class="care-row">
+      <div class="care"><div class="care-name">Care <span>· $59/mo</span></div><div class="care-d">Hosting, SSL, weekly backups, security updates, 1 hour of edits / month.</div></div>
+      <div class="care"><div class="care-name">Care+ <span>· $149/mo</span></div><div class="care-d">Everything in Care + monthly content updates, GBP management, SEO reports, 24-hr priority response.</div></div>
+    </div>
+    <div class="slide-num">10 / 12</div>
+  </section>
+
+  <!-- 11. How We Work -->
+  <section class="slide">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="tag">How We Work</div>
+    <h2 class="section">From <em style="color:var(--gold);font-style:normal">handshake to live</em> in two weeks.</h2>
+    <p class="sub">No long discovery phases, no slide decks billed by the hour. We move fast, share progress daily, and ship.</p>
+    <div class="process">
+      <div class="step"><div class="step-num">01</div><div class="step-title">Discovery Call</div><div class="step-d">30 minutes. We learn your business, audience, and goals. You get a same-week quote.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-title">Design & Build</div><div class="step-d">Mobile-first design draft within 3 days. Build runs in parallel with your content review.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-title">Launch</div><div class="step-d">Domain, hosting, SSL, GBP, analytics, search-engine submission — all set up by us.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-title">Care Plan</div><div class="step-d">Ongoing monthly maintenance, content, SEO, and GBP — so your site keeps earning.</div></div>
+    </div>
+    <div class="slide-num">11 / 12</div>
+  </section>
+
+  <!-- 12. Closing -->
+  <section class="slide cta">
+    <div class="brand">ENTRA<span>FORCE</span></div>
+    <div class="glow tl"></div><div class="glow br"></div>
+    <div class="tag badge">Let's Build</div>
+    <h1 class="title">Your competitors aren't waiting. <em>Why are you?</em></h1>
+    <p class="sub">Book a free 30-minute discovery call. No pitch, no pressure — just a straight conversation about whether we're the right fit.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="mailto:support@entraforce.com">Email Us →</a>
+      <a class="btn btn-secondary" href="https://wa.me/12248481702">WhatsApp Us</a>
+    </div>
+    <div class="contact-grid">
+      <div class="contact"><div class="contact-label">Phone</div><div class="contact-val">(224) 848-1702</div></div>
+      <div class="contact"><div class="contact-label">Email</div><div class="contact-val">support@entraforce.com</div></div>
+      <div class="contact"><div class="contact-label">Web</div><div class="contact-val">entraforce.com</div></div>
+      <div class="contact"><div class="contact-label">Hours</div><div class="contact-val">Mon–Sun · 8am–8pm</div></div>
+    </div>
+    <div class="slide-num">12 / 12</div>
+  </section>
+
+</div>
+
+<div class="controls">
+  <button id="prev" title="Previous (←)">‹</button>
+  <div class="dots" id="dots"></div>
+  <button id="next" title="Next (→)">›</button>
+</div>
+<div class="hint">← → · space · esc to overview</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsEl = document.getElementById('dots');
+let current = 0;
+
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.addEventListener('click', () => go(i));
+  dotsEl.appendChild(d);
+});
+
+function go(i) {
+  if (i < 0 || i >= slides.length) return;
+  slides[current].classList.remove('active');
+  dotsEl.children[current].classList.remove('active');
+  current = i;
+  slides[current].classList.add('active');
+  dotsEl.children[current].classList.add('active');
+}
+
+document.getElementById('next').addEventListener('click', () => go(current + 1));
+document.getElementById('prev').addEventListener('click', () => go(current - 1));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+  else if (e.key === 'Home') { go(0); }
+  else if (e.key === 'End') { go(slides.length - 1); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+});
+</script>
+</body>
+</html>
