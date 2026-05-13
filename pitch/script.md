@@ -73,7 +73,7 @@ Walk through each in ~30 seconds. Tie back to what they told you in step 1.
 > "A beautiful site with weak copy is still a weak site. We write the homepage, the service pages, the menu descriptions, the blog posts — and we tune it for search. Bundled into our website packages or available standalone."
 
 ### 3. Apps
-> "When a website isn't enough — when you need ordering, loyalty, booking, or an internal tool — we build the app. Local agencies quote fifteen to fifty thousand for this work. We do it for a fraction of that. Three packages: App Starter at $1,999 for a simple installable web app, App Standard at $4,999 for ordering or loyalty on iOS and Android, App Premium at $9,999 for full custom with integrations and a dashboard. All at honest below-market pricing, all under our Care plans for maintenance."
+> "When a website isn't enough — when you need ordering, loyalty, booking, or an internal tool — we build the app. Local agencies quote fifteen to fifty thousand for this work. We do it for a fraction of that. Two packages: App Standard at $4,999 for ordering or loyalty on iOS and Android, App Premium at $9,999 for full custom with integrations and an admin dashboard. All at honest below-market pricing, all under our Care plans for maintenance."
 
 ### 4. Google Business Profile
 > "This is the one most owners ignore. Your Google listing drives more local foot traffic than your website ever will. We set it up, optimize it, post weekly, respond to reviews, and send you a monthly report so you can actually see calls, directions, and clicks going up. Setup is free with any website package. Ongoing management is in our Care+ plan."
@@ -98,9 +98,9 @@ Don't apologize for the price. State it plainly.
 
 ### Apps:
 
-> "Apps follow the same three-tier model. $1,999, $4,999, $9,999. The middle one covers most clients: ordering, loyalty, or booking, working on iOS and Android, with an admin panel. Local agencies quote two to five times that. If an app is in scope for you, we'll walk through which tier fits after this call."
+> "Apps come in two tiers. $4,999 for App Standard — that covers most clients: ordering, loyalty, or booking, working on iOS and Android, with an admin panel. $9,999 for App Premium — full custom with integrations and a dashboard. Local agencies quote two to five times that. If an app is in scope for you, we'll walk through which tier fits after this call."
 
-> "One thing I'll flag now so it's not a surprise later: Apple and Google charge developer fees to put an app in their stores — Apple's is $99 a year, Google's is $25 one-time. Those go directly from you to Apple and Google. We never mark them up. If you go with App Starter, which is a progressive web app, you skip both of those entirely."
+> "One thing I'll flag now so it's not a surprise later: Apple and Google charge developer fees to put an app in their stores — Apple's is $99 a year, Google's is $25 one-time. Those go directly from you to Apple and Google. We never mark them up."
 
 ---
 
@@ -209,7 +209,7 @@ Send within 4 hours of the call. Keep it short.
 >
 > If you'd like to move forward, just reply with "yes" and I'll send the agreement and invoice for the deposit. This quote is good for 14 days.
 >
-> Any questions, hit reply or WhatsApp me at (224) 848-1702.
+> Any questions, hit reply or WhatsApp me at (945) 208-3795.
 >
 > — Osman / EntraForce
 

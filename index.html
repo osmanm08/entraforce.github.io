@@ -154,6 +154,7 @@ footer span{color:var(--gold)}
           <a onclick="goToService('it-consulting')">IT Consulting Projects</a>
           <a onclick="goToService('ef-tech-medic')">EF Tech Medic</a>
           <a onclick="goToService('web-creation')">Website / Content Creation</a>
+          <a onclick="goTo('app')">Branded App Development</a>
         </div>
       </li>
       <li id="nav-pricing"><a onclick="goTo('pricing')">Pricing</a></li>
@@ -320,7 +321,8 @@ footer span{color:var(--gold)}
   </div>
 
   <!-- ORBITAL DISPLAY -->
-  <div id="orbit-wrap" style="position:relative;width:100%;max-width:900px;margin:0 auto;height:700px;display:flex;align-items:center;justify-content:center">
+  <div id="orbit-wrap" style="position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:9/7;overflow:visible">
+    <div id="orbit-stage" style="position:absolute;left:50%;top:50%;width:900px;height:700px;transform:translate(-50%,-50%) scale(1);transform-origin:50% 50%">
 
     <!-- SVG orbit rings -->
     <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet">
@@ -356,7 +358,22 @@ footer span{color:var(--gold)}
 
     <!-- PARTNER CARDS rendered by JS into #orbit-cards -->
     <div id="orbit-cards" style="position:absolute;inset:0;width:100%;height:100%"></div>
+    </div>
   </div>
+  <script>
+  (function(){
+    function fitOrbit(){
+      var wrap=document.getElementById('orbit-wrap');
+      var stage=document.getElementById('orbit-stage');
+      if(!wrap||!stage) return;
+      var s=Math.min(1, wrap.clientWidth/900);
+      stage.style.transform='translate(-50%,-50%) scale('+s+')';
+    }
+    window.addEventListener('resize',fitOrbit,{passive:true});
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',fitOrbit);
+    else fitOrbit();
+  })();
+  </script>
 
   <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2rem;margin-top:0">
     <div class="section-tag">Work With Us</div>
@@ -532,7 +549,240 @@ footer span{color:var(--gold)}
     <div class="section-tag">Need Something Custom?</div>
     <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:.5rem">Custom Builds &amp; App Development</h2>
     <p class="section-sub" style="margin:.5rem auto 1.5rem">E-commerce, custom web applications, and mobile apps &mdash; quoted based on your scope. Tell us what you're building.</p>
-    <button class="btn-primary" onclick="goTo('contact')">Get a Custom Quote &rarr;</button>
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="goTo('app')">See Branded App Service &rarr;</button>
+      <button class="btn-secondary" onclick="goTo('contact')">Get a Custom Quote</button>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDED APP -->
+<style>
+.app-hero{position:relative;padding:3.5rem 1.5rem 1.5rem;text-align:center;max-width:1100px;margin:0 auto}
+.app-hero h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:1px;line-height:1.05;margin:.6rem 0 .9rem;color:#f4f1eb}
+.app-hero h2 em{font-style:normal;background:linear-gradient(90deg,#e8c76e,#a07830);-webkit-background-clip:text;background-clip:text;color:transparent}
+.app-hero .price-anchor{display:inline-flex;align-items:baseline;gap:.45rem;padding:.55rem 1.1rem;border:1px solid var(--gold-dim);border-radius:999px;background:rgba(200,168,75,.06);font-family:'Manrope',sans-serif;font-size:.95rem;color:#f4f1eb;margin:.6rem 0 1.4rem}
+.app-hero .price-anchor strong{font-weight:800;color:var(--gold)}
+.app-hero .price-anchor small{color:var(--muted);font-size:.78rem;letter-spacing:.04em}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;max-width:1100px;margin:1.5rem auto;padding:0 1rem}
+.app-feat{background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1.6rem 1.4rem;transition:transform .2s,border-color .2s,box-shadow .2s}
+.app-feat:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 10px 28px rgba(200,168,75,.12)}
+.app-feat-icon{font-size:1.6rem;line-height:1;margin-bottom:.85rem}
+.app-feat h4{font-family:'Manrope',sans-serif;font-size:1.05rem;font-weight:700;color:#f4f1eb;margin:0 0 .45rem;letter-spacing:-.2px}
+.app-feat p{font-size:.88rem;color:#d8d2c6;line-height:1.55;margin:0}
+.app-industry{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:1100px;margin:1.5rem auto;padding:0 1rem}
+.app-ind-card{background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1.4rem 1.2rem;text-align:left}
+.app-ind-card .app-feat-icon{font-size:1.4rem;margin-bottom:.6rem}
+.app-ind-card h5{font-family:'Manrope',sans-serif;font-size:.98rem;font-weight:700;color:var(--gold);margin:0 0 .4rem;letter-spacing:-.1px}
+.app-ind-card p{font-size:.83rem;color:#d8d2c6;line-height:1.5;margin:0}
+.app-included{max-width:980px;margin:1.25rem auto;padding:0 1rem}
+.app-included-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.4rem 1.4rem;background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1.6rem 1.6rem}
+.app-included-grid li{list-style:none;display:flex;gap:.6rem;padding:.45rem 0;font-size:.9rem;line-height:1.45;color:#d8d2c6;border-bottom:1px dashed rgba(200,168,75,.12)}
+.app-included-grid li:last-child,.app-included-grid li:nth-last-child(2){border-bottom:0}
+.app-included-grid li::before{content:"\2713";color:var(--gold);font-weight:700;flex-shrink:0}
+.app-faq{max-width:880px;margin:1rem auto 0;padding:0 1rem}
+.app-faq details{background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1rem 1.25rem;margin-bottom:.7rem;transition:border-color .2s}
+.app-faq details[open]{border-color:var(--gold)}
+.app-faq summary{cursor:pointer;font-family:'Manrope',sans-serif;font-weight:700;color:#f4f1eb;font-size:.98rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.app-faq summary::-webkit-details-marker{display:none}
+.app-faq summary::after{content:"+";color:var(--gold);font-size:1.4rem;line-height:1;font-weight:400;transition:transform .2s}
+.app-faq details[open] summary::after{content:"\2013"}
+.app-faq details p{margin:.7rem 0 0;color:#d8d2c6;font-size:.9rem;line-height:1.6}
+.app-cta-box{max-width:780px;margin:2rem auto 1rem;padding:2rem 1.5rem;text-align:center;background:linear-gradient(180deg,rgba(200,168,75,.08),rgba(200,168,75,.02));border:1px solid var(--gold);border-radius:8px}
+.app-cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:1px;color:#f4f1eb;margin:0 0 .5rem}
+.app-cta-box p{color:#d8d2c6;font-size:.95rem;margin:0 0 1.25rem;line-height:1.55}
+.app-cta-box .cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+</style>
+<div class="page" id="page-app">
+  <div class="app-hero">
+    <div class="section-tag">Branded App Development</div>
+    <h2>Your Business. Your App.<br><em>In Your Customer's Pocket.</em></h2>
+    <p class="section-sub" style="max-width:780px;margin:0 auto 1rem">A native iOS &amp; Android app built around your brand &mdash; ordering, booking, loyalty, push notifications, and analytics. Stop renting your customer relationships from third-party platforms. Own them.</p>
+    <div class="price-anchor"><strong>Starting at $4,999</strong><span>build</span><small>+ $99/mo hosting &amp; updates</small></div>
+    <div class="hero-actions" style="justify-content:center">
+      <button class="btn-primary" onclick="goTo('contact')">Book a Free 30-min Call &rarr;</button>
+      <button class="btn-secondary" onclick="document.getElementById('app-included-anchor').scrollIntoView({behavior:'smooth',block:'start'})">See What's Included</button>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;padding-top:2rem">
+    <div class="section-tag">Why a Branded App</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">More Than a Logo on a Phone Screen</h2>
+    <div class="divider" style="margin:1rem auto 0"></div>
+    <p class="section-sub" style="margin:.75rem auto 0">Six concrete reasons small business owners across Chicagoland and DFW are moving off third-party apps and onto their own.</p>
+  </div>
+
+  <div class="app-grid">
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x1F4B0;</div>
+      <h4>Keep the 20&ndash;30% You're Losing</h4>
+      <p>Delivery and booking platforms take a cut on every transaction. Your own app keeps that margin in your business &mdash; pays for itself faster than most owners expect.</p>
+    </div>
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x1F4F2;</div>
+      <h4>Push Notifications That Actually Get Read</h4>
+      <p>Lunch special, festival promo, new arrival &mdash; one tap, every customer's lock screen. No paid boost, no algorithm hiding it. Free reach, every time.</p>
+    </div>
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x2B50;</div>
+      <h4>Loyalty That Brings People Back</h4>
+      <p>Points, punch cards, birthday rewards, referral bonuses &mdash; configured to your business. Repeat customers spend more; the app makes the second visit easier than the first.</p>
+    </div>
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x1F3E0;</div>
+      <h4>You Own the Customer Data</h4>
+      <p>Names, phone numbers, order history, preferences &mdash; yours, exported anytime. Doordash, OpenTable, and Square don't share that data. Your app does.</p>
+    </div>
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x1F30D;</div>
+      <h4>Multilingual From Day One</h4>
+      <p>English, Spanish, Hindi/Urdu, and Arabic supported out of the box. Your customers shop in the language they think in &mdash; conversions go up, support questions go down.</p>
+    </div>
+    <div class="app-feat">
+      <div class="app-feat-icon">&#x1F4CA;</div>
+      <h4>Real Numbers, Not Guesswork</h4>
+      <p>See what's selling, when, to whom, and from where. Catch trends in days instead of months. Built-in dashboard, no extra subscription.</p>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">Built For</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">One Foundation, Tuned to Your Industry</h2>
+    <p class="section-sub" style="margin:.75rem auto 0">We start from a battle-tested codebase, then customize the workflows that matter to your business.</p>
+  </div>
+
+  <div class="app-industry">
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1F35B;</div>
+      <h5>Restaurants &amp; Cafes</h5>
+      <p>Online ordering, table reservations, catering inquiries, in-app loyalty stamps, menu by location.</p>
+    </div>
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1F6D2;</div>
+      <h5>Grocery &amp; Retail</h5>
+      <p>Product catalog with photos, weekly flyers, in-store pickup scheduling, family wish lists.</p>
+    </div>
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1F487;</div>
+      <h5>Salons &amp; Spas</h5>
+      <p>Stylist-by-stylist booking, deposits, automated reminders, referral credit, gallery of past work.</p>
+    </div>
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1F527;</div>
+      <h5>Repair &amp; Service Shops</h5>
+      <p>Drop-off ticketing, status updates ("part arrived", "ready for pickup"), digital receipts, review requests.</p>
+    </div>
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1FA7A;</div>
+      <h5>Clinics &amp; Wellness</h5>
+      <p>HIPAA-aware appointment booking, intake forms, follow-up reminders, telehealth call links.</p>
+    </div>
+    <div class="app-ind-card">
+      <div class="app-feat-icon">&#x1F3DB;</div>
+      <h5>Event Halls &amp; Catering</h5>
+      <p>Inquiry forms with date pickers, capacity calculators, package selection, deposit collection.</p>
+    </div>
+  </div>
+
+  <div id="app-included-anchor"></div>
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">What's Included</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">Everything Ships With Your Build</h2>
+    <p class="section-sub" style="margin:.75rem auto 0">No add-on bundles, no surprise feature unlocks. One scope, one quote.</p>
+  </div>
+
+  <div class="app-included">
+    <ul class="app-included-grid">
+      <li>Native iOS app (Apple App Store)</li>
+      <li>Native Android app (Google Play Store)</li>
+      <li>Custom branding: logo, colors, splash, app icon</li>
+      <li>Customer accounts &amp; order/booking history</li>
+      <li>Online ordering, booking, or appointments</li>
+      <li>Unlimited push notifications</li>
+      <li>Loyalty / rewards system (points or stamps)</li>
+      <li>Multi-location support out of the box</li>
+      <li>POS integration (Clover, Square, or Toast where applicable)</li>
+      <li>Stripe / Square payments built in</li>
+      <li>Real-time analytics dashboard</li>
+      <li>Multilingual UI (EN / ES / HI-UR / AR)</li>
+      <li>App Store + Play Store submission &amp; approval</li>
+      <li>Owner training video walkthrough</li>
+      <li>30 days of free post-launch tweaks</li>
+      <li>You own the source code &amp; developer accounts</li>
+    </ul>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">Process</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">From Idea to App Store in 8&ndash;12 Weeks</h2>
+  </div>
+
+  <div class="domain-process" style="max-width:1100px">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <div class="process-title">Discovery (Week 0)</div>
+      <p class="process-desc">Free 30-min call to map your workflows, integrations, and must-have features. Walk away with a fixed quote &mdash; no obligation.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <div class="process-title">Design (Weeks 1&ndash;2)</div>
+      <p class="process-desc">Branded screen-by-screen mockups you can tap through on your phone. Two rounds of revisions before a single line of code is written.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <div class="process-title">Build &amp; Test (Weeks 3&ndash;10)</div>
+      <p class="process-desc">iOS and Android built side-by-side. Weekly demo builds you can install on your own phone &mdash; you watch progress, you give feedback.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <div class="process-title">Submit &amp; Launch (Weeks 11&ndash;12)</div>
+      <p class="process-desc">We handle Apple and Google review, screenshots, listing copy, and the developer account setup. You sign in on launch day.</p>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">Common Questions</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">Everything Owners Ask Us</h2>
+  </div>
+
+  <div class="app-faq">
+    <details>
+      <summary>Do I actually own the app, or just rent it from you?</summary>
+      <p>You own all of it &mdash; the source code, the Apple developer account, the Google Play account, the payment integrations, the customer database. Everything is registered in your business name from day one. If you ever want to leave us, you take it with you.</p>
+    </details>
+    <details>
+      <summary>How long does it really take?</summary>
+      <p>Typical projects ship in 8 to 12 weeks. Rush builds (6 weeks) are possible for an extra fee if your scope is straightforward. Big multi-location chains with complex POS integrations can run 14&ndash;16 weeks &mdash; we'll tell you on the discovery call, not three months in.</p>
+    </details>
+    <details>
+      <summary>Will it work with my POS &mdash; Clover, Square, Toast?</summary>
+      <p>Yes for those three. We've integrated with all of them. If you're on a smaller or industry-specific POS (e.g., Booker, Mindbody, RepairShopr), tell us which one on the call and we'll confirm the integration scope before quoting.</p>
+    </details>
+    <details>
+      <summary>What about updates after launch?</summary>
+      <p>The $99/mo plan covers hosting, security patches, OS compatibility (iOS and Android push updates twice a year), and small content tweaks. New features are quoted separately at our standard hourly rate &mdash; no monthly contract, no minimums.</p>
+    </details>
+    <details>
+      <summary>Can I add a second location later?</summary>
+      <p>Yes. Multi-location support is built in from day one, even if you only launch with one location. Adding a new location is a settings change, not a new build.</p>
+    </details>
+    <details>
+      <summary>What if my customers don't want to download an app?</summary>
+      <p>Fair concern. Most of our clients pair the app with a mobile-friendly web ordering page (which we also build) for first-time customers, then nudge repeat customers into the app with a 5&ndash;10% loyalty bonus. Adoption usually crosses 40% of repeat traffic within 90 days.</p>
+    </details>
+    <details>
+      <summary>Why $4,999 instead of the $15&ndash;30k other agencies quote?</summary>
+      <p>We start from a proven codebase instead of building from scratch. You get the same iOS + Android quality, faster, because we're not reinventing logins, payments, or push notifications on every project. Highly custom features (think: warehouse routing, prescription handling) are quoted on top &mdash; transparently.</p>
+    </details>
+  </div>
+
+  <div class="app-cta-box">
+    <h3>Let's see if it fits your business</h3>
+    <p>30 minutes on the phone. No slide deck, no high-pressure quote. We'll tell you honestly whether an app makes sense yet &mdash; and if it doesn't, what to build first.</p>
+    <div class="cta-row">
+      <button class="btn-primary" onclick="goTo('contact')">Book a Discovery Call &rarr;</button>
+      <button class="btn-secondary" onclick="goTo('pricing')">See Other Services</button>
+    </div>
   </div>
 </div>
 
@@ -555,7 +805,7 @@ footer span{color:var(--gold)}
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">📱</div>
-          <div><div class="contact-item-label">Phone</div><div class="contact-item-val">(224) 848-1702</div></div>
+          <div><div class="contact-item-label">Phone</div><div class="contact-item-val">(945) 208-3795</div></div>
         </div>
         <div class="contact-item">
           <div class="contact-item-icon">🕐</div>
@@ -575,6 +825,7 @@ footer span{color:var(--gold)}
               <option>IT Consulting Projects</option>
               <option>EF Tech Medic</option>
               <option>Website / Content Creation</option>
+              <option>Branded App Development</option>
               <option>General Inquiry</option>
             </select>
           </div>
@@ -761,7 +1012,7 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
 <div class="m-nav">
   <div class="m-logo"><span>EF</span> Techmedic</div>
   <ul class="m-nav-links"><li><a href="#m-services">Services</a></li><li><a href="#m-process">How It Works</a></li><li><a href="#m-why">Why Us</a></li><li><a href="#m-contact">Contact</a></li></ul>
-  <a href="tel:+12248481702" style="font-size:.82rem;font-weight:700;color:#f0ece4;white-space:nowrap">📞 (224) 848-1702</a>
+  <a href="tel:+19452083795" style="font-size:.82rem;font-weight:700;color:#f0ece4;white-space:nowrap">📞 (945) 208-3795</a>
   <a href="#m-contact" class="m-nav-btn">Get Free Quote</a>
 </div>
 <div class="m-hero">
@@ -770,7 +1021,7 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
       <div class="m-hero-tag">● No appointments needed</div>
       <h1 class="m-h1">Expert Repair<br>For <span class="y">Every</span><br>Device</h1>
       <p class="m-hero-p">iPhone, Samsung, iPad, Apple Watch and more. Most repairs done same day. Drop off at Shaahi Biryani, Plano TX.</p>
-      <div class="m-hero-btns"><a href="#m-contact" class="m-btn-y">🔧 Book a Repair</a><a href="tel:+12248481702" class="m-btn-ghost">📞 Call or Text</a></div>
+      <div class="m-hero-btns"><a href="#m-contact" class="m-btn-y">🔧 Book a Repair</a><a href="tel:+19452083795" class="m-btn-ghost">📞 Call or Text</a></div>
       <div class="m-hero-stats">
         <div><div class="m-hs-num">15K+</div><div class="m-hs-label">Devices Repaired</div></div>
         <div><div class="m-hs-num">4.9★</div><div class="m-hs-label">Google Rating</div></div>
@@ -853,7 +1104,7 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
         <div class="m-ct-info">
           <div class="m-ct-item"><div class="m-ct-ico">📍</div><div><div class="m-ct-key">Drop Off</div><div class="m-ct-val">Shaahi Biryani<br>3421 Renner Rd, Suite 110<br>Plano, TX 75074</div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">🕐</div><div><div class="m-ct-key">Hours</div><div class="m-ct-val">Tue–Thu & Sun: 11:30 AM – 10 PM<br>Fri–Sat: 11:30 AM – 11 PM<br>Monday: Closed</div></div></div>
-          <div class="m-ct-item"><div class="m-ct-ico">📞</div><div><div class="m-ct-key">Call or Text</div><div class="m-ct-val"><a href="tel:+12248481702">+1 (224) 848-1702</a></div></div></div>
+          <div class="m-ct-item"><div class="m-ct-ico">📞</div><div><div class="m-ct-key">Call or Text</div><div class="m-ct-val"><a href="tel:+19452083795">+1 (945) 208-3795</a></div></div></div>
           <div class="m-ct-item"><div class="m-ct-ico">📧</div><div><div class="m-ct-key">Email</div><div class="m-ct-val"><a href="/cdn-cgi/l/email-protection#f784828787988583b792998385969198859492d994989a">support&#64;entraforce&#46;com</a></div></div></div>
         </div>
       </div>
@@ -927,7 +1178,7 @@ footer{background:#050505;padding:3rem 1.5rem 2rem;border-top:1px solid #222}
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function goTo(page) {
-  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners', pricing:'/pricing'};
+  var urls = {home:'/', about:'/about', services:'/services', contact:'/contact', partners:'/partners', pricing:'/pricing', app:'/app'};
   history.pushState({page: page}, '', urls[page] || '/');
   if (page === 'home') {
     window.scrollTo({top:0, behavior:'smooth'});
@@ -959,7 +1210,7 @@ window.addEventListener('popstate', function(ev) {
 
 // Highlight nav based on which section is in view
 (function() {
-  var pages = ['home','about','services','partners','pricing','contact'];
+  var pages = ['home','about','services','partners','pricing','app','contact'];
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting) {
@@ -995,6 +1246,7 @@ document.addEventListener('click', function(e) {
     else if (r.indexOf('/contact') === 0) { goTo('contact'); }
     else if (r.indexOf('/partners') === 0) { goTo('partners'); }
     else if (r.indexOf('/pricing') === 0) { goTo('pricing'); }
+    else if (r.indexOf('/app') === 0) { goTo('app'); }
     else if (r.indexOf('/services') === 0) { goTo('services'); }
   }
 })();
@@ -1248,11 +1500,11 @@ function medicSubmit(btn) {
 
 
 var efHistory=[];var efInited=false;
-var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given on site. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/12248481702 — always share this when user wants to contact or book. Say: Chat with us on WhatsApp: https://wa.me/12248481702. If unsure say call (224) 848-1702 or WhatsApp: https://wa.me/12248481702'";
+var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (945) 208-3795. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given on site. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/19452083795 — always share this when user wants to contact or book. Say: Chat with us on WhatsApp: https://wa.me/19452083795. If unsure say call (945) 208-3795 or WhatsApp: https://wa.me/19452083795'";
 
 // ── EF Tech Medic Chatbot functions ──
 var efHistory=[];var efInited=false;
-var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (224) 848-1702. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/12248481702 always share this when user wants to contact or book. If unsure say call (224) 848-1702.";
+var EF_SYS="You are the friendly assistant for EF Tech Medic, a device repair shop in Plano TX by EntraForce. Keep replies short (2-4 sentences). Drop-off: Shaahi Biryani, 3421 Renner Rd Suite 110, Plano TX 75074. Hours: Tue-Thu and Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. Phone: (945) 208-3795. We fix smartphones (iPhone Samsung Pixel OnePlus LG), iPad/tablet, Apple Watch, HDMI/micro soldering, water damage, battery replacement. No game consoles, MacBooks or laptops. Free quote given. Most repairs same day. Walk-ins welcome. For WhatsApp: https://wa.me/19452083795 always share this when user wants to contact or book. If unsure say call (945) 208-3795.";
 
 function efToggle(){
   var c=document.getElementById('ef-chat');
@@ -1274,7 +1526,7 @@ function efInit(){
     b.onclick=function(){
       if(t==='WhatsApp us'){
         efAddMsg('user','WhatsApp us');
-        efAddMsg('bot','Chat with us on WhatsApp — tap below to open directly! <a href="https://wa.me/12248481702" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:700;text-decoration:underline" onclick="event.stopPropagation()">&#x1F4AC; Open WhatsApp Chat</a>');
+        efAddMsg('bot','Chat with us on WhatsApp — tap below to open directly! <a href="https://wa.me/19452083795" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:700;text-decoration:underline" onclick="event.stopPropagation()">&#x1F4AC; Open WhatsApp Chat</a>');
         document.getElementById('ef-chat-qbtns').style.display='none';
       } else {
         document.getElementById('ef-chat-inp').value=t;efSend();
@@ -1310,18 +1562,18 @@ async function efSend(){
       body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:250,system:EF_SYS,messages:efHistory})
     });
     var data=await res.json();
-    var reply=(data.content&&data.content[0])?data.content[0].text:'Please call (224) 848-1702 for help!';
+    var reply=(data.content&&data.content[0])?data.content[0].text:'Please call (945) 208-3795 for help!';
     efHistory.push({role:'assistant',content:reply});
     efRemoveTyping();efAddMsg('bot',reply);
   }catch(e){
-    efRemoveTyping();efAddMsg('bot','Having trouble connecting. Call (224) 848-1702 or <span data-wa="https://wa.me/12248481702" style="color:#25D366;font-weight:700;cursor:pointer;text-decoration:underline">WhatsApp us</span>!');
+    efRemoveTyping();efAddMsg('bot','Having trouble connecting. Call (945) 208-3795 or <span data-wa="https://wa.me/19452083795" style="color:#25D366;font-weight:700;cursor:pointer;text-decoration:underline">WhatsApp us</span>!');
   }
   if(send)send.disabled=false;if(inp)inp.focus();
 }
 
 // ── EntraForce Main Chatbot functions ──
 var mainHistory=[];var mainInited=false;
-var MAIN_SYS="You are the friendly assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Keep replies short (2-4 sentences). Services: 1) IT Consulting - infrastructure, network, cloud, managed IT (launching soon). 2) EF Tech Medic - device repair, drop-off at Shaahi Biryani 3421 Renner Rd Suite 110 Plano TX, hours Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. 3) Website & Content Creation for local businesses. Contact: support@entraforce.com, (224) 848-1702, 5501 Estate Ln Plano TX 75094. Hours: Mon-Sun 8AM-8PM. For WhatsApp: https://wa.me/12248481702 always offer this when user wants to contact. If unsure say contact support@entraforce.com or WhatsApp us.";
+var MAIN_SYS="You are the friendly assistant for EntraForce, a technology company based in Plano, Texas (Est. 2013). Keep replies short (2-4 sentences). Services: 1) IT Consulting - infrastructure, network, cloud, managed IT (launching soon). 2) EF Tech Medic - device repair, drop-off at Shaahi Biryani 3421 Renner Rd Suite 110 Plano TX, hours Tue-Thu & Sun 11:30AM-10PM, Fri-Sat 11:30AM-11PM, Monday closed. 3) Website & Content Creation for local businesses. Contact: support@entraforce.com, (945) 208-3795, 5501 Estate Ln Plano TX 75094. Hours: Mon-Sun 8AM-8PM. For WhatsApp: https://wa.me/19452083795 always offer this when user wants to contact. If unsure say contact support@entraforce.com or WhatsApp us.";
 
 function mainToggle(){
   var c=document.getElementById('main-chat');
@@ -1343,7 +1595,7 @@ function mainInit(){
     b.onclick=function(){
       if(t==='WhatsApp us'){
         mainAddMsg('user','WhatsApp us');
-        mainAddMsg('bot','Chat with us on WhatsApp — no need to save our number! <a href="https://wa.me/12248481702" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:700;text-decoration:underline" onclick="event.stopPropagation()">&#x1F4AC; Open WhatsApp Chat</a>');
+        mainAddMsg('bot','Chat with us on WhatsApp — no need to save our number! <a href="https://wa.me/19452083795" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:700;text-decoration:underline" onclick="event.stopPropagation()">&#x1F4AC; Open WhatsApp Chat</a>');
         document.getElementById('main-chat-qbtns').style.display='none';
       } else {
         document.getElementById('main-chat-inp').value=t;mainSend();
@@ -1379,11 +1631,11 @@ async function mainSend(){
       body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:250,system:MAIN_SYS,messages:mainHistory})
     });
     var data=await res.json();
-    var reply=(data.content&&data.content[0])?data.content[0].text:'Contact us at (224) 848-1702 or support@entraforce.com!';
+    var reply=(data.content&&data.content[0])?data.content[0].text:'Contact us at (945) 208-3795 or support@entraforce.com!';
     mainHistory.push({role:'assistant',content:reply});
     mainRemoveTyping();mainAddMsg('bot',reply);
   }catch(e){
-    mainAddMsg('bot','Having trouble connecting. Call us at (224) 848-1702!');
+    mainAddMsg('bot','Having trouble connecting. Call us at (945) 208-3795!');
   }
 }
 </script>
