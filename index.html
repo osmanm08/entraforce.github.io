@@ -592,6 +592,29 @@ footer span{color:var(--gold)}
 .app-cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:1px;color:#f4f1eb;margin:0 0 .5rem}
 .app-cta-box p{color:#d8d2c6;font-size:.95rem;margin:0 0 1.25rem;line-height:1.55}
 .app-cta-box .cta-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.app-vs{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;max-width:1000px;margin:1.5rem auto;padding:0 1rem}
+@media (max-width:720px){.app-vs{grid-template-columns:1fr}}
+.app-vs-card{background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;padding:1.6rem 1.5rem;display:flex;flex-direction:column}
+.app-vs-card.own{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 12px 36px rgba(200,168,75,.12);position:relative}
+.app-vs-card.own::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.app-vs-card .vs-label{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.app-vs-card.own .vs-label{color:var(--gold)}
+.app-vs-card h4{font-family:'Manrope',sans-serif;font-size:1.15rem;font-weight:700;color:#f4f1eb;margin:0 0 .35rem;letter-spacing:-.2px}
+.app-vs-card .vs-price{font-family:'Manrope',sans-serif;font-size:1.5rem;font-weight:800;color:#f4f1eb;margin-bottom:1rem;line-height:1.1}
+.app-vs-card .vs-price small{font-size:.85rem;font-weight:600;color:var(--muted)}
+.app-vs-card ul{list-style:none;padding:0;margin:0}
+.app-vs-card li{display:flex;gap:.55rem;padding:.4rem 0;font-size:.88rem;line-height:1.5;color:#d8d2c6}
+.app-vs-card li::before{content:"\2716";color:#a07830;font-weight:700;flex-shrink:0;opacity:.7}
+.app-vs-card.own li::before{content:"\2713";color:var(--gold);opacity:1}
+.app-cost-table{max-width:840px;margin:1.5rem auto;padding:0 1rem;overflow-x:auto}
+.app-cost-table table{width:100%;border-collapse:collapse;background:var(--navy2);border:1px solid var(--gold-dim);border-radius:6px;overflow:hidden;font-family:'Manrope',sans-serif;font-size:.92rem}
+.app-cost-table th{background:rgba(200,168,75,.08);color:var(--gold);font-weight:700;text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--gold-dim)}
+.app-cost-table td{padding:.75rem 1rem;color:#d8d2c6;border-bottom:1px solid rgba(200,168,75,.08)}
+.app-cost-table tr:last-child td{border-bottom:0}
+.app-cost-table td:first-child{font-weight:600;color:#f4f1eb}
+.app-cost-table td.own{color:var(--gold);font-weight:700}
+.app-cost-table .savings{color:#9ed99e;font-size:.82rem;font-weight:600}
+.app-cost-note{max-width:840px;margin:.5rem auto 0;padding:0 1rem;font-size:.78rem;color:var(--muted);text-align:center;line-height:1.5}
 </style>
 <div class="page" id="page-app">
   <div class="app-hero">
@@ -713,6 +736,86 @@ footer span{color:var(--gold)}
   </div>
 
   <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:1.5rem">
+    <div class="section-tag">Rent vs. Own</div>
+    <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">The "$199/mo App" Looks Cheap.<br>Until You Do the Math.</h2>
+    <p class="section-sub" style="margin:.75rem auto 0">Most subscription app platforms charge low monthly + a per-order fee. The bill grows with your business &mdash; and you never own anything you can sell, transfer, or walk away with.</p>
+  </div>
+
+  <div class="app-vs">
+    <div class="app-vs-card">
+      <div class="vs-label">Subscription App Platforms</div>
+      <h4>Rent It Forever</h4>
+      <div class="vs-price">~$199<small>/mo</small> + ~$0.99<small>/order</small></div>
+      <ul>
+        <li>Same template app as every other restaurant on the platform</li>
+        <li>Per-order fee scales with your success &mdash; the more you sell, the more they take</li>
+        <li>You don't own the source code, the App Store account, or the customer data</li>
+        <li>Cancel = the app disappears from your customers' phones</li>
+        <li>Limited customization &mdash; you fit their feature list, not the other way around</li>
+        <li>Price increases when they decide; you have no leverage</li>
+      </ul>
+    </div>
+    <div class="app-vs-card own">
+      <div class="vs-label">EntraForce Branded App</div>
+      <h4>Own It Once</h4>
+      <div class="vs-price">$4,999<small> build</small> + $99<small>/mo</small></div>
+      <ul>
+        <li>Custom-built around your business &mdash; your menu, your workflows, your brand</li>
+        <li>Zero per-order fees. Ever. Your 1,000th order costs the same as your 1st</li>
+        <li>You own the source code, the Apple &amp; Google accounts, and every customer record</li>
+        <li>Cancel maintenance and the app keeps working &mdash; it's yours</li>
+        <li>Add any feature you want; you control the roadmap</li>
+        <li>Fixed pricing, no surprise hikes, no contracts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" style="text-align:center;padding-top:1.5rem">
+    <h3 style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-size:clamp(1.4rem,3vw,1.9rem);color:#f4f1eb;margin:0 0 .5rem">3-Year Total Cost</h3>
+    <p class="section-sub" style="margin:.25rem auto 0">The break-even point is somewhere around month 3. Everything after that is yours.</p>
+  </div>
+
+  <div class="app-cost-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Orders / Month</th>
+          <th>Subscription App<br>(3 years)</th>
+          <th>EntraForce App<br>(3 years)</th>
+          <th>You Save</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>200</td>
+          <td>$11,628</td>
+          <td class="own">$8,563</td>
+          <td class="savings">$3,065</td>
+        </tr>
+        <tr>
+          <td>500</td>
+          <td>$24,768</td>
+          <td class="own">$8,563</td>
+          <td class="savings">$16,205</td>
+        </tr>
+        <tr>
+          <td>1,000</td>
+          <td>$46,668</td>
+          <td class="own">$8,563</td>
+          <td class="savings">$38,105</td>
+        </tr>
+        <tr>
+          <td>2,000</td>
+          <td>$90,468</td>
+          <td class="own">$8,563</td>
+          <td class="savings">$81,905</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="app-cost-note">Subscription column assumes $199/mo + $0.99 per order over 36 months. EntraForce column = $4,999 build + $99/mo over 36 months. Excludes Apple ($99/yr) and Google ($25 one-time) developer fees, which apply to either path.</p>
+
+  <div class="section" style="text-align:center;border-top:1px solid var(--border);padding-top:2.5rem;margin-top:2rem">
     <div class="section-tag">Process</div>
     <h2 class="section-title" style="font-size:clamp(1.6rem,3.5vw,2.4rem)">From Idea to App Store in 8&ndash;12 Weeks</h2>
   </div>
@@ -773,6 +876,10 @@ footer span{color:var(--gold)}
     <details>
       <summary>Why $4,999 instead of the $15&ndash;30k other agencies quote?</summary>
       <p>We start from a proven codebase instead of building from scratch. You get the same iOS + Android quality, faster, because we're not reinventing logins, payments, or push notifications on every project. Highly custom features (think: warehouse routing, prescription handling) are quoted on top &mdash; transparently.</p>
+    </details>
+    <details>
+      <summary>I've seen subscription apps for $199/mo with no upfront cost &mdash; why pay $4,999?</summary>
+      <p>Two real differences. First: subscription apps charge a per-order fee on top of the monthly (typically $0.50&ndash;$1.50 per order). At 500 orders a month that's another $250&ndash;$750/mo on top of the $199. Over 3 years a busy restaurant pays them $25k&ndash;$45k and still owns nothing. Second: you don't own the code, the App Store account, or the customer database &mdash; cancel and the app vanishes. Our model is the opposite: pay once, own forever, no per-order fees, your customer data is yours. The 3-year cost comparison is in the table above.</p>
     </details>
   </div>
 
