@@ -47,6 +47,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy2);bord
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:.95rem;color:var(--muted);max-width:520px;margin:0 auto 2rem;line-height:1.8;font-weight:300}
 .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem}
+.hero[data-fx="pending"] .hero-logo-wrap,
+.hero[data-fx="pending"] .hero-badge,
+.hero[data-fx="pending"] h1,
+.hero[data-fx="pending"] .hero-sub,
+.hero[data-fx="pending"] .hero-actions,
+.hero[data-fx="pending"] .feat{opacity:0;transform:translateY(24px);will-change:opacity,transform}
 .btn-primary{padding:.78rem 2rem;background:var(--gold);color:var(--navy);font-family:'Manrope',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;border-radius:4px;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
 .btn-primary:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 6px 24px rgba(200,168,75,0.4)}
 .btn-secondary{padding:.78rem 2rem;background:rgba(255,255,255,0.05);color:var(--white);font-family:'Manrope',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);cursor:pointer;border-radius:4px;transition:all .2s}
@@ -168,7 +174,7 @@ footer span{color:var(--gold)}
 
 <!-- HOME -->
 <div class="page active" id="page-home">
-  <div class="hero">
+  <div class="hero" data-fx="pending">
     <div class="hero-grid"></div>
     <div class="hero-glow-main"></div>
     <div class="hero-glow-top"></div>
@@ -2305,4 +2311,31 @@ async function mainSend(){
 
   updateFrame();
 })();
+</script>
+
+<!-- Motion (motion.dev) — animation library, loaded from CDN as ES module -->
+<script type="module">
+  import { animate, scroll, inView, stagger, spring } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
+  window.Motion = { animate, scroll, inView, stagger, spring };
+  window.dispatchEvent(new CustomEvent('motion-ready'));
+
+  // Hero entrance sequence
+  const hero = document.querySelector('.hero[data-fx="pending"]');
+  if (hero) {
+    const easing = [0.16, 1, 0.3, 1];
+    animate(hero.querySelector('.hero-logo-wrap'), { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, easing });
+    animate(hero.querySelector('.hero-badge'),     { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.15, easing });
+    animate(hero.querySelector('h1'),              { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.25, easing });
+    animate(hero.querySelector('.hero-sub'),       { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.40, easing });
+    animate(hero.querySelector('.hero-actions'),   { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.55, easing });
+    animate(hero.querySelectorAll('.feat'),        { opacity: [0, 1], y: [24, 0] }, { duration: 0.6, delay: stagger(0.08, { start: 0.75 }), easing });
+    hero.removeAttribute('data-fx');
+  }
+</script>
+<!-- Fallback: if Motion fails to load, reveal hero after 2s so nothing stays hidden -->
+<script>
+  setTimeout(function(){
+    var h = document.querySelector('.hero[data-fx="pending"]');
+    if (h) h.removeAttribute('data-fx');
+  }, 2000);
 </script>
